@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2013-01-06T21:35:07+00:00</updated>
+  <updated>2013-01-06T21:41:51+00:00</updated>
   <id>http://yoursite.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -27,7 +27,7 @@
     <link href="http://yoursite.com/first-post-and-first-script-foo/"/>
     <updated>2009-02-22T00:00:00+00:00</updated>
     <id>http://yoursite.com/first-post-and-first-script-foo</id>
-    <content type="html"><![CDATA[<p>Thanks for visiting! The main purpose of this blog (right now) is as an archive for useful technical bits and pieces I&#8217;ve come across and don&#8217;t want to forget. Hopefully, you might find some of these useful, too. This is my first post and I&#8217;d like to start by sharing a handy little script-foo I learned.</p>
+    <content type="html"><![CDATA[<p>Thanks for visiting! The main purpose of this blog (right now) is as an archive for useful technical bits and pieces I&#8217;ve come across and don&#8217;t want to forget. Hopefully, you might find some of these useful, too. This is my first post and I&#8217;d like to start by sharing a handy little script-foo I learned.</p>
 
 <p>Over Christmas, the Compsoc admin team reinstalled our backup server. We created a fairly large (~3.6T RAID5) /home partition which took forever to build when the server booted for the first time. Rather than keep checking into the server room I figured &#8220;Wouldn&#8217;t it be handy if I could just get a text when the server comes up?&#8221;.</p>
 
