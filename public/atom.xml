@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-07T17:23:16+00:00</updated>
+  <updated>2013-01-07T17:30:02+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -19,6 +19,21 @@
     <updated>2013-01-05T21:21:00+00:00</updated>
     <id>http://andyregan.net/blog/2013/01/05/post-title</id>
     <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing Subclipse in Ubuntu Behind a Proxy]]></title>
+    <link href="http://andyregan.net/installing-subclipse-in-ubuntu-behind-a-proxy/"/>
+    <updated>2009-02-25T00:00:00+00:00</updated>
+    <id>http://andyregan.net/installing-subclipse-in-ubuntu-behind-a-proxy</id>
+    <content type="html"><![CDATA[<p>Took me ages to figure this out. I followed these <a href="https://help.ubuntu.com/community/EclipseSubversion">instructions on how to install Subclise</a>. After I added the remote site and hit &#8220;Finish&#8221; the installer just timed out. I was working behind a firewall (IT LABS!) so I figured proxy settings had something to do with my problems.</p>
+
+<p>Long story short, Eclipse doesn&#8217;t use your global proxy settings. In Ubuntu, the location of the settings in Eclipse is <strong>Window->Preferences->Install &amp; Update</strong>.</p>
+
+<p>From there, you can specify your proxy host and port and successfully install <a href="http://subclipse.tigris.org/">Subclipse</a>.</p>
+
+<p>Subclipse is a Subversion plugin for eclipse. Thanks to Nathan for helping me find the settings!</p>
 ]]></content>
   </entry>
   
