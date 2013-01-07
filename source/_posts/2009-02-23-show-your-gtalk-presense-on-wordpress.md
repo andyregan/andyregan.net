@@ -21,7 +21,7 @@ include './simplehtmldom/simple_html_dom.php';
 // Create DOM from URL or file&lt;br />
 $html = file_get_html('http://www.google.com/talk/service/badge/Show?tk=HASHCODE');
 foreach($html->find('img#b') as $element){
-$status['image']='&lt;img src="http://google.com/'.$element->src . '"/>'
+$status['image']='<img src="http://google.com/'.$element->src . '"/>'
 $status['type']=$element->alt;
 }
 $status['text']=preg_replace("/[^a-zA-Z0-9s t]/", "", $html->find('div.r', 1)->plaintext) ;

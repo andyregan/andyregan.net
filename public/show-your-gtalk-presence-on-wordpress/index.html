@@ -3,15 +3,15 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Show Your Gtalk Presence on WordPress - My Octopress Blog</title>
-	<meta name="author" content="Your Name">
+	<title>Show Your Gtalk Presence on WordPress - $whois andyregan</title>
+	<meta name="author" content="Andrew Regan">
 
 	
 	<meta name="description" content="I couldn&#8217;t find a plugin that showed my presence in a way that I liked so I threw together the following php script. It&#8217;s influenced by &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link href="/atom.xml" rel="alternate" title="$whois andyregan" type="application/atom+xml">
 	<link rel="canonical" href="">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+	<header id="header" class="inner"><h1><a href="/">$whois andyregan</a></h1>
 <nav id="main-nav"><ul class="main">
 	<li><a href="/">Blog</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
@@ -41,7 +41,7 @@
 		<div class="container">
 			<form action="http://google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:yoursite.com">
+				<input type="hidden" name="q" value="site:andyregan.net">
 			</form>
 		</div>
 	</div>
@@ -51,6 +51,10 @@
 		
 		
 		
+		<a class="twitter" href="http://twitter.com/andyregan" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/andyregan" title="GitHub">GitHub</a>
 		
     
 		
@@ -63,13 +67,27 @@
 	</div>
 	<form class="search" action="http://google.com/search" method="get">
 		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:yoursite.com">
+		<input type="hidden" name="q" value="site:andyregan.net">
 	</form>
 </nav>
 
 </header>
 	
 		
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/andyregan">andyregan</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('andyregan', 4, false);
+	})(jQuery);
+</script>
+
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Show Your Gtalk Presence on WordPress</h2>
@@ -95,7 +113,7 @@
 </span><span class='line'><span class="c1">// Create DOM from URL or file&amp;lt;br /&gt;</span>
 </span><span class='line'><span class="nv">$html</span> <span class="o">=</span> <span class="nx">file_get_html</span><span class="p">(</span><span class="s1">&#39;http://www.google.com/talk/service/badge/Show?tk=HASHCODE&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;img#b&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">){</span>
-</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;&amp;lt;img src=&quot;http://google.com/&#39;</span><span class="o">.</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">src</span> <span class="o">.</span> <span class="s1">&#39;&quot;/&gt;&#39;</span>
+</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;&lt;img src=&quot;http://google.com/&#39;</span><span class="o">.</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">src</span> <span class="o">.</span> <span class="s1">&#39;&quot;/&gt;&#39;</span>
 </span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">=</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">alt</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">preg_replace</span><span class="p">(</span><span class="s2">&quot;/[^a-zA-Z0-9s t]/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;div.r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">plaintext</span><span class="p">)</span> <span class="p">;</span>
@@ -111,7 +129,7 @@
 
 <figure class='code'><figcaption><span>wordpress script </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">&#39;url/to/php/script&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="x">`</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">&#39;url/to/php/script&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -132,7 +150,7 @@
   
 
 
-<time datetime="2009-02-23T00:00:00+00:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2009</time></div>
+<time datetime="2009-02-23T00:00:00+00:00" pubdate data-updated="true">2009-02-23</time></div>
 	<div class="tags">
 
 
@@ -159,7 +177,7 @@
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2013
 
-    Your Name
+    Andrew Regan
 
 </footer>
 	<script src="/javascripts/slash.js"></script>

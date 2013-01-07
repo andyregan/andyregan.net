@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2013-01-07T17:00:17+00:00</updated>
-  <id>http://yoursite.com/</id>
+  <title><![CDATA[$whois andyregan]]></title>
+  <link href="http://andyregan.net/atom.xml" rel="self"/>
+  <link href="http://andyregan.net/"/>
+  <updated>2013-01-07T17:23:16+00:00</updated>
+  <id>http://andyregan.net/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Andrew Regan]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,18 +15,18 @@
   
   <entry>
     <title type="html"><![CDATA[Post Title]]></title>
-    <link href="http://yoursite.com/blog/2013/01/05/post-title/"/>
+    <link href="http://andyregan.net/blog/2013/01/05/post-title/"/>
     <updated>2013-01-05T21:21:00+00:00</updated>
-    <id>http://yoursite.com/blog/2013/01/05/post-title</id>
+    <id>http://andyregan.net/blog/2013/01/05/post-title</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Show Your Gtalk Presence on WordPress]]></title>
-    <link href="http://yoursite.com/show-your-gtalk-presence-on-wordpress/"/>
+    <link href="http://andyregan.net/show-your-gtalk-presence-on-wordpress/"/>
     <updated>2009-02-23T00:00:00+00:00</updated>
-    <id>http://yoursite.com/show-your-gtalk-presense-on-wordpress</id>
+    <id>http://andyregan.net/show-your-gtalk-presense-on-wordpress</id>
     <content type="html"><![CDATA[<p>I couldn&#8217;t find a plugin that showed my presence in a way that I liked so I threw together the following php script. It&#8217;s influenced by the <a href="http://www.awflasher.com/blog/" title="Visit plugin homepage">Gtalk (Status) to WordPress (G2W)</a> plugin by Aw Guo. It includes <a href="http://simplehtmldom.sourceforge.net/" title="simplehtmldom">simplehtmldom</a>, a very easy to use HTML DOM parser.</p>
 
 <p>The first step is to get a <a href="http://www.google.com/talk/service/badge/New">Gtalk Chatback Badge</a>. Edit the badge, making sure &#8220;Show your status message&#8221; is ticked. Copy the hashcode in the url of your badge. It&#8217;s the string after after <code>?tk</code>. Replace <code>HASHCODE</code> in the following code with your hashcode.</p>
@@ -49,7 +49,7 @@
 </span><span class='line'><span class="c1">// Create DOM from URL or file&amp;lt;br /&gt;</span>
 </span><span class='line'><span class="nv">$html</span> <span class="o">=</span> <span class="nx">file_get_html</span><span class="p">(</span><span class="s1">&#39;http://www.google.com/talk/service/badge/Show?tk=HASHCODE&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;img#b&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">){</span>
-</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;&amp;lt;img src=&quot;http://google.com/&#39;</span><span class="o">.</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">src</span> <span class="o">.</span> <span class="s1">&#39;&quot;/&gt;&#39;</span>
+</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;&lt;img src=&quot;http://google.com/&#39;</span><span class="o">.</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">src</span> <span class="o">.</span> <span class="s1">&#39;&quot;/&gt;&#39;</span>
 </span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">=</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">alt</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">preg_replace</span><span class="p">(</span><span class="s2">&quot;/[^a-zA-Z0-9s t]/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;div.r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">plaintext</span><span class="p">)</span> <span class="p">;</span>
@@ -65,7 +65,7 @@
 
 <figure class='code'><figcaption><span>wordpress script </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">&#39;url/to/php/script&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="x">`</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">&#39;url/to/php/script&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -75,9 +75,9 @@
   
   <entry>
     <title type="html"><![CDATA[First Post and SMS Ping Script]]></title>
-    <link href="http://yoursite.com/first-post-and-first-script-foo/"/>
+    <link href="http://andyregan.net/first-post-and-first-script-foo/"/>
     <updated>2009-02-22T00:00:00+00:00</updated>
-    <id>http://yoursite.com/first-post-and-first-script-foo</id>
+    <id>http://andyregan.net/first-post-and-first-script-foo</id>
     <content type="html"><![CDATA[<p>Thanks for visiting! The main purpose of this blog (right now) is as an archive for useful technical bits and pieces I&#8217;ve come across and don&#8217;t want to forget. Hopefully, you might find some of these useful, too. This is my first post and I&#8217;d like to start by sharing a handy little script-foo I learned.</p>
 
 <p>Over Christmas, the Compsoc admin team reinstalled our backup server. We created a fairly large (~3.6T RAID5) /home partition which took forever to build when the server booted for the first time. Rather than keep checking into the server room I figured &#8220;Wouldn&#8217;t it be handy if I could just get a text when the server comes up?&#8221;.</p>

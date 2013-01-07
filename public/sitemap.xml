@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://yoursite.com/first-post-and-first-script-foo/</loc>
+        <loc>http://andyregan.net/first-post-and-first-script-foo/</loc>
         <lastmod>2013-01-06T21:41:41+00:00</lastmod>
     </url>
     <url>
-        <loc>http://yoursite.com/show-your-gtalk-presence-on-wordpress/</loc>
-        <lastmod>2013-01-07T16:49:37+00:00</lastmod>
+        <loc>http://andyregan.net/show-your-gtalk-presence-on-wordpress/</loc>
+        <lastmod>2013-01-07T17:08:38+00:00</lastmod>
     </url>
     <url>
-        <loc>http://yoursite.com/blog/2013/01/05/post-title/</loc>
+        <loc>http://andyregan.net/blog/2013/01/05/post-title/</loc>
         <lastmod>2013-01-06T20:22:07+00:00</lastmod>
     </url>
     <url>
-        <loc>http://yoursite.com/blog/archives/</loc>
-        <lastmod>2013-01-07T16:49:37+00:00</lastmod>
+        <loc>http://andyregan.net/blog/archives/</loc>
+        <lastmod>2013-01-07T17:08:38+00:00</lastmod>
     </url>
     <url>
-        <loc>http://yoursite.com/</loc>
-        <lastmod>2013-01-07T16:49:37+00:00</lastmod>
+        <loc>http://andyregan.net/</loc>
+        <lastmod>2013-01-07T17:08:38+00:00</lastmod>
     </url>
     <url>
-        <loc>http://yoursite.com/robots.txt</loc>
+        <loc>http://andyregan.net/robots.txt</loc>
         <lastmod>2013-01-06T20:22:07+00:00</lastmod>
     </url>
 </urlset>
