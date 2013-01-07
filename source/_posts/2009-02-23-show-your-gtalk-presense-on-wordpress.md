@@ -35,7 +35,7 @@ echo $status['image']." ".$status['text'];
 Add the following to the page where you want to show your status.
 
 {% codeblock lang:php wordpress script %}
-<?php echo file_get_contents('url/to/php/script');?>`
+<?php echo file_get_contents('url/to/php/script');?>
 {% endcodeblock %}
 
  [1]: http://www.awflasher.com/blog/ "Visit plugin homepage"
