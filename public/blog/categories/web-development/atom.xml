@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Development | My Octopress Blog]]></title>
   <link href="http://yoursite.com/blog/categories/web-development/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2013-01-07T13:07:36+00:00</updated>
+  <updated>2013-01-07T17:00:17+00:00</updated>
   <id>http://yoursite.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -15,33 +15,48 @@
   
   <entry>
     <title type="html"><![CDATA[Show Your Gtalk Presence on WordPress]]></title>
-    <link href="http://yoursite.com/41/"/>
+    <link href="http://yoursite.com/show-your-gtalk-presence-on-wordpress/"/>
     <updated>2009-02-23T00:00:00+00:00</updated>
-    <id>http://yoursite.com/41</id>
+    <id>http://yoursite.com/show-your-gtalk-presense-on-wordpress</id>
     <content type="html"><![CDATA[<p>I couldn't find a plugin that showed my presence in a way that I liked so I threw together the following php script. It's influenced by the <a href="http://www.awflasher.com/blog/" title="Visit plugin homepage">Gtalk (Status) to WordPress (G2W)</a> plugin by Aw Guo. It includes <a href="http://simplehtmldom.sourceforge.net/" title="simplehtmldom">simplehtmldom</a>, a very easy to use HTML DOM parser.</p>
 
-<p>The first step is to get a <a href="http://www.google.com/talk/service/badge/New">Gtalk Chatback Badge</a> "http://www.google.com/talk/service/badge/New" Gtalk Chatback Badge</a>. Edit the badge, making sure "Show your status message" is ticked. Copy the hashcode in the url of your badge. It's the string after after <code>?tk</code>. Replace <code>HASHCODE</code> in the following code with your hashcode.</p>
+<p>The first step is to get a <a href="http://www.google.com/talk/service/badge/New">Gtalk Chatback Badge</a>. Edit the badge, making sure "Show your status message" is ticked. Copy the hashcode in the url of your badge. It's the string after after <code>?tk</code>. Replace <code>HASHCODE</code> in the following code with your hashcode.</p>
 
-<p><code>php gtalkStatus.php
-&lt;?php
-include './simplehtmldom/simple_html_dom.php';
-// Create DOM from URL or file&amp;lt;br /&gt;
-$html = file_get_html('http://www.google.com/talk/service/badge/Show?tk=HASHCODE');
-foreach($html-&gt;find('img#b') as $element){
-$status['image']='&amp;lt;img src="http://google.com/'.$element-&gt;src . '"/&gt;'
-$status['type']=$element-&gt;alt;
-}
-$status['text']=preg_replace("/[^a-zA-Z0-9s t]/", "", $html-&gt;find('div.r', 1)-&gt;plaintext) ;
-//print_r($status);
-echo $status['image']." ".$status['text'];
-?&gt;
-</code></p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>gtalkStatus.php </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php</span>
+</span><span class='line'><span class="x">include &#39;./simplehtmldom/simple_html_dom.php&#39;;</span>
+</span><span class='line'><span class="x">// Create DOM from URL or file&amp;lt;br /&gt;</span>
+</span><span class='line'><span class="x">$html = file_get_html(&#39;http://www.google.com/talk/service/badge/Show?tk=HASHCODE&#39;);</span>
+</span><span class='line'><span class="x">foreach($html-&gt;find(&#39;img#b&#39;) as $element){</span>
+</span><span class='line'><span class="x">$status[&#39;image&#39;]=&#39;&amp;lt;img src=&quot;http://google.com/&#39;.$element-&gt;src . &#39;&quot;/&gt;&#39;</span>
+</span><span class='line'><span class="x">$status[&#39;type&#39;]=$element-&gt;alt;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">$status[&#39;text&#39;]=preg_replace(&quot;/[&lt;sup&gt;a-zA-Z0-9s&lt;/sup&gt; t]/&quot;, &quot;&quot;, $html-&gt;find(&#39;div.r&#39;, 1)-&gt;plaintext) ;</span>
+</span><span class='line'><span class="x">//print_r($status);</span>
+</span><span class='line'><span class="x">echo $status[&#39;image&#39;].&quot; &quot;.$status[&#39;text&#39;];</span>
+</span><span class='line'><span class="x">?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p><a href="http://andyregan.net/gtalk_status/gtalkStatus.php" title="Andy's Gtalk status">Check it out in action</a>.</p>
 
 <p>Add the following to the page where you want to show your status.</p>
 
-<p><code>&lt;?php echo file_get_contents('url/to/php/script');?&gt;</code></p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>wordpress script </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php echo file_get_contents(&#39;url/to/php/script&#39;);?&gt;`</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

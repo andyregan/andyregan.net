@@ -2,6 +2,8 @@
 #      Main Configs       #
 # ----------------------- #
 
+auto: false
+
 url: http://yoursite.com
 title: My Octopress Blog
 subtitle: A blogging framework for hackers.

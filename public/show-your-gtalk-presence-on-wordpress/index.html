@@ -1,33 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2013-01-07T17:00:17+00:00</updated>
-  <id>http://yoursite.com/</id>
-  <author>
-    <name><![CDATA[Your Name]]></name>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Show Your Gtalk Presence on WordPress - My Octopress Blog</title>
+	<meta name="author" content="Your Name">
+
+	
+	<meta name="description" content="I couldn&#8217;t find a plugin that showed my presence in a way that I liked so I threw together the following php script. It&#8217;s influenced by &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:yoursite.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
     
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:yoursite.com">
+	</form>
+</nav>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Post Title]]></title>
-    <link href="http://yoursite.com/blog/2013/01/05/post-title/"/>
-    <updated>2013-01-05T21:21:00+00:00</updated>
-    <id>http://yoursite.com/blog/2013/01/05/post-title</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Show Your Gtalk Presence on WordPress]]></title>
-    <link href="http://yoursite.com/show-your-gtalk-presence-on-wordpress/"/>
-    <updated>2009-02-23T00:00:00+00:00</updated>
-    <id>http://yoursite.com/show-your-gtalk-presense-on-wordpress</id>
-    <content type="html"><![CDATA[<p>I couldn&#8217;t find a plugin that showed my presence in a way that I liked so I threw together the following php script. It&#8217;s influenced by the <a href="http://www.awflasher.com/blog/" title="Visit plugin homepage">Gtalk (Status) to WordPress (G2W)</a> plugin by Aw Guo. It includes <a href="http://simplehtmldom.sourceforge.net/" title="simplehtmldom">simplehtmldom</a>, a very easy to use HTML DOM parser.</p>
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Show Your Gtalk Presence on WordPress</h2>
+	<div class="entry-content"><p>I couldn&#8217;t find a plugin that showed my presence in a way that I liked so I threw together the following php script. It&#8217;s influenced by the <a href="http://www.awflasher.com/blog/" title="Visit plugin homepage">Gtalk (Status) to WordPress (G2W)</a> plugin by Aw Guo. It includes <a href="http://simplehtmldom.sourceforge.net/" title="simplehtmldom">simplehtmldom</a>, a very easy to use HTML DOM parser.</p>
 
 <p>The first step is to get a <a href="http://www.google.com/talk/service/badge/New">Gtalk Chatback Badge</a>. Edit the badge, making sure &#8220;Show your status message&#8221; is ticked. Copy the hashcode in the url of your badge. It&#8217;s the string after after <code>?tk</code>. Replace <code>HASHCODE</code> in the following code with your hashcode.</p>
 
@@ -70,24 +116,64 @@
 
 
 
-]]></content>
-  </entry>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
   
-  <entry>
-    <title type="html"><![CDATA[First Post and SMS Ping Script]]></title>
-    <link href="http://yoursite.com/first-post-and-first-script-foo/"/>
-    <updated>2009-02-22T00:00:00+00:00</updated>
-    <id>http://yoursite.com/first-post-and-first-script-foo</id>
-    <content type="html"><![CDATA[<p>Thanks for visiting! The main purpose of this blog (right now) is as an archive for useful technical bits and pieces I&#8217;ve come across and don&#8217;t want to forget. Hopefully, you might find some of these useful, too. This is my first post and I&#8217;d like to start by sharing a handy little script-foo I learned.</p>
 
-<p>Over Christmas, the Compsoc admin team reinstalled our backup server. We created a fairly large (~3.6T RAID5) /home partition which took forever to build when the server booted for the first time. Rather than keep checking into the server room I figured &#8220;Wouldn&#8217;t it be handy if I could just get a text when the server comes up?&#8221;.</p>
 
-<p>I decided to use a great tool called <a title="o2sms" href="http://o2sms.sourceforge.net/" target="_self">o2sms</a> by <a title="mackers" href="http://www.mackers.com/" target="_self">Mackers</a> that&#8217;s installed on Compsoc&#8217;s webserver. It allows you to send text messages via the command line. The following script intermittently pings the backup and sends an SMS to the specified number when a ping returns successfully:</p>
+<time datetime="2009-02-23T00:00:00+00:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2009</time></div>
+	<div class="tags">
 
-<p><code>$while ! ping -W 1 -c 1 &lt;IPAddress&gt; 2&gt;&amp;1 &gt;/dev/null; do true; done &amp;&amp; echo "Scorpio is UP" | meteorsms &lt;mynumber&gt;</code></p>
 
-<p>Its a simple little diddy ain&#8217;t it? Run it in a screen and you can detach, logout and go about your day. Drop the <strong>!</strong> and it will send an SMS if a ping fails (maybe the servers down). You could also replace ping with another event, such as a certain user logging in (users | grep andrewjregan) or if you recieve a new mail.</p>
-]]></content>
-  </entry>
-  
-</feed>
+	<a class='category' href='/blog/categories/web-development/'>Web Development</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    Your Name
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>
