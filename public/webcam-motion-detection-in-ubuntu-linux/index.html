@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Category: Linux - $whois andyregan</title>
+	<title>Webcam Motion Detection in Ubuntu Linux - $whois andyregan</title>
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="Category: Linux">
+	<meta name="description" content="I bought a cheap usb webcam to add to the list of devices for my fyp. The idea is to push presence updates when motion is detected. I&#8217;ll be &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,46 +89,62 @@
 </script>
 
 	
-	<div id="content" class="inner">
-	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Webcam Motion Detection in Ubuntu Linux</h2>
+	<div class="entry-content"><p>I bought a cheap usb webcam to add to the list of devices for my fyp. The idea is to push presence updates when motion is detected. I&#8217;ll be using <a href="http://www.lavrsen.dk/twiki/bin/view/Motion/WebHome">Motion</a> to handle motion detection.
+Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubuntu-based-home-security/">installation and configuration instructions</a> can be found at InfectedProject.</p>
+
+<p>You can set motion to run commands when certain events happen, such as an image is saved or a movie ends. For example, you could add the following to <strong>/etc/motion/motion.conf</strong> so that you get an email to you&#8217;re email account when a movie ends.</p>
+
+<figure class='code'><figcaption><span>bash montion config </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Command to be executed when a movie file (.mpg|.avi) is closed. (default: none)
+</span><span class='line'># To give the filename as an argument to a command append it with %f
+</span><span class='line'>on_movie_end echo %f | mutt -s "[Motion]" -a %f joe@bloggs.com</span></code></pre></td></tr></table></div></figure>
 
 
-	
-	
-	<section class="archives"><h1 class="year">2009</h1>
 
-<article>
-	<h2 class="title"><a href="/webcam-motion-detection-in-ubuntu-linux/">Webcam Motion Detection in Ubuntu Linux</a></h2>
-	<div class="meta">
-		<span class="date">Feb 26</span>
-		<span class="tags">
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-26T00:00:00+00:00" pubdate data-updated="true">2009-02-26</time></div>
+	<div class="tags">
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>
 
 
-</span>
-	    
-	</div>
-</article>
-
+</div>
 	
+</div></article>
 
-
-<article>
-	<h2 class="title"><a href="/installing-subclipse-in-ubuntu-behind-a-proxy/">Installing Subclipse in Ubuntu Behind a Proxy</a></h2>
-	<div class="meta">
-		<span class="date">Feb 25</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>Linux</a>
-
-
-</span>
-	    
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
 	</div>
-</article>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
 
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2013

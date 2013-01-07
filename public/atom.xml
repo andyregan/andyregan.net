@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-07T17:30:02+00:00</updated>
+  <updated>2013-01-07T17:36:14+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -19,6 +19,29 @@
     <updated>2013-01-05T21:21:00+00:00</updated>
     <id>http://andyregan.net/blog/2013/01/05/post-title</id>
     <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Webcam Motion Detection in Ubuntu Linux]]></title>
+    <link href="http://andyregan.net/webcam-motion-detection-in-ubuntu-linux/"/>
+    <updated>2009-02-26T00:00:00+00:00</updated>
+    <id>http://andyregan.net/webcam-motion-detection-in-ubuntu-linux</id>
+    <content type="html"><![CDATA[<p>I bought a cheap usb webcam to add to the list of devices for my fyp. The idea is to push presence updates when motion is detected. I&#8217;ll be using <a href="http://www.lavrsen.dk/twiki/bin/view/Motion/WebHome">Motion</a> to handle motion detection.
+Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubuntu-based-home-security/">installation and configuration instructions</a> can be found at InfectedProject.</p>
+
+<p>You can set motion to run commands when certain events happen, such as an image is saved or a movie ends. For example, you could add the following to <strong>/etc/motion/motion.conf</strong> so that you get an email to you&#8217;re email account when a movie ends.</p>
+
+<figure class='code'><figcaption><span>bash montion config </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Command to be executed when a movie file (.mpg|.avi) is closed. (default: none)
+</span><span class='line'># To give the filename as an argument to a command append it with %f
+</span><span class='line'>on_movie_end echo %f | mutt -s "[Motion]" -a %f joe@bloggs.com</span></code></pre></td></tr></table></div></figure>
+
+
+
 ]]></content>
   </entry>
   
