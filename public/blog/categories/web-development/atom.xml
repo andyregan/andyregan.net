@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Web Development | My Octopress Blog]]></title>
+  <link href="http://yoursite.com/blog/categories/web-development/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2013-01-07T13:07:36+00:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Show Your Gtalk Presence on WordPress]]></title>
+    <link href="http://yoursite.com/41/"/>
+    <updated>2009-02-23T00:00:00+00:00</updated>
+    <id>http://yoursite.com/41</id>
+    <content type="html"><![CDATA[<p>I couldn't find a plugin that showed my presence in a way that I liked so I threw together the following php script. It's influenced by the <a href="http://www.awflasher.com/blog/" title="Visit plugin homepage">Gtalk (Status) to WordPress (G2W)</a> plugin by Aw Guo. It includes <a href="http://simplehtmldom.sourceforge.net/" title="simplehtmldom">simplehtmldom</a>, a very easy to use HTML DOM parser.</p>
+
+<p>The first step is to get a <a href="http://www.google.com/talk/service/badge/New">Gtalk Chatback Badge</a> "http://www.google.com/talk/service/badge/New" Gtalk Chatback Badge</a>. Edit the badge, making sure "Show your status message" is ticked. Copy the hashcode in the url of your badge. It's the string after after <code>?tk</code>. Replace <code>HASHCODE</code> in the following code with your hashcode.</p>
+
+<p><code>php gtalkStatus.php
+&lt;?php
+include './simplehtmldom/simple_html_dom.php';
+// Create DOM from URL or file&amp;lt;br /&gt;
+$html = file_get_html('http://www.google.com/talk/service/badge/Show?tk=HASHCODE');
+foreach($html-&gt;find('img#b') as $element){
+$status['image']='&amp;lt;img src="http://google.com/'.$element-&gt;src . '"/&gt;'
+$status['type']=$element-&gt;alt;
+}
+$status['text']=preg_replace("/[^a-zA-Z0-9s t]/", "", $html-&gt;find('div.r', 1)-&gt;plaintext) ;
+//print_r($status);
+echo $status['image']." ".$status['text'];
+?&gt;
+</code></p>
+
+<p><a href="http://andyregan.net/gtalk_status/gtalkStatus.php" title="Andy's Gtalk status">Check it out in action</a>.</p>
+
+<p>Add the following to the page where you want to show your status.</p>
+
+<p><code>&lt;?php echo file_get_contents('url/to/php/script');?&gt;</code></p>
+]]></content>
+  </entry>
+  
+</feed>
