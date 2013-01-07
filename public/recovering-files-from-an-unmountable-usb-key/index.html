@@ -1,0 +1,255 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Recovering Files From an Unmountable USB Key - $whois andyregan</title>
+	<meta name="author" content="Andrew Regan">
+
+	
+	<meta name="description" content="The other night, myself and Rory managed to recover his friend&#8217;s thesis from a wonky USB thumb drive. We used PhotoRec on Ubuntu Linux. &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="$whois andyregan" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">$whois andyregan</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:andyregan.net">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/andyregan" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/andyregan" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:andyregan.net">
+	</form>
+</nav>
+
+</header>
+	
+		
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/andyregan">andyregan</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('andyregan', 4, false);
+	})(jQuery);
+</script>
+
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Recovering Files From an Unmountable USB Key</h2>
+	<div class="entry-content"><p>The other night, myself and Rory managed to recover his friend&#8217;s thesis from a wonky USB thumb drive. We used <a href="http://www.cgsecurity.org/wiki/PhotoRec">PhotoRec</a> on Ubuntu Linux.
+PhotoRec comes with the TestDisk utility. You can install TestDisk via:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$apt</span>-get update
+</span><span class='line'><span class="nv">$apt</span>-get install testdisk
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first thing we did was run <strong>dmesg</strong> in a terminal to get a bit of info on what was going on. We ran dmesg before and after we plugged
+in the drive and noted the relevant output. The device eventually settled and was given the device location sdb by the kernel, but no
+filesystem was found.
+The partition was likely corrupted somehow.</p>
+
+<p>TestDisk could be used to try to repair the partition on the disk, but it could also damage the data further. We decided to make an image to work with using <strong>dd</strong>:</p>
+
+<p><strong>Use dd with care! Consult the man page for more info.</strong></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$sudo</span> dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">ou</span><span class="o">=</span>./disk_image
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This copied the contents of the usb key block-by-block to a file called &#8220;disk_image&#8221;. The was a 2G image (the total capacity) of the wonky drive.</p>
+
+<p>We then used <strong>photorec</strong> to try to recover any files from the image.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$photorec</span> ./disk_image
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec1.png" width="150" height="150" title="[Select the image to use [screengrab of photorec]]" ></p>
+
+<div id='gallery-1' class='gallery galleryid-71 gallery-columns-2 gallery-size-thumbnail'>
+  <dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec1.png' title='photorec1' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec1-150x150.png" class="attachment-thumbnail" alt="1. Select the image to use" title="photorec1" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      1. Select the image to use
+    </dd>
+  </dl>
+  
+  <dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec2.png' title='photorec2' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec2-150x150.png" class="attachment-thumbnail" alt="2. Select the partition table type" title="photorec2" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      2. Select the partition table type
+    </dd>
+  </dl>
+  
+  <br style="clear: both" /><dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec3.png' title='photorec3' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec3-150x150.png" class="attachment-thumbnail" alt="3. Select the partition" title="photorec3" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      3. Select the partition
+    </dd>
+  </dl>
+  
+  <dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec4.png' title='photorec4' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec4-150x150.png" class="attachment-thumbnail" alt="4. Select the filesystem type" title="photorec4" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      4. Select the filesystem type
+    </dd>
+  </dl>
+  
+  <br style="clear: both" /><dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec5.png' title='photorec5' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec5-150x150.png" class="attachment-thumbnail" alt="5. Select where to save recovered files" title="photorec5" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      5. Select where to save recovered files
+    </dd>
+  </dl>
+  
+  <dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec6.png' title='photorec6' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec6-150x150.png" class="attachment-thumbnail" alt="6. Search in progress" title="photorec6" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      6. Search in progress
+    </dd>
+  </dl>
+  
+  <br style="clear: both" /> <br style='clear: both;' />
+</div>
+
+
+<p>Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-28T00:00:00+00:00" pubdate data-updated="true">2009-02-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    Andrew Regan
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

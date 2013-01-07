@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-07T17:36:14+00:00</updated>
+  <updated>2013-01-07T17:50:47+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,111 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Recovering Files From an Unmountable USB Key]]></title>
+    <link href="http://andyregan.net/recovering-files-from-an-unmountable-usb-key/"/>
+    <updated>2009-02-28T00:00:00+00:00</updated>
+    <id>http://andyregan.net/recovering-files-from-an-unmountable-usb-key</id>
+    <content type="html"><![CDATA[<p>The other night, myself and Rory managed to recover his friend's thesis from a wonky USB thumb drive. We used <a href="http://www.cgsecurity.org/wiki/PhotoRec">PhotoRec</a> on Ubuntu Linux.
+PhotoRec comes with the TestDisk utility. You can install TestDisk via:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$apt</span>-get update
+</span><span class='line'><span class="nv">$apt</span>-get install testdisk
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The first thing we did was run <strong>dmesg</strong> in a terminal to get a bit of info on what was going on. We ran dmesg before and after we plugged
+in the drive and noted the relevant output. The device eventually settled and was given the device location sdb by the kernel, but no
+filesystem was found.
+The partition was likely corrupted somehow.</p>
+
+<p>TestDisk could be used to try to repair the partition on the disk, but it could also damage the data further. We decided to make an image to work with using <strong>dd</strong>:</p>
+
+<p><strong>Use dd with care! Consult the man page for more info.</strong>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$sudo</span> dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">ou</span><span class="o">=</span>./disk_image
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This copied the contents of the usb key block-by-block to a file called "disk_image". The was a 2G image (the total capacity) of the wonky drive.</p>
+
+<p>We then used <strong>photorec</strong> to try to recover any files from the image.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$photorec</span> ./disk_image
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><img src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec1.png" width="150" height="150" title="[Select the image to use [screengrab of photorec]]" ></p>
+
+<div id='gallery-1' class='gallery galleryid-71 gallery-columns-2 gallery-size-thumbnail'>
+  <dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec1.png' title='photorec1' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec1-150x150.png" class="attachment-thumbnail" alt="1. Select the image to use" title="photorec1" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      1. Select the image to use
+    </dd>
+  </dl>
+  
+  <dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec2.png' title='photorec2' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec2-150x150.png" class="attachment-thumbnail" alt="2. Select the partition table type" title="photorec2" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      2. Select the partition table type
+    </dd>
+  </dl>
+  
+  <br style="clear: both" /><dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec3.png' title='photorec3' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec3-150x150.png" class="attachment-thumbnail" alt="3. Select the partition" title="photorec3" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      3. Select the partition
+    </dd>
+  </dl>
+  
+  <dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec4.png' title='photorec4' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec4-150x150.png" class="attachment-thumbnail" alt="4. Select the filesystem type" title="photorec4" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      4. Select the filesystem type
+    </dd>
+  </dl>
+  
+  <br style="clear: both" /><dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec5.png' title='photorec5' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec5-150x150.png" class="attachment-thumbnail" alt="5. Select where to save recovered files" title="photorec5" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      5. Select where to save recovered files
+    </dd>
+  </dl>
+  
+  <dl class='gallery-item'>
+    <dt class='gallery-icon'>
+      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec6.png' title='photorec6' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec6-150x150.png" class="attachment-thumbnail" alt="6. Search in progress" title="photorec6" /></a>
+    </dt>
+    
+    <dd class='wp-caption-text gallery-caption'>
+      6. Search in progress
+    </dd>
+  </dl>
+  
+  <br style="clear: both" /> <br style='clear: both;' />
+</div>
+
+
+<p>Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Webcam Motion Detection in Ubuntu Linux]]></title>
@@ -23,21 +128,22 @@ Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubun
 
 <p>You can set motion to run commands when certain events happen, such as an image is saved or a movie ends. For example, you could add the following to <strong>/etc/motion/motion.conf</strong> so that you get an email to you're email account when a movie ends.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>bash montion config </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>montion config </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
 </span><span class='line'>
-</span><span class='line'>&lt;h1>Command to be executed when a movie file (.mpg|.avi) is closed. (default: none)&lt;/h1>
+</span><span class='line'>&lt;h1&gt;Command to be executed when a movie file <span class="o">(</span>.mpg|.avi<span class="o">)</span> is closed. <span class="o">(</span>default: none<span class="o">)</span>&lt;/h1&gt;
 </span><span class='line'>
-</span><span class='line'>&lt;h1>To give the filename as an argument to a command append it with %f&lt;/h1>
+</span><span class='line'>&lt;h1&gt;To give the filename as an argument to a <span class="nb">command </span>append it with %f&lt;/h1&gt;
 </span><span class='line'>
-</span><span class='line'>&lt;p>on_movie_end echo %f | mutt -s "[Motion]" -a %f joe@bloggs.com</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>&lt;p&gt;on_movie_end <span class="nb">echo</span> %f | mutt -s <span class="s2">&quot;[Motion]&quot;</span> -a %f joe@bloggs.com
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

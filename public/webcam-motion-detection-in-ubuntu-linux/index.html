@@ -96,13 +96,14 @@ Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubun
 
 <p>You can set motion to run commands when certain events happen, such as an image is saved or a movie ends. For example, you could add the following to <strong>/etc/motion/motion.conf</strong> so that you get an email to you&#8217;re email account when a movie ends.</p>
 
-<figure class='code'><figcaption><span>bash montion config </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>montion config </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># Command to be executed when a movie file (.mpg|.avi) is closed. (default: none)
-</span><span class='line'># To give the filename as an argument to a command append it with %f
-</span><span class='line'>on_movie_end echo %f | mutt -s "[Motion]" -a %f joe@bloggs.com</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># Command to be executed when a movie file (.mpg|.avi) is closed. (default: none)</span>
+</span><span class='line'><span class="c"># To give the filename as an argument to a command append it with %f</span>
+</span><span class='line'>on_movie_end <span class="nb">echo</span> %f | mutt -s <span class="s2">&quot;[Motion]&quot;</span> -a %f joe@bloggs.com
+</span></code></pre></td></tr></table></div></figure>
 
 
 
