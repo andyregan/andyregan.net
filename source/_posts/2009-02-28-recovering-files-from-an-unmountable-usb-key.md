@@ -45,71 +45,29 @@ We then used **photorec** to try to recover any files from the image.
 $photorec ./disk_image
 {% endcodeblock %}
 
-{% img http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec1.png 150 150 [Select the image to use [screengrab of photorec]] %}
+Select the image to use.
 
-<div id='gallery-1' class='gallery galleryid-71 gallery-columns-2 gallery-size-thumbnail'>
-  <dl class='gallery-item'>
-    <dt class='gallery-icon'>
-      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec1.png' title='photorec1' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec1-150x150.png" class="attachment-thumbnail" alt="1. Select the image to use" title="photorec1" /></a>
-    </dt>
-    
-    <dd class='wp-caption-text gallery-caption'>
-      1. Select the image to use
-    </dd>
-  </dl>
-  
-  <dl class='gallery-item'>
-    <dt class='gallery-icon'>
-      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec2.png' title='photorec2' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec2-150x150.png" class="attachment-thumbnail" alt="2. Select the partition table type" title="photorec2" /></a>
-    </dt>
-    
-    <dd class='wp-caption-text gallery-caption'>
-      2. Select the partition table type
-    </dd>
-  </dl>
-  
-  <br style="clear: both" /><dl class='gallery-item'>
-    <dt class='gallery-icon'>
-      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec3.png' title='photorec3' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec3-150x150.png" class="attachment-thumbnail" alt="3. Select the partition" title="photorec3" /></a>
-    </dt>
-    
-    <dd class='wp-caption-text gallery-caption'>
-      3. Select the partition
-    </dd>
-  </dl>
-  
-  <dl class='gallery-item'>
-    <dt class='gallery-icon'>
-      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec4.png' title='photorec4' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec4-150x150.png" class="attachment-thumbnail" alt="4. Select the filesystem type" title="photorec4" /></a>
-    </dt>
-    
-    <dd class='wp-caption-text gallery-caption'>
-      4. Select the filesystem type
-    </dd>
-  </dl>
-  
-  <br style="clear: both" /><dl class='gallery-item'>
-    <dt class='gallery-icon'>
-      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec5.png' title='photorec5' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec5-150x150.png" class="attachment-thumbnail" alt="5. Select where to save recovered files" title="photorec5" /></a>
-    </dt>
-    
-    <dd class='wp-caption-text gallery-caption'>
-      5. Select where to save recovered files
-    </dd>
-  </dl>
-  
-  <dl class='gallery-item'>
-    <dt class='gallery-icon'>
-      <a href='http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec6.png' title='photorec6' rel="lightbox[71]"><img width="150" height="150" src="http://andyregan.net/wordpress/wp-content/uploads/2009/02/photorec6-150x150.png" class="attachment-thumbnail" alt="6. Search in progress" title="photorec6" /></a>
-    </dt>
-    
-    <dd class='wp-caption-text gallery-caption'>
-      6. Search in progress
-    </dd>
-  </dl>
-  
-  <br style="clear: both" /> <br style='clear: both;' />
-</div>
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png 150 150 Select the image to use %}
+
+Select the partition type.
+
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png 150 150 Select the partition type %}
+
+Select the partition. 
+
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png 150 150 Select the partition %}
+
+Select the filesystem type.
+
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png 150 150 Select the filesystem type %}
+
+Select where to save the recovered files.
+
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png 150 150 Select where to save the recoverd files %}
+
+Watch the search in progress.
+
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png 150 150 Search in progress %}
 
 Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.
 
