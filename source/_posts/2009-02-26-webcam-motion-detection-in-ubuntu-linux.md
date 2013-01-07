@@ -18,7 +18,7 @@ Detailed [installation and configuration instructions][2] can be found at Infect
 
 You can set motion to run commands when certain events happen, such as an image is saved or a movie ends. For example, you could add the following to **/etc/motion/motion.conf** so that you get an email to you're email account when a movie ends.
 
-{% codeblock bash montion config %}
+{% codeblock lang:bash montion config %}
 # Command to be executed when a movie file (.mpg|.avi) is closed. (default: none)
 # To give the filename as an argument to a command append it with %f
 on_movie_end echo %f | mutt -s "[Motion]" -a %f joe@bloggs.com
