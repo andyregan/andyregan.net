@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Development | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/web-development/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T14:52:20+00:00</updated>
+  <updated>2013-01-09T14:54:38+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[New Theme]]></title>
+    <link href="http://andyregan.net/new-theme/"/>
+    <updated>2009-04-29T00:00:00+01:00</updated>
+    <id>http://andyregan.net/new-theme</id>
+    <content type="html"><![CDATA[<p>I got a bit sick of the old fusion theme. The new theme is based on the <a href="http://themes.jestro.com/vigilance/">Vigilance Theme</a> by <a href="http://www.jestro.com/">Jestro</a> with some tweaks suggested in an excellent <a href="http://healyourchurchwebsite.com/2008/12/01/working-with-the-wordpress-theme-vigilance-116/">article by Dean Peters</a> along with a couple of tweaks of my own.</p>
+
+<p>Header image is a photo I took atop the <a href="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=silver+strand+galway&amp;sll=53.273797,-9.05178&amp;sspn=0.091155,0.30899&amp;ie=UTF8&amp;ll=53.251299,-9.124403&amp;spn=0.0114,0.038624&amp;t=h&amp;z=15&amp;iwloc=I">cliff at Silver Strand overlooking Galway Bay</a>.</p>
+
+<p>It's a lot cleaner and I think it's easier to read, too. Hope you like it!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[DrupalCamp Galway]]></title>
