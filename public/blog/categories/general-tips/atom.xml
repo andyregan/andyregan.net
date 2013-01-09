@@ -4,7 +4,7 @@
   <title><![CDATA[Category: General Tips | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/general-tips/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T18:08:30+00:00</updated>
+  <updated>2013-01-09T18:56:04+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Flashing Cyanogenmod 7.1 to a Samsung Galaxy S II (GT-I9100)]]></title>
+    <link href="http://andyregan.net/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/"/>
+    <updated>2011-11-28T00:00:00+00:00</updated>
+    <id>http://andyregan.net/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100</id>
+    <content type="html"><![CDATA[<p><strong>WARNING: These notes are for reference. Doing this will void your warranty and doing this wrong could brick your phone.</strong></p>
+
+<p><img class="center" src="/images/posts/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/cyanogen-logo.png"" width="200" title="cyanogenmod logo" alt="cyanogenmod logo"></p>
+
+<h2>Background</h2>
+
+<p>Taken straight from Wikipedia, <a href="http://en.wikipedia.org/wiki/CyanogenMod">Cyanogenmod</a> is <strong>"an after-market replacement for the firmware of over sixty cell
+phones and Internet tablets. Based on the Android mobile computer operating system, it offers features and options not
+found in the official firmware distributed by vendors of these devices"</strong>.</p>
+
+<p>The Cyanogenmod wiki and forums are the best references for flashing your phone. I followed the instructions on the
+<a href="http://wiki.cyanogenmod.com/wiki/Samsung_Galaxy_S_II:_Full_Update_Guide">Samsung Galaxy S II: Full Update Guide</a>. I won't repeat those instructions here, but I'll point out some extra steps
+I needed to take.</p>
+
+<p>It's not emphasized on the wiki, but (I think) you need an external SD card installed in the phone. You can use this to
+store the Cyanogenmod and Google Apps Zip files for installation, rather than using the phones internal storage.</p>
+
+<p>Google Apps (Gmail, the App Market, etc) are packaged separately due to licensing restrictions. They're an optional install,
+but I followed the instructions on the wiki to install them when I installed Cyanogenmod.</p>
+
+<h2>Installing the ClockworkMod Recovery</h2>
+
+<h3>Download Mode</h3>
+
+<p>To put the phone into download mode, I turned it off and then held down the following buttons:</p>
+
+<ul>
+<li>volume-down</li>
+<li>home</li>
+<li>power</li>
+</ul>
+
+
+<h3>Samsung Firmware</h3>
+
+<p>I initially followed the instructions for Mac OS X (my OS version was OS X 10.6.8). When I connected the phone in Download
+Mode via USB to my MacBook Pro and ran the heimdall flash command, I got the following error:</p>
+
+<p><blockquote><p>Failed to detect compatible download-mode device.</p></blockquote></p>
+
+<p>There's a <a href="https://github.com/Benjamin-Dobell/Heimdall/issues/22">closed issue</a> on the Heimdall GitHub project that explains this is caused by <strong>"faulty secondary bootloaders
+distributed by Samsung. These bad bootloaders don't adhere to the USB specification and hence OS X is unable to communicate
+with them. In order to solve this issue you need to upgrade your bootloaders to newer bootloaders that Samsung have fixed
+using Windows or Linux"</strong>.</p>
+
+<p>The solution for me was to install <a href="http://en.wikipedia.org/wiki/Samsung_Kies">Samsung Kies</a> on a Windows host and update to the phone's firmware to the latest
+official release from Samsung (I went from Android 2.3.3 to 2.3.5).</p>
+
+<p>The phone was then detected by Heimdall in OS X and I was able to complete the installation of the ClockworkMod Recovery
+as per the instructions on the Cyanogenmod wiki.</p>
+
+<h2>Flashing CyanogenMod</h2>
+
+<h3>Boot into the ClockworkMod Recovery</h3>
+
+<p>I turned off the phone and then held down the following buttons:</p>
+
+<ul>
+<li>volume-up</li>
+<li>home</li>
+<li>power</li>
+</ul>
+
+
+<h3>Backup</h3>
+
+<p>It's not a mandatory step, but I performed a back up as per the instructions in the wiki.</p>
+
+<h2>End Result</h2>
+
+<p>After I finished installing the CyanogenMod and Google Apps Zip files, I rebooted the phone. Everything went better than expected!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Specifying GPU Compute Mode At Job Submission with Torque]]></title>
@@ -204,99 +283,6 @@ with the following error:</p>
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>me@host ~<span class="o">]</span><span class="nv">$ </span>ls -d /path/to/destination/<span class="o">[</span>0-2<span class="o">][</span>0-9<span class="o">]</span>/ | xargs -I <span class="o">{}</span> tar -xvzf /path/to/archive.tgz -C <span class="o">{}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Requesting GPUs At Job Submission With Torque]]></title>
-    <link href="http://andyregan.net/requesting-gpus-at-job-submission-with-torque/"/>
-    <updated>2011-05-09T00:00:00+01:00</updated>
-    <id>http://andyregan.net/requesting-gpus-at-job-submission-with-torque</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://andyregan.net/blog/wp-content/uploads/2011/05/gpu_torque.jpg" title="A picture of a GPU card" alt="A picture of a GPU card"></p>
-
-<p>According to the <a href="http://www.adaptivecomputing.com/resources/docs/torque/3.7schedulinggpus.php">Torque Documentation</a>, <strong>"in TORQUE 2.5.4 and later, users can request GPUs on a node at job submission"</strong>. This
-post describes how to configure Torque for this functionality, allowing GPU resources to be scheduled among multiple users.</p>
-
-<p>In a future post, I will also describe one approach that could be used to manage mutually exclusive CUDA access to NVIDIA GPUs on a
-multi-GPU compute node.</p>
-
-<p>The examples that follow involve a single workstation with 2 NVIDIA GPU devices.</p>
-
-<h2>Informing Torque Where the GPUs Are</h2>
-
-<p>In order for Torque to know which nodes have GPUs, you must update the <a href="http://www.adaptivecomputing.com/resources/docs/torque/1.5nodeconfig.php">nodes</a> file. In the following example, I have specified
-that <strong>node1</strong> has 12 CPU cores and 2 GPU devices.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@service-node:~# cat /var/spool/torque/server_priv/nodes
-</span><span class='line'>node1 <span class="nv">np</span><span class="o">=</span>12 <span class="nv">gpus</span><span class="o">=</span>2
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>After saving the changes, you must restart <strong>pbs_server</strong> for the change to take affect.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@service-node:~# /etc/init.d/pbs_server restart
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Looking at the <strong>pbsnodes</strong> output, we can see that Torque is now aware that there should be 2 GPU devices on <strong>node1</strong>.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~# pbsnodes -a
-</span><span class='line'>node1&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt; <span class="nv">np</span> <span class="o">=</span> 12
-</span><span class='line'> <span class="nv">gpus</span> <span class="o">=</span> 2
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2>Requesting GPUs at job submission</h2>
-
-<p>When submitting a job, a user can request GPU devices similar to how they request CPU cores. In the following example,
-I'm requesting an <a href="http://www.clusterresources.com/torquedocs21/users/2.2files.shtml#interactive">interactive job</a> with 1 node , 1 processor per node and 2 GPUs per node.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~<span class="nv">$ </span>qsub -I -l <span class="nv">nodes</span><span class="o">=</span>1:ppn<span class="o">=</span>1:gpus<span class="o">=</span>2&lt;br/&gt;
-</span><span class='line'>qsub: waiting <span class="k">for </span>job &lt;job id&gt; to start&lt;br/&gt;
-</span><span class='line'>qsub: job &lt;job id&gt; ready
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>When the job starts, Torque populates a file whose path is specified by the environment variable <code>$PBS_GPUFILE</code>. Each
-allocated GPU appears on a separate line within this file.</p>
-
-<p>As you can see, the contents of <code>$PBS_GPUFILE</code> show that the job has been allocated GPU index 0 and 1 (the first and
-second GPU) on node1 to execute on.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~<span class="nv">$ </span>env | grep PBS_GPUFILE
-</span><span class='line'><span class="nv">PBS_GPUFILE</span><span class="o">=</span>/var/spool/torque/aux/JOB_IDgpu
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~<span class="nv">$ </span>cat /var/spool/torque/aux/JOB_IDgpu
-</span><span class='line'>node1-gpu0
-</span><span class='line'>node1-gpu1
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2>Restricting the GPUs available to CUDA to Those Allocated</h2>
-
-<p>As specified in Torque's documentation, <strong>"it is left up to the job's owner to make sure that the job executes properly on the GPU"</strong>.</p>
-
-<p>In my next post, I will describe how you can take advantage of the $CUDA_VISIBLE_DEVICES environment variable (available since CUDA 3.1) to restrict the GPUs available to CUDA to those allocated by Torque.</p>
 ]]></content>
   </entry>
   

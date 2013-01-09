@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T18:08:30+00:00</updated>
+  <updated>2013-01-09T18:56:04+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Flashing Cyanogenmod 7.1 to a Samsung Galaxy S II (GT-I9100)]]></title>
+    <link href="http://andyregan.net/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/"/>
+    <updated>2011-11-28T00:00:00+00:00</updated>
+    <id>http://andyregan.net/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100</id>
+    <content type="html"><![CDATA[<p><strong>WARNING: These notes are for reference. Doing this will void your warranty and doing this wrong could brick your phone.</strong></p>
+
+<p><img class="center" src="http://andyregan.net/images/posts/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/cyanogen-logo.png"" width="200" title="cyanogenmod logo" alt="cyanogenmod logo"></p>
+
+<h2>Background</h2>
+
+<p>Taken straight from Wikipedia, <a href="http://en.wikipedia.org/wiki/CyanogenMod">Cyanogenmod</a> is <strong>&#8220;an after-market replacement for the firmware of over sixty cell
+phones and Internet tablets. Based on the Android mobile computer operating system, it offers features and options not
+found in the official firmware distributed by vendors of these devices&#8221;</strong>.</p>
+
+<p>The Cyanogenmod wiki and forums are the best references for flashing your phone. I followed the instructions on the
+<a href="http://wiki.cyanogenmod.com/wiki/Samsung_Galaxy_S_II:_Full_Update_Guide">Samsung Galaxy S II: Full Update Guide</a>. I won&#8217;t repeat those instructions here, but I&#8217;ll point out some extra steps
+I needed to take.</p>
+
+<p>It&#8217;s not emphasized on the wiki, but (I think) you need an external SD card installed in the phone. You can use this to
+store the Cyanogenmod and Google Apps Zip files for installation, rather than using the phones internal storage.</p>
+
+<p>Google Apps (Gmail, the App Market, etc) are packaged separately due to licensing restrictions. They&#8217;re an optional install,
+but I followed the instructions on the wiki to install them when I installed Cyanogenmod.</p>
+
+<h2>Installing the ClockworkMod Recovery</h2>
+
+<h3>Download Mode</h3>
+
+<p>To put the phone into download mode, I turned it off and then held down the following buttons:</p>
+
+<ul>
+<li>volume-down</li>
+<li>home</li>
+<li>power</li>
+</ul>
+
+
+<h3>Samsung Firmware</h3>
+
+<p>I initially followed the instructions for Mac OS X (my OS version was OS X 10.6.8). When I connected the phone in Download
+Mode via USB to my MacBook Pro and ran the heimdall flash command, I got the following error:</p>
+
+<blockquote><p>Failed to detect compatible download-mode device.</p></blockquote>
+
+
+<p>There&#8217;s a <a href="https://github.com/Benjamin-Dobell/Heimdall/issues/22">closed issue</a> on the Heimdall GitHub project that explains this is caused by <strong>&#8220;faulty secondary bootloaders
+distributed by Samsung. These bad bootloaders don&#8217;t adhere to the USB specification and hence OS X is unable to communicate
+with them. In order to solve this issue you need to upgrade your bootloaders to newer bootloaders that Samsung have fixed
+using Windows or Linux&#8221;</strong>.</p>
+
+<p>The solution for me was to install <a href="http://en.wikipedia.org/wiki/Samsung_Kies">Samsung Kies</a> on a Windows host and update to the phone&#8217;s firmware to the latest
+official release from Samsung (I went from Android 2.3.3 to 2.3.5).</p>
+
+<p>The phone was then detected by Heimdall in OS X and I was able to complete the installation of the ClockworkMod Recovery
+as per the instructions on the Cyanogenmod wiki.</p>
+
+<h2>Flashing CyanogenMod</h2>
+
+<h3>Boot into the ClockworkMod Recovery</h3>
+
+<p>I turned off the phone and then held down the following buttons:</p>
+
+<ul>
+<li>volume-up</li>
+<li>home</li>
+<li>power</li>
+</ul>
+
+
+<h3>Backup</h3>
+
+<p>It&#8217;s not a mandatory step, but I performed a back up as per the instructions in the wiki.</p>
+
+<h2>End Result</h2>
+
+<p>After I finished installing the CyanogenMod and Google Apps Zip files, I rebooted the phone. Everything went better than expected!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Specifying GPU Compute Mode At Job Submission with Torque]]></title>
@@ -1037,64 +1117,6 @@ included, but this should help narrow down the list of dirty scripts.</p>
 <p>I&#8217;m not expecting to fall out of my degree onto a smorgous board of opportunity waiting to snap me up. (Prove me wrong, world. Prove me wrong.) In fact, I think I&#8217;m going to have to really sell myself to land a good job where I&#8217;ll be competing against people that are out of work and who have a few year&#8217;s experience under their belts.</p>
 
 <p>Are there plenty of jobs out there? I&#8217;m sure there is, but definitely not to the extent reported by RTE last Thursday.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[DrupalCamp Galway]]></title>
-    <link href="http://andyregan.net/drupalcamp-galway/"/>
-    <updated>2009-04-05T00:00:00+01:00</updated>
-    <id>http://andyregan.net/drupalcamp-galway</id>
-    <content type="html"><![CDATA[<p style="text-align: center;">
-  <img class="aligncenter" src="http://groups.drupal.org/files/drupal_n_go.gif" alt="DrupalCamp Galway Logo" />
-</p>
-
-
-<p>Nathan and I attended <a href="http://groups.drupal.org/node/18452">DrupalCamp in Galway</a> on Saturday. John Long also made a suprise appearance! It was very well organised and over 60 people attended. Unfortunately, we could only attend on the Saturday. Many thanks and congratulations to the organisers.</p>
-
-<p><a href="http://drupal.org/">Drupal</a> is an open source content management system with a very active contributing community. There&#8217;s a huge amount of contributed <a href="http://drupal.org/project/Modules">modules</a> available that allow users to extend the core functionality of the software. As a result, Drupal is extremely flexible and configurable.</p>
-
-<p>Custom themes can also be easily applied. There are many free themes available at <a href="http://themegarden.org/drupal6/">themegarden.org</a>. Here&#8217;s a list of my favourites:</p>
-
-<ul>
-<li><a href="http://drupal.org/project/nitobe">nitobe</a></li>
-<li><a href="http://drupal.org/project/painted">painted</a></li>
-<li><a href="http://drupal.org/project/scruffy">scruffy</a></li>
-<li><a href="http://drupal.org/project/nigraphic">nigraphic</a></li>
-<li><a href="http://drupal.org/project/fresh_media">fresh_media</a></li>
-<li><a href="http://drupal.org/project/foliage">foliage</a></li>
-<li><a href="http://drupal.org/project/fervens">fervens</a></li>
-<li><a href="http://drupal.org/project/deco">deco</a></li>
-<li><a href="http://drupal.org/project/colorpaper">colorpaper</a></li>
-<li><a href="http://drupal.org/project/burnt">burnt</a></li>
-<li><a href="http://drupal.org/project/blossom">blossom</a></li>
-<li><a href="http://drupal.org/project/blix">blix</a></li>
-<li><a href="http://drupal.org/project/shallowgrunge">shallowgrunge</a></li>
-<li><a href="http://drupal.org/project/ifeeldirty">ifeeldirty</a></li>
-</ul>
-
-
-<h3>Complexity vs Flexibility</h3>
-
-<p>Unfortunately for new users, the amount of configuration options available is more than a bit overwhelming. I found that performing common tasks in a new install of Drupal is not as obvious as other content management systems, such as <a href="http://wordpress.org/">WordPress</a> or <a href="http://www.joomla.org/">Joomla</a>. Although well organised, the standard administrative interface feels overloaded with text.</p>
-
-<p>There are a couple of ways to improve usability that were suggested by speakers at DrupalCamp. The <a href="http://drupal.org/project/admin_menu">Administration Menu</a> module provides a nice drop down navigation bar containing common admin tasks that becomes available when an administrator logs in. The <a href="http://drupal.org/project/rootcandy">RootCandy</a> theme is also an improvement on the default administration theme.</p>
-
-<p>One gotcha when installing new modules is satisfying their dependent modules. You may have to track down and install dependent modules (and their dependent modules!) before you can active the original module you wanted.</p>
-
-<p>While many “newbies” (including myself) complain about the complexity of Drupal, it was mentioned by Alan Burke yesterday that the Drupal developers do not want to improve simplicity at the cost of flexibility. At the end of the day, some basic knowledge of web development is required.</p>
-
-<p>I think some of the group that didn&#8217;t come from a technical background were expecting a kind of <em>Word for Websites</em>. While installing and activating modules may be confusing, it sure beats the hell out of coding the functionality from scratch! Anyone who&#8217;s been there will appreciate the advantages of Drupal.</p>
-
-<p>In order to put what we learned into practice, myself and Nathan created <a href="http://andyregan.net/thatsnomoon">a simple website</a> using Drupal. After 10 minutes, we had a nicely themed and secure interactive website ready to be filled with content.</p>
-
-<h3>Find Out More</h3>
-
-<p>If you&#8217;re interested in Drupal, a good place to start is by signing up to <a href="http://drupal.org/">drupal.org</a> and joining a group such as <a href="http://groups.drupal.org/ireland">Ireland</a>. The Ireland group contains a thread on <a href="http://groups.drupal.org/node/20936">useful links that were mentioned at DrupalCamp</a>.</p>
-
-<p>Drupal is also well <a href="http://drupal.org/handbooks">documented</a> thanks to contributors like <a href="http://www.lullabot.com/about/addison-berry">Addison Berry</a>.</p>
-
-<p><strong>UPDATE:</strong> Fair play to all who created the <a href="http://www.zikomo.org/">Zikomo</a> and <a href="http://www.ruralsa.ie/">RSA</a> sites from scratch on Sunday! Wow.</p>
 ]]></content>
   </entry>
   
