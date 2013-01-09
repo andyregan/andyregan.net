@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T16:26:33+00:00</updated>
+  <updated>2013-01-09T16:32:11+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Renaming Many Files At Once with Pattern Matching in Bash]]></title>
+    <link href="http://andyregan.net/renaming-many-files-at-once-with-pattern-matching-in-bash/"/>
+    <updated>2010-11-25T00:00:00+00:00</updated>
+    <id>http://andyregan.net/renaming-many-files-at-once-with-pattern-matching-in-bash</id>
+    <content type="html"><![CDATA[<p>Sometimes you may need to rename many files at once in a similar way, such as removing a
+specific string from their name. Rather than manually rename the files, you can use a method
+described at <a href="http://snipplr.com/view/3648/batch-file-rename-with-awk-and-sed/">snipplr.com</a>. One of the advantages of this method is that you can preview
+the changes you will make simply by omitting the final pipe to <code>/bin/bash</code> .</p>
+
+<p>Let&#8217;s say you have a bunch of files which contain patterns you would like to remove. In the
+following example, you might need to remove the string <strong>PatternOne.</strong> and <strong>PatternTwo.</strong>
+from each file&#8217;s name.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls -1 /path/to/files/
+</span><span class='line'>PatternOne.001.PatternTwo.avi
+</span><span class='line'>PatternOne.002.PatternTwo.avi
+</span><span class='line'>PatternOne.003.PatternTwo.avi
+</span><span class='line'>PatternOne.004.PatternTwo.avi
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first step is to use <code>awk</code> to create a serious of <code>mv</code> statements.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span>
+</span><span class='line'>mv PatternOne.001.PatternTwo.avi PatternOne.001.PatternTwo.avi
+</span><span class='line'>mv PatternOne.002.PatternTwo.avi PatternOne.002.PatternTwo.avi
+</span><span class='line'>mv PatternOne.003.PatternTwo.avi PatternOne.003.PatternTwo.avi
+</span><span class='line'>mv PatternOne.004.PatternTwo.avi PatternOne.004.PatternTwo.avi
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Next, we pipe the <code>mv</code> statements to a <code>sed</code> command which removes <strong>PatternOne.</strong> from
+the <code>mv</code> statement&#8217;s destination file.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>
+</span><span class='line'>mv PatternOne.001.PatternTwo.avi 001.PatternTwo.avi
+</span><span class='line'>mv PatternOne.002.PatternTwo.avi 002.PatternTwo.avi
+</span><span class='line'>mv PatternOne.003.PatternTwo.avi 003.PatternTwo.avi
+</span><span class='line'>mv PatternOne.004.PatternTwo.avi 004.PatternTwo.avi
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add another <code>sed</code> statement to remove <strong>PatternTwo.</strong></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>| sed <span class="s1">&#39;s/PatternTwo.//2&#39;</span>
+</span><span class='line'>mv PatternOne.001.PatternTwo.avi 001.avi
+</span><span class='line'>mv PatternOne.002.PatternTwo.avi 002.avi
+</span><span class='line'>mv PatternOne.003.PatternTwo.avi 003.avi
+</span><span class='line'>mv PatternOne.004.PatternTwo.avi 004.avi
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally, pipe the result to <code>/bin/sh</code> so that the <code>mv</code> statements are run.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>| sed <span class="s1">&#39;s/PatternTwo.//2&#39;</span> | /bin/sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Firewalling Bridged VMs Using Libvirt&#8217;s Nwfilter Driver]]></title>

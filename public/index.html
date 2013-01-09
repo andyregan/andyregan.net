@@ -7,8 +7,8 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="Recently, I needed to create a virtual machine to host an internet-facing web application. One of the
-requirements for this VM included setting up a &hellip;">
+	<meta name="description" content="Sometimes you may need to rename many files at once in a similar way, such as removing a
+specific string from their name. Rather than manually &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +95,121 @@ requirements for this VM included setting up a &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/renaming-many-files-at-once-with-pattern-matching-in-bash/">
+		
+			Renaming Many Files at Once With Pattern Matching in Bash</a>
+	</h2>
+	<div class="entry-content">
+		<p>Sometimes you may need to rename many files at once in a similar way, such as removing a
+specific string from their name. Rather than manually rename the files, you can use a method
+described at <a href="http://snipplr.com/view/3648/batch-file-rename-with-awk-and-sed/">snipplr.com</a>. One of the advantages of this method is that you can preview
+the changes you will make simply by omitting the final pipe to <code>/bin/bash</code> .</p>
+
+<p>Let&#8217;s say you have a bunch of files which contain patterns you would like to remove. In the
+following example, you might need to remove the string <strong>PatternOne.</strong> and <strong>PatternTwo.</strong>
+from each file&#8217;s name.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls -1 /path/to/files/
+</span><span class='line'>PatternOne.001.PatternTwo.avi
+</span><span class='line'>PatternOne.002.PatternTwo.avi
+</span><span class='line'>PatternOne.003.PatternTwo.avi
+</span><span class='line'>PatternOne.004.PatternTwo.avi
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first step is to use <code>awk</code> to create a serious of <code>mv</code> statements.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span>
+</span><span class='line'>mv PatternOne.001.PatternTwo.avi PatternOne.001.PatternTwo.avi
+</span><span class='line'>mv PatternOne.002.PatternTwo.avi PatternOne.002.PatternTwo.avi
+</span><span class='line'>mv PatternOne.003.PatternTwo.avi PatternOne.003.PatternTwo.avi
+</span><span class='line'>mv PatternOne.004.PatternTwo.avi PatternOne.004.PatternTwo.avi
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Next, we pipe the <code>mv</code> statements to a <code>sed</code> command which removes <strong>PatternOne.</strong> from
+the <code>mv</code> statement&#8217;s destination file.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>
+</span><span class='line'>mv PatternOne.001.PatternTwo.avi 001.PatternTwo.avi
+</span><span class='line'>mv PatternOne.002.PatternTwo.avi 002.PatternTwo.avi
+</span><span class='line'>mv PatternOne.003.PatternTwo.avi 003.PatternTwo.avi
+</span><span class='line'>mv PatternOne.004.PatternTwo.avi 004.PatternTwo.avi
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add another <code>sed</code> statement to remove <strong>PatternTwo.</strong></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>| sed <span class="s1">&#39;s/PatternTwo.//2&#39;</span>
+</span><span class='line'>mv PatternOne.001.PatternTwo.avi 001.avi
+</span><span class='line'>mv PatternOne.002.PatternTwo.avi 002.avi
+</span><span class='line'>mv PatternOne.003.PatternTwo.avi 003.avi
+</span><span class='line'>mv PatternOne.004.PatternTwo.avi 004.avi
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally, pipe the result to <code>/bin/sh</code> so that the <code>mv</code> statements are run.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>| sed <span class="s1">&#39;s/PatternTwo.//2&#39;</span> | /bin/sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-25T00:00:00+00:00" pubdate data-updated="true">2010-11-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -794,95 +909,6 @@ included, but this should help narrow down the list of dirty scripts.</p>
 
 
 	<a class='category' href='/blog/categories/random/'>Random</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/drupalcamp-galway/">
-		
-			DrupalCamp Galway</a>
-	</h2>
-	<div class="entry-content">
-		<p style="text-align: center;">
-  <img class="aligncenter" src="http://groups.drupal.org/files/drupal_n_go.gif" alt="DrupalCamp Galway Logo" />
-</p>
-
-
-<p>Nathan and I attended <a href="http://groups.drupal.org/node/18452">DrupalCamp in Galway</a> on Saturday. John Long also made a suprise appearance! It was very well organised and over 60 people attended. Unfortunately, we could only attend on the Saturday. Many thanks and congratulations to the organisers.</p>
-
-<p><a href="http://drupal.org/">Drupal</a> is an open source content management system with a very active contributing community. There&#8217;s a huge amount of contributed <a href="http://drupal.org/project/Modules">modules</a> available that allow users to extend the core functionality of the software. As a result, Drupal is extremely flexible and configurable.</p>
-
-<p>Custom themes can also be easily applied. There are many free themes available at <a href="http://themegarden.org/drupal6/">themegarden.org</a>. Here&#8217;s a list of my favourites:</p>
-
-<ul>
-<li><a href="http://drupal.org/project/nitobe">nitobe</a></li>
-<li><a href="http://drupal.org/project/painted">painted</a></li>
-<li><a href="http://drupal.org/project/scruffy">scruffy</a></li>
-<li><a href="http://drupal.org/project/nigraphic">nigraphic</a></li>
-<li><a href="http://drupal.org/project/fresh_media">fresh_media</a></li>
-<li><a href="http://drupal.org/project/foliage">foliage</a></li>
-<li><a href="http://drupal.org/project/fervens">fervens</a></li>
-<li><a href="http://drupal.org/project/deco">deco</a></li>
-<li><a href="http://drupal.org/project/colorpaper">colorpaper</a></li>
-<li><a href="http://drupal.org/project/burnt">burnt</a></li>
-<li><a href="http://drupal.org/project/blossom">blossom</a></li>
-<li><a href="http://drupal.org/project/blix">blix</a></li>
-<li><a href="http://drupal.org/project/shallowgrunge">shallowgrunge</a></li>
-<li><a href="http://drupal.org/project/ifeeldirty">ifeeldirty</a></li>
-</ul>
-
-
-<h3>Complexity vs Flexibility</h3>
-
-<p>Unfortunately for new users, the amount of configuration options available is more than a bit overwhelming. I found that performing common tasks in a new install of Drupal is not as obvious as other content management systems, such as <a href="http://wordpress.org/">WordPress</a> or <a href="http://www.joomla.org/">Joomla</a>. Although well organised, the standard administrative interface feels overloaded with text.</p>
-
-<p>There are a couple of ways to improve usability that were suggested by speakers at DrupalCamp. The <a href="http://drupal.org/project/admin_menu">Administration Menu</a> module provides a nice drop down navigation bar containing common admin tasks that becomes available when an administrator logs in. The <a href="http://drupal.org/project/rootcandy">RootCandy</a> theme is also an improvement on the default administration theme.</p>
-
-<p>One gotcha when installing new modules is satisfying their dependent modules. You may have to track down and install dependent modules (and their dependent modules!) before you can active the original module you wanted.</p>
-
-<p>While many “newbies” (including myself) complain about the complexity of Drupal, it was mentioned by Alan Burke yesterday that the Drupal developers do not want to improve simplicity at the cost of flexibility. At the end of the day, some basic knowledge of web development is required.</p>
-
-<p>I think some of the group that didn&#8217;t come from a technical background were expecting a kind of <em>Word for Websites</em>. While installing and activating modules may be confusing, it sure beats the hell out of coding the functionality from scratch! Anyone who&#8217;s been there will appreciate the advantages of Drupal.</p>
-
-<p>In order to put what we learned into practice, myself and Nathan created <a href="http://andyregan.net/thatsnomoon">a simple website</a> using Drupal. After 10 minutes, we had a nicely themed and secure interactive website ready to be filled with content.</p>
-
-<h3>Find Out More</h3>
-
-<p>If you&#8217;re interested in Drupal, a good place to start is by signing up to <a href="http://drupal.org/">drupal.org</a> and joining a group such as <a href="http://groups.drupal.org/ireland">Ireland</a>. The Ireland group contains a thread on <a href="http://groups.drupal.org/node/20936">useful links that were mentioned at DrupalCamp</a>.</p>
-
-<p>Drupal is also well <a href="http://drupal.org/handbooks">documented</a> thanks to contributors like <a href="http://www.lullabot.com/about/addison-berry">Addison Berry</a>.</p>
-
-<p><strong>UPDATE:</strong> Fair play to all who created the <a href="http://www.zikomo.org/">Zikomo</a> and <a href="http://www.ruralsa.ie/">RSA</a> sites from scratch on Sunday! Wow.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-05T00:00:00+01:00" pubdate data-updated="true">2009-04-05</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/web-development/'>Web Development</a>
 
 
 </div>
