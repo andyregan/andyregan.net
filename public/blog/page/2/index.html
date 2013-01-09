@@ -7,8 +7,7 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="CakePHP is a useful MVC framework for PHP applications. However, there are a few common gotchas when setting up a new development
-environment. In &hellip;">
+	<meta name="description" content="Reset File Permissions Just a quick post so I can keep these commands handy (since I keep forgetting them). These will allow you to quickly set &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +94,73 @@ environment. In &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/quickly-reset-linux-file-and-directory-permissions/">
+		
+			Quickly Reset Linux File and Directory Permissions</a>
+	</h2>
+	<div class="entry-content">
+		<h2>Reset File Permissions</h2>
+
+<p>Just a quick post so I can keep these commands handy (since I keep forgetting them). These will allow you to quickly set
+different <a href="http://www.linuxquestions.org/linux/answers/Security/Quick_and_Dirty_Guide_to_Linux_File_Permissions">permissions</a> for all files (or all folders) within a specific directory in Linux.</p>
+
+<figure class='code'><figcaption><span>reset files </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -type f -exec chmod 644 <span class="o">{}</span> <span class="se">\;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Reset Directory Permissions</h2>
+
+<figure class='code'><figcaption><span>reset directories </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -type d -exec chmod 755 <span class="o">{}</span> <span class="se">\;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Reset Permissions on 777 PHP Files Only</h2>
+
+<figure class='code'><figcaption><span>reset 777 php files </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -name <span class="se">\*</span>.php -perm 777 -type f -exec chmod 644 <span class="o">{}</span> <span class="se">\;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-25T00:00:00+00:00" pubdate data-updated="true">2010-02-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -851,52 +917,6 @@ Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubun
 
 
 <time datetime="2009-02-26T00:00:00+00:00" pubdate data-updated="true">2009-02-26</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>Linux</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/installing-subclipse-in-ubuntu-behind-a-proxy/">
-		
-			Installing Subclipse in Ubuntu Behind a Proxy</a>
-	</h2>
-	<div class="entry-content">
-		<p>Took me ages to figure this out. I followed these <a href="https://help.ubuntu.com/community/EclipseSubversion">instructions on how to install Subclise</a>. After I added the remote site and hit &#8220;Finish&#8221; the installer just timed out. I was working behind a firewall (IT LABS!) so I figured proxy settings had something to do with my problems.</p>
-
-<p>Long story short, Eclipse doesn&#8217;t use your global proxy settings. In Ubuntu, the location of the settings in Eclipse is <strong>Window->Preferences->Install &amp; Update</strong>.</p>
-
-<p>From there, you can specify your proxy host and port and successfully install <a href="http://subclipse.tigris.org/">Subclipse</a>.</p>
-
-<p>Subclipse is a Subversion plugin for eclipse. Thanks to Nathan for helping me find the settings!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-25T00:00:00+00:00" pubdate data-updated="true">2009-02-25</time></div>
 	<div class="tags">
 
 

@@ -7,8 +7,7 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="According to the Torque Documentation, &#8220;in TORQUE 2.5.4 and later, users can request GPUs on a node at job submission&#8221;. This
-post &hellip;">
+	<meta name="description" content="Sometimes you may need to extract the same tar archive into many directories at once. The below command extracts /path/to/archive.tgz into the &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +94,56 @@ post &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/extract-a-tar-archive-to-multiple-directories-matching-a-pattern/">
+		
+			Extract a Tar Archive to Multiple Directories Matching a Pattern</a>
+	</h2>
+	<div class="entry-content">
+		<p>Sometimes you may need to extract the same tar archive into many directories at once.</p>
+
+<p>The below command extracts <strong>/path/to/archive.tgz</strong> into the directories from
+<strong>/path/to/destination/00</strong> to <strong>/path/to/destination/29</strong> .</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>me@host ~<span class="o">]</span><span class="nv">$ </span>ls -d /path/to/destination/<span class="o">[</span>0-2<span class="o">][</span>0-9<span class="o">]</span>/ | xargs -I <span class="o">{}</span> tar -xvzf /path/to/archive.tgz -C <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-01T00:00:00+01:00" pubdate data-updated="true">2011-06-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -882,73 +931,6 @@ router&#8217;s firewall is at your own risk.</p>
 
 
 	<a class='category' href='/blog/categories/random/'>Random</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/quickly-reset-linux-file-and-directory-permissions/">
-		
-			Quickly Reset Linux File and Directory Permissions</a>
-	</h2>
-	<div class="entry-content">
-		<h2>Reset File Permissions</h2>
-
-<p>Just a quick post so I can keep these commands handy (since I keep forgetting them). These will allow you to quickly set
-different <a href="http://www.linuxquestions.org/linux/answers/Security/Quick_and_Dirty_Guide_to_Linux_File_Permissions">permissions</a> for all files (or all folders) within a specific directory in Linux.</p>
-
-<figure class='code'><figcaption><span>reset files </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -type f -exec chmod 644 <span class="o">{}</span> <span class="se">\;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Reset Directory Permissions</h2>
-
-<figure class='code'><figcaption><span>reset directories </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -type d -exec chmod 755 <span class="o">{}</span> <span class="se">\;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Reset Permissions on 777 PHP Files Only</h2>
-
-<figure class='code'><figcaption><span>reset 777 php files </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -name <span class="se">\*</span>.php -perm 777 -type f -exec chmod 644 <span class="o">{}</span> <span class="se">\;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-25T00:00:00+00:00" pubdate data-updated="true">2010-02-25</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
 
 
 </div>

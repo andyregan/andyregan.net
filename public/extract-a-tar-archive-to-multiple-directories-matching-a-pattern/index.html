@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Category: General Tips - $whois andyregan</title>
+	<title>Extract a Tar Archive to Multiple Directories Matching A Pattern - $whois andyregan</title>
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="Category: General Tips">
+	<meta name="description" content="Sometimes you may need to extract the same tar archive into many directories at once. The below command extracts /path/to/archive.tgz into the &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,130 +93,58 @@
 </script>
 
 	
-	<div id="content" class="inner">
-	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Extract a Tar Archive to Multiple Directories Matching a Pattern</h2>
+	<div class="entry-content"><p>Sometimes you may need to extract the same tar archive into many directories at once.</p>
+
+<p>The below command extracts <strong>/path/to/archive.tgz</strong> into the directories from
+<strong>/path/to/destination/00</strong> to <strong>/path/to/destination/29</strong> .</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>me@host ~<span class="o">]</span><span class="nv">$ </span>ls -d /path/to/destination/<span class="o">[</span>0-2<span class="o">][</span>0-9<span class="o">]</span>/ | xargs -I <span class="o">{}</span> tar -xvzf /path/to/archive.tgz -C <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-	
-	
-	<section class="archives"><h1 class="year">2011</h1>
 
-<article>
-	<h2 class="title"><a href="/extract-a-tar-archive-to-multiple-directories-matching-a-pattern/">Extract a Tar Archive to Multiple Directories Matching A Pattern</a></h2>
-	<div class="meta">
-		<span class="date">Jun  1</span>
-		<span class="tags">
+</div>
 
 
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
+<div class="meta">
+	<div class="date">
 
 
-</span>
-	    
-	</div>
-</article>
-
-	
 
 
-<article>
-	<h2 class="title"><a href="/requesting-gpus-at-job-submission-with-torque/">Requesting GPUs At Job Submission With Torque</a></h2>
-	<div class="meta">
-		<span class="date">May  9</span>
-		<span class="tags">
 
 
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
 
 
-</span>
-	    
-	</div>
-</article>
-
-	
+  
 
 
-<article>
-	<h2 class="title"><a href="/creating-dovecot-imap-folders-in-mail-app/">Creating Dovecot IMAP Folders In Mail.App</a></h2>
-	<div class="meta">
-		<span class="date">Feb  6</span>
-		<span class="tags">
+<time datetime="2011-06-01T00:00:00+01:00" pubdate data-updated="true">2011-06-01</time></div>
+	<div class="tags">
 
 
 	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
 
 
-</span>
-	    
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
 	</div>
-</article>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
-	
-
-
-	
-	
-		</section>
-	
-	<section class="archives"><h1 class="year">2010</h1>
-
-<article>
-	<h2 class="title"><a href="/renaming-many-files-at-once-with-pattern-matching-in-bash/">Renaming Many Files At Once with Pattern Matching in Bash</a></h2>
-	<div class="meta">
-		<span class="date">Nov 25</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/quickly-reset-linux-file-and-directory-permissions/">Quickly Reset Linux File and Directory Permissions</a></h2>
-	<div class="meta">
-		<span class="date">Feb 25</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-	
-	
-		</section>
-	
-	<section class="archives"><h1 class="year">2009</h1>
-
-<article>
-	<h2 class="title"><a href="/first-post-and-first-script-foo/">First Post and SMS Ping Script</a></h2>
-	<div class="meta">
-		<span class="date">Feb 22</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
-
-
-</span>
-	    
-	</div>
-</article>
 
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2013
