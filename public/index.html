@@ -7,8 +7,8 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="Now why would I want to do that? Let&#8217;s say that you have a subversion repository hosted on a PC in your office. It cannot be
-accessed directly &hellip;">
+	<meta name="description" content="ICHEC&#8217;s offices are located on opposite sides of the country. Thanks to video conferencing,
+our Dublin and Galway-based staff are able to hold &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +95,88 @@ accessed directly &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/">
+		
+			Mac Mini Resolution Problems &#8211; EDIDs and HDMI Matrix Switchers</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://ichec.ie">ICHEC</a>&#8217;s offices are located on opposite sides of the country. Thanks to video conferencing,
+our Dublin and Galway-based staff are able to hold frequent virtual meetings to cut down on
+travel. When staff (or visitors) need to share content, such as a presentation, they can connect
+their laptop to the video conferencing unit (a <a href="http://www.polycom.com/products/telepresence_video/telepresence_solutions/room_telepresence/hdx7000.html">Polycom HDX 7000</a>). They can then select the
+content to display to the local and remote members of the conference call.</p>
+
+<p>To cater for different types of video output, we use a HDMI Matrix Switcher that can take input
+from a VGA, a DVI, or a HMDI cable and output to either the TV directly, the video conference
+unit or both.</p>
+
+<p><a href="http://andyregan.net/blog/wp-content/uploads/2011/02/matrix_switcher.jpg"><img class="center" src="/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/matrix_switcher.jpg" width="300" title="matrix switcher" alt="matrix switcher"></a></p>
+
+<p>We recently purchased a <a href="http://www.apple.com/macmini/">Mac Mini</a> for use as a permanent conference room PC connected
+through the Matrix Switcher. Unfortunately, we found that the highest resolution on TV was only
+full 1080p when the Polycom was left powered off. If the Polycom was powered on, the maximum
+resolution to the TV was much lower. Worse, the Polycom intermittently failed to receive a
+signal from the Mac Mini.</p>
+
+<p><a href="http://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2010_Mac_Mini_Ports.jpg/800px-2010_Mac_Mini_Ports.jpg"><img class="center" src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2010_Mac_Mini_Ports.jpg/800px-2010_Mac_Mini_Ports.jpg" width="300" title="Mac Mini" alt="Mac Mini"></a></p>
+
+<p>Googling around for information, it seemed that the Mac Mini was confusing the EDID information
+from the TV and Polycom unit as the data was coming through the Matrix Switcher. An <a href="http://en.wikipedia.org/wiki/Extended_display_identification_data">EDID
+(Extended display identification data)</a> is how a digital display, like a monitor or TV,
+tells your computer about itself. Your computer, through it&#8217;s graphics card, determines supported
+display settings based on the EDID data is has received from your monitor. We tried a few
+different suggested solutions without success.</p>
+
+<p>In a stroke of sheer luck and brilliance, <a href="http://www.ichec.ie/about_us/david_delaharpegolden.php">David</a> found a <a href="http://www.kanexlive.com/products/iAdapt51.html">Kanex USB powered mini-DVI to HDMI
+adapter</a> in a box of spare cables. One of the features of the adapter is <strong>&#8220;an auto EDID feature
+built-in that adapts to maximum resolution depending on users display&#8221;</strong>. He plugged it in between
+the Mac Mini and the Matrix Switcher and, lo and behold, we had consistent 1080p resolution to
+both the TV and the Polycom!</p>
+
+<p><a href="http://www.kanexlive.com/products/iAdapt51.html"><img class="center" src="/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/adapter-300x133.jpg" width="300" title="Kanex Adapter" alt="Kanex Adapter"></a></p>
+
+<p>Another thing to watch out for is signal distortion when using a long-ish HDMI cable from the Mac
+Mini to the TV. The shorter the cable, the better.</p>
+
+<p>You might notice that the image does not quite fit the TV at first. Try setting the TV to <strong>PC</strong>
+or <strong>Dot by Dot</strong> mode. Finally, you may also need to adjust the TV&#8217;s sharpness settings. We
+found that if the sharpness was set too high, the OS X fonts would look pixelated.</p>
+
+<p>Hopefully, someone might find this info useful.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-05T00:00:00+00:00" pubdate data-updated="true">2011-02-05</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/apple/'>Apple</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -935,50 +1017,6 @@ included, but this should help narrow down the list of dirty scripts.</p>
 
 
 	<a class='category' href='/blog/categories/random/'>Random</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/new-theme/">
-		
-			New Theme</a>
-	</h2>
-	<div class="entry-content">
-		<p>I got a bit sick of the old fusion theme. The new theme is based on the <a href="http://themes.jestro.com/vigilance/">Vigilance Theme</a> by <a href="http://www.jestro.com/">Jestro</a> with some tweaks suggested in an excellent <a href="http://healyourchurchwebsite.com/2008/12/01/working-with-the-wordpress-theme-vigilance-116/">article by Dean Peters</a> along with a couple of tweaks of my own.</p>
-
-<p>Header image is a photo I took atop the <a href="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=silver+strand+galway&amp;sll=53.273797,-9.05178&amp;sspn=0.091155,0.30899&amp;ie=UTF8&amp;ll=53.251299,-9.124403&amp;spn=0.0114,0.038624&amp;t=h&amp;z=15&amp;iwloc=I">cliff at Silver Strand overlooking Galway Bay</a>.</p>
-
-<p>It&#8217;s a lot cleaner and I think it&#8217;s easier to read, too. Hope you like it!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-29T00:00:00+01:00" pubdate data-updated="true">2009-04-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/web-development/'>Web Development</a>
 
 
 </div>

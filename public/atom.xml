@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T16:52:28+00:00</updated>
+  <updated>2013-01-09T17:04:38+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Mini Resolution Problems &#8211; EDIDs And HDMI Matrix Switchers]]></title>
+    <link href="http://andyregan.net/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/"/>
+    <updated>2011-02-05T00:00:00+00:00</updated>
+    <id>http://andyregan.net/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers</id>
+    <content type="html"><![CDATA[<p><a href="http://ichec.ie">ICHEC</a>&#8217;s offices are located on opposite sides of the country. Thanks to video conferencing,
+our Dublin and Galway-based staff are able to hold frequent virtual meetings to cut down on
+travel. When staff (or visitors) need to share content, such as a presentation, they can connect
+their laptop to the video conferencing unit (a <a href="http://www.polycom.com/products/telepresence_video/telepresence_solutions/room_telepresence/hdx7000.html">Polycom HDX 7000</a>). They can then select the
+content to display to the local and remote members of the conference call.</p>
+
+<p>To cater for different types of video output, we use a HDMI Matrix Switcher that can take input
+from a VGA, a DVI, or a HMDI cable and output to either the TV directly, the video conference
+unit or both.</p>
+
+<p><a href="http://andyregan.net/blog/wp-content/uploads/2011/02/matrix_switcher.jpg"><img class="center" src="http://andyregan.net/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/matrix_switcher.jpg" width="300" title="matrix switcher" alt="matrix switcher"></a></p>
+
+<p>We recently purchased a <a href="http://www.apple.com/macmini/">Mac Mini</a> for use as a permanent conference room PC connected
+through the Matrix Switcher. Unfortunately, we found that the highest resolution on TV was only
+full 1080p when the Polycom was left powered off. If the Polycom was powered on, the maximum
+resolution to the TV was much lower. Worse, the Polycom intermittently failed to receive a
+signal from the Mac Mini.</p>
+
+<p><a href="http://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2010_Mac_Mini_Ports.jpg/800px-2010_Mac_Mini_Ports.jpg"><img class="center" src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2010_Mac_Mini_Ports.jpg/800px-2010_Mac_Mini_Ports.jpg" width="300" title="Mac Mini" alt="Mac Mini"></a></p>
+
+<p>Googling around for information, it seemed that the Mac Mini was confusing the EDID information
+from the TV and Polycom unit as the data was coming through the Matrix Switcher. An <a href="http://en.wikipedia.org/wiki/Extended_display_identification_data">EDID
+(Extended display identification data)</a> is how a digital display, like a monitor or TV,
+tells your computer about itself. Your computer, through it&#8217;s graphics card, determines supported
+display settings based on the EDID data is has received from your monitor. We tried a few
+different suggested solutions without success.</p>
+
+<p>In a stroke of sheer luck and brilliance, <a href="http://www.ichec.ie/about_us/david_delaharpegolden.php">David</a> found a <a href="http://www.kanexlive.com/products/iAdapt51.html">Kanex USB powered mini-DVI to HDMI
+adapter</a> in a box of spare cables. One of the features of the adapter is <strong>&#8220;an auto EDID feature
+built-in that adapts to maximum resolution depending on users display&#8221;</strong>. He plugged it in between
+the Mac Mini and the Matrix Switcher and, lo and behold, we had consistent 1080p resolution to
+both the TV and the Polycom!</p>
+
+<p><a href="http://www.kanexlive.com/products/iAdapt51.html"><img class="center" src="http://andyregan.net/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/adapter-300x133.jpg" width="300" title="Kanex Adapter" alt="Kanex Adapter"></a></p>
+
+<p>Another thing to watch out for is signal distortion when using a long-ish HDMI cable from the Mac
+Mini to the TV. The shorter the cable, the better.</p>
+
+<p>You might notice that the image does not quite fit the TV at first. Try setting the TV to <strong>PC</strong>
+or <strong>Dot by Dot</strong> mode. Finally, you may also need to adjust the TV&#8217;s sharpness settings. We
+found that if the sharpness was set too high, the OS X fonts would look pixelated.</p>
+
+<p>Hopefully, someone might find this info useful.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Use SSH Tunneling to Access A Subversion Server Behind NAT]]></title>
