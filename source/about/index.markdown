@@ -6,11 +6,11 @@ sharing: false
 footer: true
 ---
 
+{% if site.gravatar_email %}<img class="center" src="{% gravatar_image 200 %}" title="Gravatar of {{ site.author }}" />{% endif %}
+
 ####Is mise raibl&iacute;n!
 
 I'm interested in techonology. I work in the area of [Cloud Computiung][2] and [Infrastructure as Code][3]. In the past, I've worked in web application development and HPC systems andministration. 
-
-{% if site.gravatar_email %}<img class="right" src="{% gravatar_image 200 %}" title="Gravatar of {{ site.author }}" />{% endif %}
 
 ### How to Contact Me
 
