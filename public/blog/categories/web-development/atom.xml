@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Development | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/web-development/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T15:05:12+00:00</updated>
+  <updated>2013-01-09T15:15:43+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Nasty Site Hack Leads to Phony Google Links]]></title>
+    <link href="http://andyregan.net/nasty-site-hack-leads-to-phony-google-links/"/>
+    <updated>2009-07-29T00:00:00+01:00</updated>
+    <id>http://andyregan.net/nasty-site-hack-leads-to-phony-google-links</id>
+    <content type="html"><![CDATA[<h2>Thar be nasty scripts here!</h2>
+
+<p><img class="center" src="http://andyregan.net/blog/wp-content/uploads/2009/07/tornado_warning.gif" width="300" title="Warning Sign" alt="Thar be nasty scripts here!"></p>
+
+<p>Came across a dirty (but interesting) website hack today. Essentially when a person googled their domain name they discovered hundreds
+and hundreds of phony links pointing to a sub-directory of their site. (With various explicitly charming descriptions).
+Clicking on these links displayed a page full of advertisements.</p>
+
+<p>Had a nose around the sub-directory in question and couldn't find any files corresponding to the links.</p>
+
+<p>Eventually, I found a rogue PHP script (called <strong>report.php</strong>). Turns out that the <a href="http://httpd.apache.org/docs/1.3/howto/htaccess.html">.htaccess</a> file in the directory had been modified
+to redirect any <strong><a href="http://en.wikipedia.org/wiki/HTTP_404">404 Not Found</a></strong> errors to the PHP script. Even dirtier still was that when you accessed the script directly in a
+browser it showed a typical default 404 error, a tactic I guess is there to add confusion when you are trying to find the cause of the
+hack. <strong>Bastards</strong>.</p>
+
+<p>Script was <a href="http://www.wewatchyourwebsite.com/wordpress/?p=136">base64</a>'d and full of typical randomness meant to slow down those trying to figure out exactly what it's trying to do.
+As far as I can tell, it just serves up ad pages when it's redirected to and the 404 error page when accessed directly.</p>
+
+<p>The ultimate bastardly thing about this hack is that even after you clean up your site, it'll be ages before the explicit phony links
+dissappear from Google. Another good reason to avoid 777 permissions of directories and keep your web software updated.</p>
+
+<p>Just wanted to make people aware of it. If you come across something similar have a look in the <strong>.htaccess</strong> file first. :)</p>
+
+<h2>UPDATE</h2>
+
+<p>The following bash one-liner can help find any files that contain a call to the base64_encode() method. Some legitimate files may be
+included, but this should help narrow down the list of dirty scripts.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>snippet </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$find</span> . -type f | xargs grep -l base64_encode
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Also worth checking out the following links for htaccess tips and tricks:</p>
+
+<ul>
+<li><a href="http://www.askapache.com/htaccess/apache-htaccess.html">http://www.askapache.com/htaccess/apache-htaccess.html</a></li>
+<li><a href="http://perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/#sec1">http://perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/#sec1</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[New Theme]]></title>

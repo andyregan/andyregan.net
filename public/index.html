@@ -7,7 +7,7 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="SFQL is a different approach to business networking. Break the ice by playing a few LAN games and having a laugh. Afterwards, head to a nearby pub &hellip;">
+	<meta name="description" content="Thar be nasty scripts here! Came across a dirty (but interesting) website hack today. Essentially when a person googled their domain name they &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +94,86 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/nasty-site-hack-leads-to-phony-google-links/">
+		
+			Nasty Site Hack Leads to Phony Google Links</a>
+	</h2>
+	<div class="entry-content">
+		<h2>Thar be nasty scripts here!</h2>
+
+<p><img class="center" src="http://andyregan.net/blog/wp-content/uploads/2009/07/tornado_warning.gif" width="300" title="Warning Sign" alt="Thar be nasty scripts here!"></p>
+
+<p>Came across a dirty (but interesting) website hack today. Essentially when a person googled their domain name they discovered hundreds
+and hundreds of phony links pointing to a sub-directory of their site. (With various explicitly charming descriptions).
+Clicking on these links displayed a page full of advertisements.</p>
+
+<p>Had a nose around the sub-directory in question and couldn&#8217;t find any files corresponding to the links.</p>
+
+<p>Eventually, I found a rogue PHP script (called <strong>report.php</strong>). Turns out that the <a href="http://httpd.apache.org/docs/1.3/howto/htaccess.html">.htaccess</a> file in the directory had been modified
+to redirect any <strong><a href="http://en.wikipedia.org/wiki/HTTP_404">404 Not Found</a></strong> errors to the PHP script. Even dirtier still was that when you accessed the script directly in a
+browser it showed a typical default 404 error, a tactic I guess is there to add confusion when you are trying to find the cause of the
+hack. <strong>Bastards</strong>.</p>
+
+<p>Script was <a href="http://www.wewatchyourwebsite.com/wordpress/?p=136">base64</a>&#8216;d and full of typical randomness meant to slow down those trying to figure out exactly what it&#8217;s trying to do.
+As far as I can tell, it just serves up ad pages when it&#8217;s redirected to and the 404 error page when accessed directly.</p>
+
+<p>The ultimate bastardly thing about this hack is that even after you clean up your site, it&#8217;ll be ages before the explicit phony links
+dissappear from Google. Another good reason to avoid 777 permissions of directories and keep your web software updated.</p>
+
+<p>Just wanted to make people aware of it. If you come across something similar have a look in the <strong>.htaccess</strong> file first. :)</p>
+
+<h2>UPDATE</h2>
+
+<p>The following bash one-liner can help find any files that contain a call to the base64_encode() method. Some legitimate files may be
+included, but this should help narrow down the list of dirty scripts.</p>
+
+<figure class='code'><figcaption><span>snippet </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$find</span> . -type f | xargs grep -l base64_encode
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Also worth checking out the following links for htaccess tips and tricks:</p>
+
+<ul>
+<li><a href="http://www.askapache.com/htaccess/apache-htaccess.html">http://www.askapache.com/htaccess/apache-htaccess.html</a></li>
+<li><a href="http://perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/#sec1">http://perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/#sec1</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-29T00:00:00+01:00" pubdate data-updated="true">2009-07-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/web-development/'>Web Development</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -719,56 +799,10 @@ Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubun
 	
 </div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/first-post-and-first-script-foo/">
-		
-			First Post and SMS Ping Script</a>
-	</h2>
-	<div class="entry-content">
-		<p>Thanks for visiting! The main purpose of this blog (right now) is as an archive for useful technical bits and pieces I&#8217;ve come across and don&#8217;t want to forget. Hopefully, you might find some of these useful, too. This is my first post and I&#8217;d like to start by sharing a handy little script-foo I learned.</p>
-
-<p>Over Christmas, the Compsoc admin team reinstalled our backup server. We created a fairly large (~3.6T RAID5) /home partition which took forever to build when the server booted for the first time. Rather than keep checking into the server room I figured &#8220;Wouldn&#8217;t it be handy if I could just get a text when the server comes up?&#8221;.</p>
-
-<p>I decided to use a great tool called <a title="o2sms" href="http://o2sms.sourceforge.net/" target="_self">o2sms</a> by <a title="mackers" href="http://www.mackers.com/" target="_self">Mackers</a> that&#8217;s installed on Compsoc&#8217;s webserver. It allows you to send text messages via the command line. The following script intermittently pings the backup and sends an SMS to the specified number when a ping returns successfully:</p>
-
-<p><code>$while ! ping -W 1 -c 1 &lt;IPAddress&gt; 2&gt;&amp;1 &gt;/dev/null; do true; done &amp;&amp; echo "Scorpio is UP" | meteorsms &lt;mynumber&gt;</code></p>
-
-<p>Its a simple little diddy ain&#8217;t it? Run it in a screen and you can detach, logout and go about your day. Drop the <strong>!</strong> and it will send an SMS if a ping fails (maybe the servers down). You could also replace ping with another event, such as a certain user logging in (users | grep andrewjregan) or if you recieve a new mail.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-22T00:00:00+00:00" pubdate data-updated="true">2009-02-22</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
+    
+        <a href="/blog/page/2/" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
