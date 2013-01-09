@@ -47,27 +47,27 @@ $photorec ./disk_image
 
 Select the image to use.
 
-{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png 150 150 Select the image to use %}
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png Select the image to use %}
 
 Select the partition type.
 
-{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png 150 150 Select the partition type %}
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png Select the partition type %}
 
 Select the partition. 
 
-{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png 150 150 Select the partition %}
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png Select the partition %}
 
 Select the filesystem type.
 
-{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png 150 150 Select the filesystem type %}
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png Select the filesystem type %}
 
 Select where to save the recovered files.
 
-{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png 150 150 Select where to save the recoverd files %}
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png Select where to save the recoverd files %}
 
 Watch the search in progress.
 
-{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png 150 150 Search in progress %}
+{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png Search in progress %}
 
 Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.
 

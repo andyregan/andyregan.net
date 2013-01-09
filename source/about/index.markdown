@@ -1,0 +1,49 @@
+---
+layout: page
+title: "About Me"
+date: 2013-01-07 18:24
+sharing: false
+footer: true
+---
+
+####Is mise raibl&iacute;n!
+
+I'm interested in techonology. I work in the area of [Cloud Computiung][2] and [Infrastructure as Code][3]. In the past, I've worked in web application development and HPC systems andministration. 
+
+{% if site.gravatar_email %}<img class="right" src="{% gravatar_image 200 %}" title="Gravatar of {{ site.author }}" />{% endif %}
+
+### How to Contact Me
+
+ - Drop me an email at {% email andrew@andyregan.net %}
+ - I'm [@andyregan][4] on Twitter
+
+###Background
+
+####< 2008
+ - I had my first real introduction to Linux and (quality German beer) as an admin for [NUIG Compsoc][5]. It's a university club made up of folks interested in technology. We ran tutorials, played games and helped raise some money for worthy causes such as the [&Aacute;balta School][6] in Galway. 
+
+####2008
+ - I worked as a research intern at [DERI Ireland][7], in the Semantic Web Services cluster.
+
+####2009
+ - I graduated with honours from NUI, Galway in 2009, after completing the [B.Sc Information Technology][8] degree program.
+
+ - After finishing my course, I worked in suport and operations for [Letshost.ie][9], a large Irish web hosting company. 
+
+####2010
+ - I joined the Operations Team at [The Irish Centre for High End Computing][10] where I had responsibility for all aspects of infrastructure and technical operations for ICHEC's Dublin office.
+
+####2012
+ - Most, recently I'm working as a Software Engineer for Fidlity Investments.
+
+
+ [1]: http://en.wikipedia.org/wiki/Irish_language
+ [2]: http://en.wikipedia.org/wiki/Cloud_computing
+ [3]: http://www.somic.org/2012/09/28/concise-introduction-to-infrastructure-as-code/
+ [4]: http://www.twitter.com/andyregan
+ [5]: http://compsoc.ie/
+ [6]: http://www.abaltaabaschool.galway.edu.ie/
+ [7]: http://www.deri.ie/about/team/member/andrew_regan/
+ [8]: http://www.it.nuigalway.ie/programmes_bsc_it.html
+ [9]: http://www.letshost.ie
+ [10]: http://www.ichec.ie/

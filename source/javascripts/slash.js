@@ -15,7 +15,7 @@
 	};
 
 	// Append caption after pictures
-	var appendCaption = function(){
+/*	var appendCaption = function(){
 		$('.entry-content').each(function(i){
 			var _i = i;
 			$(this).find('img').each(function(){
@@ -29,7 +29,7 @@
 			});
 		});
 	};
-
+*/
 	externalLinks(); // Delete or comment this line to disable opening external links in new window
 	appendCaption(); // Delete or comment this line to disable caption
 

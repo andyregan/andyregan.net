@@ -4,7 +4,7 @@
 
 url: http://andyregan.net
 title: "$whois andyregan"
-subtitle: whois andyregan
+subtitle: "Andrew Regan's Blog" 
 author: Andrew Regan
 simple_search: http://google.com/search
 description: A tech-blog, heavy on the DevOps, where Andy Regan shares his snippets.
@@ -57,6 +57,9 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.ht
 #   3rd Party Settings    #
 # ----------------------- #
 
+# Gravatar Plugin
+gravatar_email: andrewjregan@gmail.com
+
 # Github repositories
 github_user: andyregan
 github_repo_count: 0
@@ -65,7 +68,7 @@ github_skip_forks: true
 
 # Twitter
 twitter_user: andyregan
-twitter_tweet_count: 4
+twitter_tweet_count: 1
 twitter_show_replies: false
 twitter_follow_button: true
 twitter_show_follower_count: false
@@ -77,7 +80,7 @@ google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user:
+googleplus_user: 113310779327489253368
 googleplus_hidden: false
 
 # Pinboard

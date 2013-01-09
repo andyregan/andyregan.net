@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-07T18:15:17+00:00</updated>
+  <updated>2013-01-09T11:17:51+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -62,27 +62,27 @@ The partition was likely corrupted somehow.</p>
 
 <p>Select the image to use.</p>
 
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png" width="150" height="150" title="Select the image to use" ></p>
+<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png" title="Select the image to use" ></p>
 
 <p>Select the partition type.</p>
 
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png" width="150" height="150" title="Select the partition type" ></p>
+<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png" title="Select the partition type" ></p>
 
 <p>Select the partition.</p>
 
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png" width="150" height="150" title="Select the partition" ></p>
+<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png" title="Select the partition" ></p>
 
 <p>Select the filesystem type.</p>
 
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png" width="150" height="150" title="Select the filesystem type" ></p>
+<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png" title="Select the filesystem type" ></p>
 
 <p>Select where to save the recovered files.</p>
 
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png" width="150" height="150" title="Select where to save the recoverd files" ></p>
+<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png" title="Select where to save the recoverd files" ></p>
 
 <p>Watch the search in progress.</p>
 
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png" width="150" height="150" title="Search in progress" ></p>
+<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png" title="Search in progress" ></p>
 
 <p>Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.</p>
 ]]></content>
