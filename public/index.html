@@ -7,8 +7,8 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="ICHEC&#8217;s offices are located on opposite sides of the country. Thanks to video conferencing,
-our Dublin and Galway-based staff are able to hold &hellip;">
+	<meta name="description" content="If you want to organise your Dovecot IMAP mailboxes into folders, it may seem intuitive to
+just drag the them into a new mailbox. However, you may &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -100,6 +100,66 @@ our Dublin and Galway-based staff are able to hold &hellip;">
     <article class="post">
 	<h2 class="title">
 		
+		<a href="/creating-dovecot-imap-folders-in-mail-app/">
+		
+			Creating Dovecot IMAP Folders in Mail.App</a>
+	</h2>
+	<div class="entry-content">
+		<p>If you want to organise your Dovecot IMAP mailboxes into folders, it may seem intuitive to
+just drag the them into a new mailbox. However, you may get the error message <strong>Target
+mailbox doesn&#8217;t allow inferior mailboxes</strong>.</p>
+
+<p>The solution is to explicitly create a folder, by adding a <code>/</code> to the end of the name you
+give a new mailbox. Folders can contain other folders and mailboxes, whereas mailboxes
+can only contain mail.</p>
+
+<p>For example, in Mail.app go to <strong>Mailbox</strong> -> <strong>New Mailbox</strong> . Select where you want to
+create the new folder and enter a name with a <code>/</code> at the end. If you don&#8217;t include the
+<code>/</code>, a new mailbox will be created.</p>
+
+<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png" title="'Screenshot of Mail.app'" ></a></p>
+
+<p>In the image below, you can see a folder called <strong>TEST</strong> that contains a sub-folder
+called <strong>TEST2</strong> and a mailbox called <strong>test</strong>.</p>
+
+<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png" title="'Screen shot of Mail.app'" ></a></p>
+
+<p>While the above example uses Mail.app, you&#8217;ll also need to add a <code>/</code> to the end of
+Dovecot IMAP folder names in other clients such as Mozilla Thunderbird.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-06T00:00:00+00:00" pubdate data-updated="true">2011-02-06</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
 		<a href="/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/">
 		
 			Mac Mini Resolution Problems &#8211; EDIDs and HDMI Matrix Switchers</a>
@@ -115,7 +175,7 @@ content to display to the local and remote members of the conference call.</p>
 from a VGA, a DVI, or a HMDI cable and output to either the TV directly, the video conference
 unit or both.</p>
 
-<p><a href="http://andyregan.net/blog/wp-content/uploads/2011/02/matrix_switcher.jpg"><img class="center" src="/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/matrix_switcher.jpg" width="300" title="matrix switcher" alt="matrix switcher"></a></p>
+<p><a href="/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/matrix_switcher.jpg"><img class="center" src="/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/matrix_switcher.jpg" width="300" title="matrix switcher" alt="matrix switcher"></a></p>
 
 <p>We recently purchased a <a href="http://www.apple.com/macmini/">Mac Mini</a> for use as a permanent conference room PC connected
 through the Matrix Switcher. Unfortunately, we found that the highest resolution on TV was only
@@ -969,54 +1029,6 @@ included, but this should help narrow down the list of dirty scripts.</p>
 
 
 	<a class='category' href='/blog/categories/web-development/'>Web Development</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/shoot-first-questions-later/">
-		
-			Shoot First Questions Later</a>
-	</h2>
-	<div class="entry-content">
-		<p><a href="http://www.digitalmediaforum.net/event_profile.php?id=292"><img class="center" src="/images/posts/shoot-first-questions-later/sfql_graphic.png"" title="SFQL Graphic" alt="SFQL Graphic"> </a></p>
-
-<p><a href="http://www.digitalmediaforum.net/event_profile.php?id=292">SFQL</a> is a different approach to business networking. Break the ice by playing a few LAN games and having a laugh. Afterwards, head to a nearby pub for some refreshments and have a chance to chat with like-minded people in the tech industry from Galway.</p>
-
-<p>It&#8217;s happening May 6th from 7pm in Squareyes, Forster St (near Eyre Square). The cost of gaming is &euro;6.</p>
-
-<p>This is a <a href="http://www.digitalmediaforum.net/about.php">Digital Media Forum</a> event. The idea was born at the last Digital Media Breakfast in Galway and has been put together thanks to <a href="http://twitter.com/antonmannering/">@antonmannering</a> and <a href="http://www.squareyes.com/">Squareyes</a>.</p>
-
-<p>Promises to be good craic! Join via <a href="http://www.digitalmediaforum.net/event_profile.php?id=292">the event page</a> so we&#8217;ll have some idea of numbers. Thanks! :)</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-29T00:00:00+01:00" pubdate data-updated="true">2009-04-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/random/'>Random</a>
 
 
 </div>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: General Tips | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/general-tips/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:04:38+00:00</updated>
+  <updated>2013-01-09T17:16:18+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Creating Dovecot IMAP Folders In Mail.App]]></title>
+    <link href="http://andyregan.net/creating-dovecot-imap-folders-in-mail-app/"/>
+    <updated>2011-02-06T00:00:00+00:00</updated>
+    <id>http://andyregan.net/creating-dovecot-imap-folders-in-mail-app</id>
+    <content type="html"><![CDATA[<p>If you want to organise your Dovecot IMAP mailboxes into folders, it may seem intuitive to
+just drag the them into a new mailbox. However, you may get the error message <strong>Target
+mailbox doesn't allow inferior mailboxes</strong>.</p>
+
+<p>The solution is to explicitly create a folder, by adding a <code>/</code> to the end of the name you
+give a new mailbox. Folders can contain other folders and mailboxes, whereas mailboxes
+can only contain mail.</p>
+
+<p>For example, in Mail.app go to <strong>Mailbox</strong> -> <strong>New Mailbox</strong> . Select where you want to
+create the new folder and enter a name with a <code>/</code> at the end. If you don't include the
+<code>/</code>, a new mailbox will be created.</p>
+
+<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png" title="'Screenshot of Mail.app'" ></a></p>
+
+<p>In the image below, you can see a folder called <strong>TEST</strong> that contains a sub-folder
+called <strong>TEST2</strong> and a mailbox called <strong>test</strong>.</p>
+
+<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png" title="'Screen shot of Mail.app'" ></a></p>
+
+<p>While the above example uses Mail.app, you'll also need to add a <code>/</code> to the end of
+Dovecot IMAP folder names in other clients such as Mozilla Thunderbird.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Renaming Many Files At Once with Pattern Matching in Bash]]></title>

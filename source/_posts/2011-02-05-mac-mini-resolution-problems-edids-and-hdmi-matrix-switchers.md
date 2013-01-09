@@ -62,5 +62,5 @@ Hopefully, someone might find this info useful.
  [4]: http://en.wikipedia.org/wiki/Extended_display_identification_data
  [5]: http://www.ichec.ie/about_us/david_delaharpegolden.php
  [6]: http://www.kanexlive.com/products/iAdapt51.html
- [7]: http://andyregan.net/blog/wp-content/uploads/2011/02/matrix_switcher.jpg
+ [7]: /images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/matrix_switcher.jpg 
  [8]: http://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2010_Mac_Mini_Ports.jpg/800px-2010_Mac_Mini_Ports.jpg
