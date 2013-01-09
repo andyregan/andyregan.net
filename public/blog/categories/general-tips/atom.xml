@@ -4,7 +4,7 @@
   <title><![CDATA[Category: General Tips | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/general-tips/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:49:57+00:00</updated>
+  <updated>2013-01-09T17:57:39+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Libvirt + KVM : Booting From An ISO Image]]></title>
+    <link href="http://andyregan.net/libvirt-kvm-booting-from-an-iso-image/"/>
+    <updated>2011-06-16T00:00:00+01:00</updated>
+    <id>http://andyregan.net/libvirt-kvm-booting-from-an-iso-image</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></p>
+
+<p>If you want to boot your domain from a CDROM (for example, if you wish to re-install the OS on the VM),
+you can edit its configuration so that it boots from an ISO image on the host.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>host:~# virsh edit name_of_domain
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Within the <strong>os</strong> section, add a <strong>cdrom</strong> device. Make sure that it is placed before other boot devices, such as disks.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;os&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;...
+</span><span class='line'>&amp;lt;boot <span class="nv">dev</span><span class="o">=</span><span class="s1">&#39;cdrom&#39;</span>/&amp;gt;
+</span><span class='line'>&amp;lt;boot <span class="nv">dev</span><span class="o">=</span><span class="s1">&#39;hd&#39;</span>/&amp;gt;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;&lt;/os&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Add an entry for a cdrom device (or edit an existing cdrom device) such that the <strong>type</strong> is <em>file</em> and the <strong>source</strong>
+is the path to the ISO image on the host.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;disk <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span> <span class="nv">device</span><span class="o">=</span><span class="s1">&#39;cdrom&#39;</span>&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;  &amp;lt;source <span class="nv">file</span><span class="o">=</span><span class="s1">&#39;/path/to/install_media.iso&#39;</span>/&amp;gt;
+</span><span class='line'>   ...
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;&lt;/disk&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Save your changes and then reboot the domain. It should have booted into the ISO image. You can then attach a console
+and continue the installation.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>host:~# virt-viewer name_of_domain
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Edit</h2>
+
+<p>I forgot (of course!) that you must undo the above changes after installation. Otherwise, it will continue to boot
+into the ISO and not your shiny new OS.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fixing Git Group Write Errors]]></title>
@@ -189,83 +256,6 @@ called <strong>TEST2</strong> and a mailbox called <strong>test</strong>.</p>
 
 <p>While the above example uses Mail.app, you'll also need to add a <code>/</code> to the end of
 Dovecot IMAP folder names in other clients such as Mozilla Thunderbird.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Renaming Many Files At Once with Pattern Matching in Bash]]></title>
-    <link href="http://andyregan.net/renaming-many-files-at-once-with-pattern-matching-in-bash/"/>
-    <updated>2010-11-25T00:00:00+00:00</updated>
-    <id>http://andyregan.net/renaming-many-files-at-once-with-pattern-matching-in-bash</id>
-    <content type="html"><![CDATA[<p>Sometimes you may need to rename many files at once in a similar way, such as removing a
-specific string from their name. Rather than manually rename the files, you can use a method
-described at <a href="http://snipplr.com/view/3648/batch-file-rename-with-awk-and-sed/">snipplr.com</a>. One of the advantages of this method is that you can preview
-the changes you will make simply by omitting the final pipe to <code>/bin/bash</code> .</p>
-
-<p>Let's say you have a bunch of files which contain patterns you would like to remove. In the
-following example, you might need to remove the string <strong>PatternOne.</strong> and <strong>PatternTwo.</strong>
-from each file's name.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls -1 /path/to/files/
-</span><span class='line'>PatternOne.001.PatternTwo.avi
-</span><span class='line'>PatternOne.002.PatternTwo.avi
-</span><span class='line'>PatternOne.003.PatternTwo.avi
-</span><span class='line'>PatternOne.004.PatternTwo.avi
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>The first step is to use <code>awk</code> to create a serious of <code>mv</code> statements.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span>
-</span><span class='line'>mv PatternOne.001.PatternTwo.avi PatternOne.001.PatternTwo.avi
-</span><span class='line'>mv PatternOne.002.PatternTwo.avi PatternOne.002.PatternTwo.avi
-</span><span class='line'>mv PatternOne.003.PatternTwo.avi PatternOne.003.PatternTwo.avi
-</span><span class='line'>mv PatternOne.004.PatternTwo.avi PatternOne.004.PatternTwo.avi
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Next, we pipe the <code>mv</code> statements to a <code>sed</code> command which removes <strong>PatternOne.</strong> from
-the <code>mv</code> statement's destination file.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>
-</span><span class='line'>mv PatternOne.001.PatternTwo.avi 001.PatternTwo.avi
-</span><span class='line'>mv PatternOne.002.PatternTwo.avi 002.PatternTwo.avi
-</span><span class='line'>mv PatternOne.003.PatternTwo.avi 003.PatternTwo.avi
-</span><span class='line'>mv PatternOne.004.PatternTwo.avi 004.PatternTwo.avi
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Add another <code>sed</code> statement to remove <strong>PatternTwo.</strong></p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>| sed <span class="s1">&#39;s/PatternTwo.//2&#39;</span>
-</span><span class='line'>mv PatternOne.001.PatternTwo.avi 001.avi
-</span><span class='line'>mv PatternOne.002.PatternTwo.avi 002.avi
-</span><span class='line'>mv PatternOne.003.PatternTwo.avi 003.avi
-</span><span class='line'>mv PatternOne.004.PatternTwo.avi 004.avi
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Finally, pipe the result to <code>/bin/sh</code> so that the <code>mv</code> statements are run.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>| sed <span class="s1">&#39;s/PatternTwo.//2&#39;</span> | /bin/sh
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

@@ -7,8 +7,7 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="About a week ago, I upgraded my MacBook Pro to OS X 10.6.4. Since then, I&#8217;ve had trouble with the internet
-connection only from my house and &hellip;">
+	<meta name="description" content="If you are generating GPG keys on a virtual machine, you may encounter the following error. Not enough random bytes available. Please do some other &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +94,77 @@ connection only from my house and &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/lack-of-entropy-on-virtual-machine/">
+		
+			Lack of Entropy on Virtual Machine</a>
+	</h2>
+	<div class="entry-content">
+		<p>If you are generating <a href="http://www.gnupg.org/">GPG keys</a> on a virtual machine, you may encounter the following error.</p>
+
+<p><code>Not enough random bytes available. Please do some other work to give the OS a chance to collect more entropy!</code></p>
+
+<p>Operating systems generate randomness based on hardware input. This randomness is collected for
+use in applications which require random data (such as cryptographic applications). However, a virtual OS
+does not have the same level of access to real hardware. As a result, the usual source of randomness
+expected by the operating system is not available. The measure of randomness currently available (entropy)
+can be viewed by running</p>
+
+<figure class='code'><figcaption><span>entropy in linux </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>cat /proc/sys/kernel/random/entropy_avail
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If the entropy pool drains, <strong>/dev/random</strong> will block until additional entropy is collected. One solution
+is to use <strong>/dev/urandom</strong> as a source. This will not block, but will produce lower quality randomness.
+You can use <strong>/dev/urandom</strong> by installing <a href="http://packages.debian.org/lenny/rng-tools">rng-tools</a> and adding the following to <strong>/etc/default/rng-tools</strong>.
+Save and then restart rng-tools.</p>
+
+<figure class='code'><figcaption><span>/etc/default/rng-tools </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">HRNGDEVICE</span><span class="o">=</span>/dev/urandom
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately, using <strong>/dev/urandom</strong> is not suitable for my security requirements. A better solution
+would be to use a hardware entropy generator as described in <a href="http://strugglers.net/~andy/blog/2010/06/06/adventures-in-entropy-part-1/">Andy Smith&#8217;s excellent post</a> .</p>
+
+<p>As a short-term work-around, I decided to generate keys on a physical host with a good quality source of
+randomness and then <a href="http://www.debuntu.org/how-to-import-export-gpg-key-pair">import</a> them on the remote host.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T00:00:00+01:00" pubdate data-updated="true">2010-07-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -833,103 +903,6 @@ included, but this should help narrow down the list of dirty scripts.</p>
 
 
 	<a class='category' href='/blog/categories/random/'>Random</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/recovering-files-from-an-unmountable-usb-key/">
-		
-			Recovering Files From an Unmountable USB Key</a>
-	</h2>
-	<div class="entry-content">
-		<p>The other night, myself and Rory managed to recover his friend&#8217;s thesis from a wonky USB thumb drive. We used <a href="http://www.cgsecurity.org/wiki/PhotoRec">PhotoRec</a> on Ubuntu Linux.
-PhotoRec comes with the TestDisk utility. You can install TestDisk via:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$apt</span>-get update
-</span><span class='line'><span class="nv">$apt</span>-get install testdisk
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The first thing we did was run <strong>dmesg</strong> in a terminal to get a bit of info on what was going on. We ran dmesg before and after we plugged
-in the drive and noted the relevant output. The device eventually settled and was given the device location sdb by the kernel, but no
-filesystem was found.
-The partition was likely corrupted somehow.</p>
-
-<p>TestDisk could be used to try to repair the partition on the disk, but it could also damage the data further. We decided to make an image to work with using <strong>dd</strong>:</p>
-
-<p><strong>Use dd with care! Consult the man page for more info.</strong></p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$sudo</span> dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">ou</span><span class="o">=</span>./disk_image
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This copied the contents of the usb key block-by-block to a file called &#8220;disk_image&#8221;. The was a 2G image (the total capacity) of the wonky drive.</p>
-
-<p>We then used <strong>photorec</strong> to try to recover any files from the image.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$photorec</span> ./disk_image
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Select the image to use.</p>
-
-<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png" title="Select the image to use" ></p>
-
-<p>Select the partition type.</p>
-
-<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png" title="Select the partition type" ></p>
-
-<p>Select the partition.</p>
-
-<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png" title="Select the partition" ></p>
-
-<p>Select the filesystem type.</p>
-
-<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png" title="Select the filesystem type" ></p>
-
-<p>Select where to save the recovered files.</p>
-
-<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png" title="Select where to save the recoverd files" ></p>
-
-<p>Watch the search in progress.</p>
-
-<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png" title="Search in progress" ></p>
-
-<p>Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-28T00:00:00+00:00" pubdate data-updated="true">2009-02-28</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>Linux</a>
 
 
 </div>

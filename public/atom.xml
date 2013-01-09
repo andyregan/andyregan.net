@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:49:57+00:00</updated>
+  <updated>2013-01-09T17:57:39+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Libvirt + KVM : Booting From An ISO Image]]></title>
+    <link href="http://andyregan.net/libvirt-kvm-booting-from-an-iso-image/"/>
+    <updated>2011-06-16T00:00:00+01:00</updated>
+    <id>http://andyregan.net/libvirt-kvm-booting-from-an-iso-image</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></p>
+
+<p>If you want to boot your domain from a CDROM (for example, if you wish to re-install the OS on the VM),
+you can edit its configuration so that it boots from an ISO image on the host.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>host:~# virsh edit name_of_domain
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Within the <strong>os</strong> section, add a <strong>cdrom</strong> device. Make sure that it is placed before other boot devices, such as disks.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;os&gt;
+</span><span class='line'>    ...
+</span><span class='line'>    &lt;boot <span class="nv">dev</span><span class="o">=</span><span class="s1">&#39;cdrom&#39;</span>/&gt;
+</span><span class='line'>    &lt;boot <span class="nv">dev</span><span class="o">=</span><span class="s1">&#39;hd&#39;</span>/&gt;
+</span><span class='line'>&lt;/os&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add an entry for a cdrom device (or edit an existing cdrom device) such that the <strong>type</strong> is <em>file</em> and the <strong>source</strong>
+is the path to the ISO image on the host.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;disk <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span> <span class="nv">device</span><span class="o">=</span><span class="s1">&#39;cdrom&#39;</span>&gt;
+</span><span class='line'>      &lt;<span class="nb">source </span><span class="nv">file</span><span class="o">=</span><span class="s1">&#39;/path/to/install_media.iso&#39;</span>/&gt;
+</span><span class='line'>       ...
+</span><span class='line'>&lt;/disk&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Save your changes and then reboot the domain. It should have booted into the ISO image. You can then attach a console
+and continue the installation.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>host:~# virt-viewer name_of_domain
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Edit</h2>
+
+<p>I forgot (of course!) that you must undo the above changes after installation. Otherwise, it will continue to boot
+into the ISO and not your shiny new OS.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fixing Git Group Write Errors]]></title>
@@ -1019,72 +1078,6 @@ included, but this should help narrow down the list of dirty scripts.</p>
 <p><a href="http://worldofgoo.com/dl2.php?lk=demo">World of Goo</a> is a very addictive game.</p>
 
 <p>Finally, congrats to Emma Conway for her win in the NUIG Student Union elections. Unfortunately, Pofla didn&#8217;t get in.  I hoarded as many whispa&#8217;s as I possibly could to prevent their dispersal to the general populace to no avail.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Recovering Files From an Unmountable USB Key]]></title>
-    <link href="http://andyregan.net/recovering-files-from-an-unmountable-usb-key/"/>
-    <updated>2009-02-28T00:00:00+00:00</updated>
-    <id>http://andyregan.net/recovering-files-from-an-unmountable-usb-key</id>
-    <content type="html"><![CDATA[<p>The other night, myself and Rory managed to recover his friend&#8217;s thesis from a wonky USB thumb drive. We used <a href="http://www.cgsecurity.org/wiki/PhotoRec">PhotoRec</a> on Ubuntu Linux.
-PhotoRec comes with the TestDisk utility. You can install TestDisk via:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$apt</span>-get update
-</span><span class='line'><span class="nv">$apt</span>-get install testdisk
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The first thing we did was run <strong>dmesg</strong> in a terminal to get a bit of info on what was going on. We ran dmesg before and after we plugged
-in the drive and noted the relevant output. The device eventually settled and was given the device location sdb by the kernel, but no
-filesystem was found.
-The partition was likely corrupted somehow.</p>
-
-<p>TestDisk could be used to try to repair the partition on the disk, but it could also damage the data further. We decided to make an image to work with using <strong>dd</strong>:</p>
-
-<p><strong>Use dd with care! Consult the man page for more info.</strong></p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$sudo</span> dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">ou</span><span class="o">=</span>./disk_image
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This copied the contents of the usb key block-by-block to a file called &#8220;disk_image&#8221;. The was a 2G image (the total capacity) of the wonky drive.</p>
-
-<p>We then used <strong>photorec</strong> to try to recover any files from the image.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$photorec</span> ./disk_image
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Select the image to use.</p>
-
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png" title="Select the image to use" ></p>
-
-<p>Select the partition type.</p>
-
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png" title="Select the partition type" ></p>
-
-<p>Select the partition.</p>
-
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png" title="Select the partition" ></p>
-
-<p>Select the filesystem type.</p>
-
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png" title="Select the filesystem type" ></p>
-
-<p>Select where to save the recovered files.</p>
-
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png" title="Select where to save the recoverd files" ></p>
-
-<p>Watch the search in progress.</p>
-
-<p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png" title="Search in progress" ></p>
-
-<p>Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.</p>
 ]]></content>
   </entry>
   

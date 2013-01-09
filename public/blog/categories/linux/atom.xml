@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:49:57+00:00</updated>
+  <updated>2013-01-09T17:57:39+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Libvirt + KVM : Booting From An ISO Image]]></title>
+    <link href="http://andyregan.net/libvirt-kvm-booting-from-an-iso-image/"/>
+    <updated>2011-06-16T00:00:00+01:00</updated>
+    <id>http://andyregan.net/libvirt-kvm-booting-from-an-iso-image</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></p>
+
+<p>If you want to boot your domain from a CDROM (for example, if you wish to re-install the OS on the VM),
+you can edit its configuration so that it boots from an ISO image on the host.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>host:~# virsh edit name_of_domain
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Within the <strong>os</strong> section, add a <strong>cdrom</strong> device. Make sure that it is placed before other boot devices, such as disks.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;os&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;...
+</span><span class='line'>&amp;lt;boot <span class="nv">dev</span><span class="o">=</span><span class="s1">&#39;cdrom&#39;</span>/&amp;gt;
+</span><span class='line'>&amp;lt;boot <span class="nv">dev</span><span class="o">=</span><span class="s1">&#39;hd&#39;</span>/&amp;gt;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;&lt;/os&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Add an entry for a cdrom device (or edit an existing cdrom device) such that the <strong>type</strong> is <em>file</em> and the <strong>source</strong>
+is the path to the ISO image on the host.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;disk <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span> <span class="nv">device</span><span class="o">=</span><span class="s1">&#39;cdrom&#39;</span>&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;  &amp;lt;source <span class="nv">file</span><span class="o">=</span><span class="s1">&#39;/path/to/install_media.iso&#39;</span>/&amp;gt;
+</span><span class='line'>   ...
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;&lt;/disk&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Save your changes and then reboot the domain. It should have booted into the ISO image. You can then attach a console
+and continue the installation.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>host:~# virt-viewer name_of_domain
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Edit</h2>
+
+<p>I forgot (of course!) that you must undo the above changes after installation. Otherwise, it will continue to boot
+into the ISO and not your shiny new OS.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fixing Git Group Write Errors]]></title>
@@ -223,44 +290,6 @@ trick should iptables be restarted.</p>
 
 <p>Simply, run <code>$virsh nwfilter-edit your-custom-template.xml</code> . Add a newline to the end of your XML
 and save. Virsh will re-create your defined rules.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Lack of Entropy on Virtual Machine]]></title>
-    <link href="http://andyregan.net/lack-of-entropy-on-virtual-machine/"/>
-    <updated>2010-07-27T00:00:00+01:00</updated>
-    <id>http://andyregan.net/lack-of-entropy-on-virtual-machine</id>
-    <content type="html"><![CDATA[<p>If you are generating <a href="http://www.gnupg.org/">GPG keys</a> on a virtual machine, you may encounter the following error.</p>
-
-<p><code>Not enough random bytes available. Please do some other work to give the OS a chance to collect more entropy!</code></p>
-
-<p>Operating systems generate randomness based on hardware input. This randomness is collected for
-use in applications which require random data (such as cryptographic applications). However, a virtual OS
-does not have the same level of access to real hardware. As a result, the usual source of randomness
-expected by the operating system is not available. The measure of randomness currently available (entropy)
-can be viewed by running</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>entropy in linux </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>cat /proc/sys/kernel/random/entropy_avail
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>If the entropy pool drains, <strong>/dev/random</strong> will block until additional entropy is collected. One solution
-is to use <strong>/dev/urandom</strong> as a source. This will not block, but will produce lower quality randomness.
-You can use <strong>/dev/urandom</strong> by installing <a href="http://packages.debian.org/lenny/rng-tools">rng-tools</a> and adding the following to <strong>/etc/default/rng-tools</strong>.
-Save and then restart rng-tools.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/etc/default/rng-tools </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">HRNGDEVICE</span><span class="o">=</span>/dev/urandom
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Unfortunately, using <strong>/dev/urandom</strong> is not suitable for my security requirements. A better solution
-would be to use a hardware entropy generator as described in <a href="http://strugglers.net/~andy/blog/2010/06/06/adventures-in-entropy-part-1/">Andy Smith's excellent post</a> .</p>
-
-<p>As a short-term work-around, I decided to generate keys on a physical host with a good quality source of
-randomness and then <a href="http://www.debuntu.org/how-to-import-export-gpg-key-pair">import</a> them on the remote host.</p>
 ]]></content>
   </entry>
   
