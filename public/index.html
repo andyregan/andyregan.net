@@ -7,7 +7,8 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="Thar be nasty scripts here! Came across a dirty (but interesting) website hack today. Essentially when a person googled their domain name they &hellip;">
+	<meta name="description" content="CakePHP is a useful MVC framework for PHP applications. However, there are a few common gotchas when setting up a new development
+environment. In &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +95,195 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/setting-up-a-new-cakephp-environment-in-ubuntu/">
+		
+			Setting Up a New CakePHP Environment in Ubuntu</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://cakephp.org"><img class="center" src="/images/posts/setting-up-a-new-cakephp-environment-in-ubuntu/cakephp_logo_250_trans-150x150.png" width="150" title="CakePHP Logo" alt="CakePHP Logo"></a></p>
+
+<p><a href="http://cakephp.org">CakePHP</a> is a useful <a href="http://hubpages.com/hub/MVC">MVC</a> framework for PHP applications. However, there are a few common gotchas when setting up a new development
+environment. In this post, I will go through how to get around these issues when setting up a new environment on a <a href="http://en.wikipedia.org/wiki/LAMP_%28software_bundle%29">LAMP</a> (Linux Apache
+MySQL PHP) server, in this case server running an <a href="http://www.ubuntu.com">Ubuntu</a> OS. Please leave a comment if you have any feedback or
+can recommend any improvements on the suggestions here.</p>
+
+<h2>Grab a Copy and Get Started</h2>
+
+<p>The first thing you&#8217;ll need to do is <a href="http://compsoc.nuigalway.ie/wiki/how_to:apache">get a local LAMP server up and running</a>. Then, grab
+a fresh copy of CakePHP from <a href="http://cakephp.org">cakephp.org</a>. This site also has some useful resources if you&#8217;d like to learn more about the framework.</p>
+
+<figure class='code'><figcaption><span>Grab the source </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget http://download.github.com/cakephp-cakephp1x-ef18ab2.tar.gz
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once you have downloaded the tarball, extract it and then rename the new directory to something more useful. This is the root directory of
+the application.</p>
+
+<figure class='code'><figcaption><span>Extract the source </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>tar -xvvzf cakephp-cakephp1x-ef18ab2.tar.gz
+</span><span class='line'><span class="nv">$ </span>mv cakephp-cakephp1x-ef18ab2/ cake_project/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Make Tmp/ Writable</h2>
+
+<p>Next, you need to make sure that the <strong>tmp/</strong> directory is writeable. To avoid using insecure 777 permissions, I recommend installing <a href="http://www.suphp.org/Home.html">suPHP</a>.
+SuPHP allows PHP scripts to be run as their owner rather than as the default Apache user (<strong>www-data</strong>). As a result, you can use more secure
+file and directory permissions while still allowing the <strong>tmp/</strong> directory to be writeable by the application. Generally, 755 permissions
+are sufficiently secure for directories and 644 for files.</p>
+
+<p>Install the correct packages, enable <strong>suphp</strong> and disable the <strong>php5</strong> module.</p>
+
+<figure class='code'><figcaption><span>Prepare the Environment </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo apt-get install libapache2-mod-suphp suphp-common
+</span><span class='line'><span class="nv">$ </span>sudo a2enmod suphp;sudo a2dismod php5;sudo /etc/init.d/apache2 restart
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Add A Dash of Salt</h2>
+
+<p>With that out of the way, now you need to change the default salt value for the application. CakePHP needs a random string (&#8220;salt&#8221;) which is
+used to generate secure hashes. I find the <a href="http://linux.die.net/man/1/pwgen">pwgen</a> utility in Linux very useful for quickly generating a random string.</p>
+
+<p>Open up <strong>app/config/core.php</strong>. Then, replace the <strong>random_string</strong> value below with the output of the <strong>pwgen</strong> command .</p>
+
+<figure class='code'><figcaption><span>app/config/core.php </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">Configure::write(&#39;Security.salt&#39;, &#39;random_string&#39;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Prepare the Environment </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pwgen -y 100
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Point Your Domain at the Cake Directory</h2>
+
+<p>You can use Apache&#8217;s <a href="http://httpd.apache.org/docs/2.1/mod/mod_userdir.html">userdir</a> module to test your application. This will allow you to go to <strong>http://yourdomain.com/~username&#8221;</strong> in your
+browser where <strong>/home/username/public_html</strong> is the document root. However, this often conflicts with the Apache <a href="http://httpd.apache.org/docs/1.3/mod/mod_rewrite.html">rewrite</a> module which
+is necessary for &#8220;friendly&#8221; URLs.</p>
+
+<p>To get around this conflict on a local development environment, I recommend pointing your domain at the application&#8217;s root directory. In
+this way, when you go to the domain in your browser it will show you the newly installed CakePHP application.</p>
+
+<p>First, add a rule to your computer&#8217;s <strong>/etc/hosts</strong> file so that the domain points to <a href="http://en.wikipedia.org/wiki/Localhost">localhost</a>.</p>
+
+<figure class='code'><figcaption><span>/etc/hosts </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>127.0.0.1       caketest.com www.caketest.com
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, add and enable a <a href="http://httpd.apache.org/docs/1.3/vhosts/">vhost</a> for the domain you are working on.</p>
+
+<figure class='code'><figcaption><span>Edit the vhost </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo vim /etc/apache2/sites-available/caketest.com
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>/etc/apache2/sites-available/caketest.com </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;VirtualHost *:80 &gt;
+</span><span class='line'><span class="c">#Basic setup  </span>
+</span><span class='line'>ServerAdmin webmaster@mydomain.com
+</span><span class='line'>ServerName caketest.com
+</span><span class='line'>ServerAlias www.caketest.com
+</span><span class='line'>DocumentRoot /home/andrew/public_html/cake
+</span><span class='line'>
+</span><span class='line'>ErrorLog /home/andrew/public_html/cake/error_log/error.log
+</span><span class='line'>
+</span><span class='line'>&lt;Directory /home/andrew/public_html/cake&gt;
+</span><span class='line'>Order Deny,Allow
+</span><span class='line'>Allow from all
+</span><span class='line'><span class="c"># Don&#39;t show indexes for directories  </span>
+</span><span class='line'>Options -Indexes
+</span><span class='line'>&lt;/Directory&gt;
+</span><span class='line'>&lt;/VirtualHost&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>restart apache </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo a2ensite caketest.com;/etc/init.d/apache2 restart
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Why is Everything Black and White?</h2>
+
+<p>If the new Cake installation displays without any CSS markup, make sure that the Apache rewrite module is enabled. After that, your done.</p>
+
+<figure class='code'><figcaption><span>Enable the rewrite module </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo a2enmod rewrite;/etc/init.d/apache2 restart
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At this point, you might want to check out the <a href="http://book.cakephp.org/">CakePHP documentation</a> which will give you more information on what to do from here.
+You should also check out this article on <a href="http://www.tiplite.com/cakephp-support-in-netbeans/">using Netbeans as your developemnt IDE for CakePHP projects</a>.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-16T00:00:00+00:00" pubdate data-updated="true">2010-02-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/web-development/'>Web Development</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -711,88 +901,6 @@ Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubun
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/show-your-gtalk-presence-on-wordpress/">
-		
-			Show Your Gtalk Presence on WordPress</a>
-	</h2>
-	<div class="entry-content">
-		<p>I couldn&#8217;t find a plugin that showed my presence in a way that I liked so I threw together the following php script. It&#8217;s influenced by the <a href="http://www.awflasher.com/blog/" title="Visit plugin homepage">Gtalk (Status) to WordPress (G2W)</a> plugin by Aw Guo. It includes <a href="http://simplehtmldom.sourceforge.net/" title="simplehtmldom">simplehtmldom</a>, a very easy to use HTML DOM parser.</p>
-
-<p>The first step is to get a <a href="http://www.google.com/talk/service/badge/New">Gtalk Chatback Badge</a>. Edit the badge, making sure &#8220;Show your status message&#8221; is ticked. Copy the hashcode in the url of your badge. It&#8217;s the string after after <code>?tk</code>. Replace <code>HASHCODE</code> in the following code with your hashcode.</p>
-
-<figure class='code'><figcaption><span>gtalkStatus.php </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">include</span> <span class="s1">&#39;./simplehtmldom/simple_html_dom.php&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="c1">// Create DOM from URL or file&amp;lt;br /&gt;</span>
-</span><span class='line'><span class="nv">$html</span> <span class="o">=</span> <span class="nx">file_get_html</span><span class="p">(</span><span class="s1">&#39;http://www.google.com/talk/service/badge/Show?tk=HASHCODE&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;img#b&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">){</span>
-</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;&lt;img src=&quot;http://google.com/&#39;</span><span class="o">.</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">src</span> <span class="o">.</span> <span class="s1">&#39;&quot;/&gt;&#39;</span>
-</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">=</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">alt</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">preg_replace</span><span class="p">(</span><span class="s2">&quot;/[^a-zA-Z0-9s t]/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;div.r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">plaintext</span><span class="p">)</span> <span class="p">;</span>
-</span><span class='line'><span class="c1">//print_r($status);</span>
-</span><span class='line'><span class="k">echo</span> <span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">];</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://andyregan.net/gtalk_status/gtalkStatus.php" title="Andy's Gtalk status">Check it out in action</a>.</p>
-
-<p>Add the following to the page where you want to show your status.</p>
-
-<figure class='code'><figcaption><span>wordpress script </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">&#39;url/to/php/script&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-23T00:00:00+00:00" pubdate data-updated="true">2009-02-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/web-development/'>Web Development</a>
 
 
 </div>

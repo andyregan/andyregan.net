@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Development | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/web-development/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T15:15:43+00:00</updated>
+  <updated>2013-01-09T15:58:53+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,156 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setting Up A New CakePHP Environment in Ubuntu]]></title>
+    <link href="http://andyregan.net/setting-up-a-new-cakephp-environment-in-ubuntu/"/>
+    <updated>2010-02-16T00:00:00+00:00</updated>
+    <id>http://andyregan.net/setting-up-a-new-cakephp-environment-in-ubuntu</id>
+    <content type="html"><![CDATA[<p><a href="http://cakephp.org"><img class="center" src="/images/posts/setting-up-a-new-cakephp-environment-in-ubuntu/cakephp_logo_250_trans-150x150.png" width="150" title="CakePHP Logo" alt="CakePHP Logo"></a></p>
+
+<p><a href="http://cakephp.org">CakePHP</a> is a useful <a href="http://hubpages.com/hub/MVC">MVC</a> framework for PHP applications. However, there are a few common gotchas when setting up a new development
+environment. In this post, I will go through how to get around these issues when setting up a new environment on a <a href="http://en.wikipedia.org/wiki/LAMP_%28software_bundle%29">LAMP</a> (Linux Apache
+MySQL PHP) server, in this case server running an <a href="http://www.ubuntu.com">Ubuntu</a> OS. Please leave a comment if you have any feedback or
+can recommend any improvements on the suggestions here.</p>
+
+<h2>Grab a Copy and Get Started</h2>
+
+<p>The first thing you'll need to do is <a href="http://compsoc.nuigalway.ie/wiki/how_to:apache">get a local LAMP server up and running</a>. Then, grab
+a fresh copy of CakePHP from <a href="http://cakephp.org">cakephp.org</a>. This site also has some useful resources if you'd like to learn more about the framework.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Grab the source </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget http://download.github.com/cakephp-cakephp1x-ef18ab2.tar.gz
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Once you have downloaded the tarball, extract it and then rename the new directory to something more useful. This is the root directory of
+the application.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Extract the source </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>tar -xvvzf cakephp-cakephp1x-ef18ab2.tar.gz&lt;br/&gt;
+</span><span class='line'><span class="nv">$ </span>mv cakephp-cakephp1x-ef18ab2/ cake_project/
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Make Tmp/ Writable</h2>
+
+<p>Next, you need to make sure that the <strong>tmp/</strong> directory is writeable. To avoid using insecure 777 permissions, I recommend installing <a href="http://www.suphp.org/Home.html">suPHP</a>.
+SuPHP allows PHP scripts to be run as their owner rather than as the default Apache user (<strong>www-data</strong>). As a result, you can use more secure
+file and directory permissions while still allowing the <strong>tmp/</strong> directory to be writeable by the application. Generally, 755 permissions
+are sufficiently secure for directories and 644 for files.</p>
+
+<p>Install the correct packages, enable <strong>suphp</strong> and disable the <strong>php5</strong> module.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Prepare the Environment </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo apt-get install libapache2-mod-suphp suphp-common
+</span><span class='line'><span class="nv">$ </span>sudo a2enmod suphp;sudo a2dismod php5;sudo /etc/init.d/apache2 restart
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Add A Dash of Salt</h2>
+
+<p>With that out of the way, now you need to change the default salt value for the application. CakePHP needs a random string ("salt") which is
+used to generate secure hashes. I find the <a href="http://linux.die.net/man/1/pwgen">pwgen</a> utility in Linux very useful for quickly generating a random string.</p>
+
+<p>Open up <strong>app/config/core.php</strong>. Then, replace the <strong>random_string</strong> value below with the output of the <strong>pwgen</strong> command .</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/config/core.php </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">Configure::write(&#39;Security.salt&#39;, &#39;random_string&#39;);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Prepare the Environment </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pwgen -y 100
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Point Your Domain at the Cake Directory</h2>
+
+<p>You can use Apache's <a href="http://httpd.apache.org/docs/2.1/mod/mod_userdir.html">userdir</a> module to test your application. This will allow you to go to <strong>http://yourdomain.com/~username"</strong> in your
+browser where <strong>/home/username/public_html</strong> is the document root. However, this often conflicts with the Apache <a href="http://httpd.apache.org/docs/1.3/mod/mod_rewrite.html">rewrite</a> module which
+is necessary for "friendly" URLs.</p>
+
+<p>To get around this conflict on a local development environment, I recommend pointing your domain at the application's root directory. In
+this way, when you go to the domain in your browser it will show you the newly installed CakePHP application.</p>
+
+<p>First, add a rule to your computer's <strong>/etc/hosts</strong> file so that the domain points to <a href="http://en.wikipedia.org/wiki/Localhost">localhost</a>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/etc/hosts </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>127.0.0.1       caketest.com www.caketest.com
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Then, add and enable a <a href="http://httpd.apache.org/docs/1.3/vhosts/">vhost</a> for the domain you are working on.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Edit the vhost </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo vim /etc/apache2/sites-available/caketest.com
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/etc/apache2/sites-available/caketest.com </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;VirtualHost *:80 &gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Basic setup&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;ServerAdmin webmaster@mydomain.com&lt;br/&gt;
+</span><span class='line'>ServerName caketest.com&lt;br/&gt;
+</span><span class='line'>ServerAlias www.caketest.com&lt;br/&gt;
+</span><span class='line'>DocumentRoot /home/andrew/public_html/cake&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;ErrorLog /home/andrew/public_html/cake/error_log/error.log&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;&lt;Directory /home/andrew/public_html/cake&gt;&lt;br/&gt;
+</span><span class='line'>Order Deny,Allow&lt;br/&gt;
+</span><span class='line'>Allow from all&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Don<span class="err">&#39;</span>t show indexes <span class="k">for </span>directories&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Options -Indexes&lt;br/&gt;
+</span><span class='line'>&lt;/Directory&gt;&lt;br/&gt;
+</span><span class='line'>&lt;/VirtualHost&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>restart apache </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo a2ensite caketest.com;/etc/init.d/apache2 restart
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Why is Everything Black and White?</h2>
+
+<p>If the new Cake installation displays without any CSS markup, make sure that the Apache rewrite module is enabled. After that, your done.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Enable the rewrite module </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo a2enmod rewrite;/etc/init.d/apache2 restart
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>At this point, you might want to check out the <a href="http://book.cakephp.org/">CakePHP documentation</a> which will give you more information on what to do from here.
+You should also check out this article on <a href="http://www.tiplite.com/cakephp-support-in-netbeans/">using Netbeans as your developemnt IDE for CakePHP projects</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Nasty Site Hack Leads to Phony Google Links]]></title>
