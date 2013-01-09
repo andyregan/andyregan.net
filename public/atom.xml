@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T15:58:53+00:00</updated>
+  <updated>2013-01-09T16:10:57+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Quickly Reset Linux File and Directory Permissions]]></title>
+    <link href="http://andyregan.net/quickly-reset-linux-file-and-directory-permissions/"/>
+    <updated>2010-02-25T00:00:00+00:00</updated>
+    <id>http://andyregan.net/quickly-reset-linux-file-and-directory-permissions</id>
+    <content type="html"><![CDATA[<h2>Reset File Permissions</h2>
+
+<p>Just a quick post so I can keep these commands handy (since I keep forgetting them). These will allow you to quickly set
+different <a href="http://www.linuxquestions.org/linux/answers/Security/Quick_and_Dirty_Guide_to_Linux_File_Permissions">permissions</a> for all files (or all folders) within a specific directory in Linux.</p>
+
+<figure class='code'><figcaption><span>reset files </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -type f -exec chmod 644 <span class="o">{}</span> <span class="se">\;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Reset Directory Permissions</h2>
+
+<figure class='code'><figcaption><span>reset directories </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -type d -exec chmod 755 <span class="o">{}</span> <span class="se">\;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Reset Permissions on 777 PHP Files Only</h2>
+
+<figure class='code'><figcaption><span>reset 777 php files </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -name <span class="se">\*</span>.php -perm 777 -type f -exec chmod 644 <span class="o">{}</span> <span class="se">\;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting Up A New CakePHP Environment in Ubuntu]]></title>
