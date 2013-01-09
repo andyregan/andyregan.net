@@ -7,7 +7,8 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="As David came across this morning, some Debian packages try to execute scripts in /tmp during upgrade. Often /tmp is mounted noexec for security and &hellip;">
+	<meta name="description" content="As David came across this morning, some Debian packages try to execute scripts in /tmp
+during upgrade. Often /tmp is mounted noexec for security and &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -52,6 +53,8 @@
 	<div class="social">
 		
 		
+		<a class="google" href="https://plus.google.com/113310779327489253368?rel=author" title="Google+">Google+</a>
+		
 		
 		<a class="twitter" href="http://twitter.com/andyregan" title="Twitter">Twitter</a>
 		
@@ -86,28 +89,36 @@
 <script src="/javascripts/twitter.js"></script>
 <script type="text/javascript">
 	(function($){
-		$('#banner').getTwitterFeed('andyregan', 4, false);
+		$('#banner').getTwitterFeed('andyregan', 1, false);
 	})(jQuery);
 </script>
 
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Allowing Debian Packages to Execute Scripts When Upgrading</h2>
-	<div class="entry-content"><p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <em>/tmp</em> during upgrade. Often <em>/tmp</em> is mounted <strong>noexec</strong> for security and this can cause upgrades to fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p>
+	<div class="entry-content"><p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <strong>/tmp</strong>
+during upgrade. Often <strong>/tmp</strong> is mounted <strong>noexec</strong> for security and this can cause upgrades to
+fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p>
 
-<p>To complete the upgrades you can temporarily mount <em>/tmp</em> with <strong>exec</strong>, upgrade your packages and then remount as per the <strong>noexec</strong> flag in your <em>/etc/fstab</em>.</p>
+<p>To complete the upgrades you can temporarily mount <strong>/tmp</strong> with <strong>exec</strong>, upgrade your packages
+and then remount as per the <strong>noexec</strong> flag in your <strong>/etc/fstab</strong>.</p>
 
-<pre class="brush: bash; gutter: true; title: ; notranslate" title="">$mount -o remount,exec /tmp
-$aptitude safe-upgrade
-$mount -o remount /tmp
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mount -o remount,exec /tmp
+</span><span class='line'><span class="nv">$ </span>aptitude safe-upgrade
+</span><span class='line'><span class="nv">$ </span>mount -o remount /tmp
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You can also <a href="http://wiki.mediatemple.net/w/%28ve%29:Configure_apt">change the default tmp directory that apt uses</a>.</p>
 
-<pre class="brush: bash; gutter: true; title: ; notranslate" title="">$echo "APT::ExtractTemplates::TempDir \"/var/local/tmp\";" &gt;&gt; /etc/apt/apt.conf.d/50extracttemplates
-$mkdir /var/local/tmp/
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;APT::ExtractTemplates::TempDir \&quot;/var/local/tmp\&quot;;&quot;</span> &gt;&gt; /etc/apt/apt.conf.d/50extracttemplates
+</span><span class='line'><span class="nv">$ </span>mkdir /var/local/tmp/
+</span></code></pre></td></tr></table></div></figure>
 
 
 

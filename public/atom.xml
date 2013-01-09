@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:17:19+00:00</updated>
+  <updated>2013-01-09T17:39:33+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -14,25 +14,126 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Requesting GPUs At Job Submission With Torque]]></title>
+    <link href="http://andyregan.net/requesting-gpus-at-job-submission-with-torque/"/>
+    <updated>2011-05-09T00:00:00+01:00</updated>
+    <id>http://andyregan.net/requesting-gpus-at-job-submission-with-torque</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://andyregan.net/blog/wp-content/uploads/2011/05/gpu_torque.jpg" title="A picture of a GPU card" alt="A picture of a GPU card"></p>
+
+<p>According to the <a href="http://www.adaptivecomputing.com/resources/docs/torque/3.7schedulinggpus.php">Torque Documentation</a>, <strong>&#8220;in TORQUE 2.5.4 and later, users can request GPUs on a node at job submission&#8221;</strong>. This
+post describes how to configure Torque for this functionality, allowing GPU resources to be scheduled among multiple users.</p>
+
+<p>In a future post, I will also describe one approach that could be used to manage mutually exclusive CUDA access to NVIDIA GPUs on a
+multi-GPU compute node.</p>
+
+<p>The examples that follow involve a single workstation with 2 NVIDIA GPU devices.</p>
+
+<h2>Informing Torque Where the GPUs Are</h2>
+
+<p>In order for Torque to know which nodes have GPUs, you must update the <a href="http://www.adaptivecomputing.com/resources/docs/torque/1.5nodeconfig.php">nodes</a> file. In the following example, I have specified
+that <strong>node1</strong> has 12 CPU cores and 2 GPU devices.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@service-node:~# cat /var/spool/torque/server_priv/nodes
+</span><span class='line'>node1 <span class="nv">np</span><span class="o">=</span>12 <span class="nv">gpus</span><span class="o">=</span>2
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After saving the changes, you must restart <strong>pbs_server</strong> for the change to take affect.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@service-node:~# /etc/init.d/pbs_server restart
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Looking at the <strong>pbsnodes</strong> output, we can see that Torque is now aware that there should be 2 GPU devices on <strong>node1</strong>.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~# pbsnodes -a
+</span><span class='line'>node1
+</span><span class='line'>     <span class="nv">np</span> <span class="o">=</span> 12
+</span><span class='line'>     <span class="nv">gpus</span> <span class="o">=</span> 2
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Requesting GPUs at job submission</h2>
+
+<p>When submitting a job, a user can request GPU devices similar to how they request CPU cores. In the following example,
+I&#8217;m requesting an <a href="http://www.clusterresources.com/torquedocs21/users/2.2files.shtml#interactive">interactive job</a> with 1 node , 1 processor per node and 2 GPUs per node.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~<span class="nv">$ </span>qsub -I -l <span class="nv">nodes</span><span class="o">=</span>1:ppn<span class="o">=</span>1:gpus<span class="o">=</span>2
+</span><span class='line'>qsub: waiting <span class="k">for </span>job &lt;job id&gt; to start
+</span><span class='line'>qsub: job &lt;job id&gt; ready
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When the job starts, Torque populates a file whose path is specified by the environment variable <code>$PBS_GPUFILE</code>. Each
+allocated GPU appears on a separate line within this file.</p>
+
+<p>As you can see, the contents of <code>$PBS_GPUFILE</code> show that the job has been allocated GPU index 0 and 1 (the first and
+second GPU) on node1 to execute on.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~<span class="nv">$ </span>env | grep PBS_GPUFILE
+</span><span class='line'><span class="nv">PBS_GPUFILE</span><span class="o">=</span>/var/spool/torque/aux/JOB_IDgpu
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~<span class="nv">$ </span>cat /var/spool/torque/aux/JOB_IDgpu
+</span><span class='line'>node1-gpu0
+</span><span class='line'>node1-gpu1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Restricting the GPUs available to CUDA to Those Allocated</h2>
+
+<p>As specified in Torque&#8217;s documentation, <strong>&#8220;it is left up to the job&#8217;s owner to make sure that the job executes properly on the GPU&#8221;</strong>.</p>
+
+<p>In my next post, I will describe how you can take advantage of the $CUDA_VISIBLE_DEVICES environment variable (available since CUDA 3.1) to restrict the GPUs available to CUDA to those allocated by Torque.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Allowing Debian Packages To Execute Scripts When Upgrading]]></title>
     <link href="http://andyregan.net/allowing-debian-packages-to-execute-scripts-when-upgrading/"/>
     <updated>2011-02-07T00:00:00+00:00</updated>
     <id>http://andyregan.net/allowing-debian-packages-to-execute-scripts-when-upgrading</id>
-    <content type="html"><![CDATA[<p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <em>/tmp</em> during upgrade. Often <em>/tmp</em> is mounted <strong>noexec</strong> for security and this can cause upgrades to fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p>
+    <content type="html"><![CDATA[<p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <strong>/tmp</strong>
+during upgrade. Often <strong>/tmp</strong> is mounted <strong>noexec</strong> for security and this can cause upgrades to
+fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p>
 
-<p>To complete the upgrades you can temporarily mount <em>/tmp</em> with <strong>exec</strong>, upgrade your packages and then remount as per the <strong>noexec</strong> flag in your <em>/etc/fstab</em>.</p>
+<p>To complete the upgrades you can temporarily mount <strong>/tmp</strong> with <strong>exec</strong>, upgrade your packages
+and then remount as per the <strong>noexec</strong> flag in your <strong>/etc/fstab</strong>.</p>
 
-<pre class="brush: bash; gutter: true; title: ; notranslate" title="">$mount -o remount,exec /tmp
-$aptitude safe-upgrade
-$mount -o remount /tmp
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mount -o remount,exec /tmp
+</span><span class='line'><span class="nv">$ </span>aptitude safe-upgrade
+</span><span class='line'><span class="nv">$ </span>mount -o remount /tmp
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You can also <a href="http://wiki.mediatemple.net/w/%28ve%29:Configure_apt">change the default tmp directory that apt uses</a>.</p>
 
-<pre class="brush: bash; gutter: true; title: ; notranslate" title="">$echo "APT::ExtractTemplates::TempDir \"/var/local/tmp\";" &gt;&gt; /etc/apt/apt.conf.d/50extracttemplates
-$mkdir /var/local/tmp/
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;APT::ExtractTemplates::TempDir \&quot;/var/local/tmp\&quot;;&quot;</span> &gt;&gt; /etc/apt/apt.conf.d/50extracttemplates
+</span><span class='line'><span class="nv">$ </span>mkdir /var/local/tmp/
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -959,57 +1060,6 @@ Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubun
 <p>From there, you can specify your proxy host and port and successfully install <a href="http://subclipse.tigris.org/">Subclipse</a>.</p>
 
 <p>Subclipse is a Subversion plugin for eclipse. Thanks to Nathan for helping me find the settings!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Show Your Gtalk Presence on WordPress]]></title>
-    <link href="http://andyregan.net/show-your-gtalk-presence-on-wordpress/"/>
-    <updated>2009-02-23T00:00:00+00:00</updated>
-    <id>http://andyregan.net/show-your-gtalk-presense-on-wordpress</id>
-    <content type="html"><![CDATA[<p>I couldn&#8217;t find a plugin that showed my presence in a way that I liked so I threw together the following php script. It&#8217;s influenced by the <a href="http://www.awflasher.com/blog/" title="Visit plugin homepage">Gtalk (Status) to WordPress (G2W)</a> plugin by Aw Guo. It includes <a href="http://simplehtmldom.sourceforge.net/" title="simplehtmldom">simplehtmldom</a>, a very easy to use HTML DOM parser.</p>
-
-<p>The first step is to get a <a href="http://www.google.com/talk/service/badge/New">Gtalk Chatback Badge</a>. Edit the badge, making sure &#8220;Show your status message&#8221; is ticked. Copy the hashcode in the url of your badge. It&#8217;s the string after after <code>?tk</code>. Replace <code>HASHCODE</code> in the following code with your hashcode.</p>
-
-<figure class='code'><figcaption><span>gtalkStatus.php </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">include</span> <span class="s1">&#39;./simplehtmldom/simple_html_dom.php&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="c1">// Create DOM from URL or file&amp;lt;br /&gt;</span>
-</span><span class='line'><span class="nv">$html</span> <span class="o">=</span> <span class="nx">file_get_html</span><span class="p">(</span><span class="s1">&#39;http://www.google.com/talk/service/badge/Show?tk=HASHCODE&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;img#b&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">){</span>
-</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;&lt;img src=&quot;http://google.com/&#39;</span><span class="o">.</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">src</span> <span class="o">.</span> <span class="s1">&#39;&quot;/&gt;&#39;</span>
-</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">=</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">alt</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">preg_replace</span><span class="p">(</span><span class="s2">&quot;/[^a-zA-Z0-9s t]/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;div.r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">plaintext</span><span class="p">)</span> <span class="p">;</span>
-</span><span class='line'><span class="c1">//print_r($status);</span>
-</span><span class='line'><span class="k">echo</span> <span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">];</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://andyregan.net/gtalk_status/gtalkStatus.php" title="Andy's Gtalk status">Check it out in action</a>.</p>
-
-<p>Add the following to the page where you want to show your status.</p>
-
-<figure class='code'><figcaption><span>wordpress script </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">&#39;url/to/php/script&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
 ]]></content>
   </entry>
   

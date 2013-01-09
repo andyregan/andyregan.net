@@ -7,7 +7,7 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="Thanks for visiting! The main purpose of this blog (right now) is as an archive for useful technical bits and pieces I&#8217;ve come across and don &hellip;">
+	<meta name="description" content="I couldn&#8217;t find a plugin that showed my presence in a way that I liked so I threw together the following php script. It&#8217;s influenced by &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -52,6 +52,8 @@
 	<div class="social">
 		
 		
+		<a class="google" href="https://plus.google.com/113310779327489253368?rel=author" title="Google+">Google+</a>
+		
 		
 		<a class="twitter" href="http://twitter.com/andyregan" title="Twitter">Twitter</a>
 		
@@ -86,12 +88,94 @@
 <script src="/javascripts/twitter.js"></script>
 <script type="text/javascript">
 	(function($){
-		$('#banner').getTwitterFeed('andyregan', 4, false);
+		$('#banner').getTwitterFeed('andyregan', 1, false);
 	})(jQuery);
 </script>
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/show-your-gtalk-presence-on-wordpress/">
+		
+			Show Your Gtalk Presence on WordPress</a>
+	</h2>
+	<div class="entry-content">
+		<p>I couldn&#8217;t find a plugin that showed my presence in a way that I liked so I threw together the following php script. It&#8217;s influenced by the <a href="http://www.awflasher.com/blog/" title="Visit plugin homepage">Gtalk (Status) to WordPress (G2W)</a> plugin by Aw Guo. It includes <a href="http://simplehtmldom.sourceforge.net/" title="simplehtmldom">simplehtmldom</a>, a very easy to use HTML DOM parser.</p>
+
+<p>The first step is to get a <a href="http://www.google.com/talk/service/badge/New">Gtalk Chatback Badge</a>. Edit the badge, making sure &#8220;Show your status message&#8221; is ticked. Copy the hashcode in the url of your badge. It&#8217;s the string after after <code>?tk</code>. Replace <code>HASHCODE</code> in the following code with your hashcode.</p>
+
+<figure class='code'><figcaption><span>gtalkStatus.php </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">include</span> <span class="s1">&#39;./simplehtmldom/simple_html_dom.php&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// Create DOM from URL or file&amp;lt;br /&gt;</span>
+</span><span class='line'><span class="nv">$html</span> <span class="o">=</span> <span class="nx">file_get_html</span><span class="p">(</span><span class="s1">&#39;http://www.google.com/talk/service/badge/Show?tk=HASHCODE&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;img#b&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">){</span>
+</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;&lt;img src=&quot;http://google.com/&#39;</span><span class="o">.</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">src</span> <span class="o">.</span> <span class="s1">&#39;&quot;/&gt;&#39;</span>
+</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">=</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">alt</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">preg_replace</span><span class="p">(</span><span class="s2">&quot;/[^a-zA-Z0-9s t]/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;div.r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">plaintext</span><span class="p">)</span> <span class="p">;</span>
+</span><span class='line'><span class="c1">//print_r($status);</span>
+</span><span class='line'><span class="k">echo</span> <span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="nv">$status</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">];</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://andyregan.net/gtalk_status/gtalkStatus.php" title="Andy's Gtalk status">Check it out in action</a>.</p>
+
+<p>Add the following to the page where you want to show your status.</p>
+
+<figure class='code'><figcaption><span>wordpress script </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">&#39;url/to/php/script&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-23T00:00:00+00:00" pubdate data-updated="true">2009-02-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/web-development/'>Web Development</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:20:10+00:00</updated>
+  <updated>2013-01-09T17:39:33+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -25,18 +25,21 @@ fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p
 <p>To complete the upgrades you can temporarily mount <strong>/tmp</strong> with <strong>exec</strong>, upgrade your packages
 and then remount as per the <strong>noexec</strong> flag in your <strong>/etc/fstab</strong>.</p>
 
-<p>{% codeblock lang:bash %}
-$ mount -o remount,exec /tmp
-$ aptitude safe-upgrade
-$ mount -o remount /tmp
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mount -o remount,exec /tmp
+</span><span class='line'><span class="nv">$ </span>aptitude safe-upgrade
+</span><span class='line'><span class="nv">$ </span>mount -o remount /tmp
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>You can also <a href="http://wiki.mediatemple.net/w/%28ve%29:Configure_apt">change the default tmp directory that apt uses</a>.</p>
 
-<p>{% codeblock lang:bash %}
-$ echo "APT::ExtractTemplates::TempDir \"/var/local/tmp\";" >> /etc/apt/apt.conf.d/50extracttemplates
-$ mkdir /var/local/tmp/
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;APT::ExtractTemplates::TempDir \&quot;/var/local/tmp\&quot;;&quot;</span> &gt;&gt; /etc/apt/apt.conf.d/50extracttemplates
+</span><span class='line'><span class="nv">$ </span>mkdir /var/local/tmp/
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
@@ -69,41 +72,43 @@ similar) is installed on both the client and server. (That's a lot of assumption
 SHH tunnel. Run the following command in a terminal on host-a where <strong>username</strong> is a valid
 username on host-b.</p>
 
-<p>{% codeblock lang:bash %}
-$ ssh -fN -R 3022:localhost:22 username@host-b
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ssh -fN -R 3022:localhost:22 username@host-b
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>This will prompt you to enter your account password on host-b and will open a new reverse
 tunnel in the background. You can confirm that the tunnel is active using the ps command.</p>
 
-<p>{% codeblock lang:bash %}
-[host-a]$ ps aux | grep 3022:
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>host-a<span class="o">]</span><span class="nv">$ </span>ps aux | grep 3022:
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h3>On Host-B</h3>
 
 <p>Next, (from any host) log into your account on host-b . Using the following command, you
 should see that host-b is listening for incoming connections on port 3022.</p>
 
-<p>{% codeblock lang:bash %}
-[host-b]$netstat -aln | grep 3022
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>host-b<span class="o">]</span><span class="nv">$netstat</span> -aln | grep 3022
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Now edit the file at <code>~/.subversion/config</code> so that the following line is under the <code>[tunnels]</code>
 section:</p>
 
-<p>{% codeblock lang:bash ~/.subversion/config %}
-[tunnels]
-sshtunnel = ssh -p 3022
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>~/.subversion/config </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>tunnels<span class="o">]</span>
+</span><span class='line'><span class="nv">sshtunnel</span> <span class="o">=</span> ssh -p 3022
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>You can then check out your repository from host-a with the following command where <strong>username</strong> is
 your username on host-a.
 <strong>(Note that the tunnel you opened from the subversion server must be still open)</strong></p>
 
-<p>{% codeblock lang:bash %}
-$ svn co svn+sshtunnel://username@localhost/path/to/svn/repository /path/to/local/copy
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>svn co svn+sshtunnel://username@localhost/path/to/svn/repository /path/to/local/copy
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Once you've initially checked out the repository, you can add files, commit and update as you
 normally would (as long as the ssh tunnel is still open from host-a).</p>
@@ -112,25 +117,28 @@ normally would (as long as the ssh tunnel is still open from host-a).</p>
 
 <p>Sorry folks!</p>
 
-<p>{% img center /images/posts/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat/tunnel_example.png "ssh tunnel example" "ssh tunnel example" %}</p>
+<p><img class="center" src="/images/posts/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat/tunnel_example.png" title="ssh tunnel example" alt="ssh tunnel example"></p>
 
 <h3>What do I need to do if I'm using git and not subversion?</h3>
 
 <p>Glad you asked. You'll need to add the following to <code>~/.ssh/config</code> on host-b.</p>
 
-<p>{% codeblock lang:bash ~/.ssh/config %}
-Host host-a
-HostName localhost
-Port 3022
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>~/.ssh/config </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Host host-a
+</span><span class='line'>HostName localhost
+</span><span class='line'>Port 3022
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Then you can just use use <code>[host-b]$ssh username@host-a</code> instead of <code>[host-b]$ssh -p 3022 localhost</code> .</p>
 
 <p>So to clone the repository om host-a:</p>
 
-<p>{% codeblock lang:bash %}
-[host-b]git clone git+ssh://host-a/path/to/repo /path/to/local/clone
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>host-b<span class="o">]</span>git clone git+ssh://host-a/path/to/repo /path/to/local/clone
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h3>Resources</h3>
 
@@ -149,7 +157,7 @@ Port 3022
     <link href="http://andyregan.net/firewalling-bridged-vms-using-libvirts-nwfilter-driver/"/>
     <updated>2010-11-19T00:00:00+00:00</updated>
     <id>http://andyregan.net/firewalling-bridged-vms-using-libvirts-nwfilter-driver</id>
-    <content type="html"><![CDATA[<p><a href="http://libvirt.org/">{% img center http://libvirt.org/libvirtLogo.png 200 libvirt logo %}</a></p>
+    <content type="html"><![CDATA[<p><a href="http://libvirt.org/"><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></a></p>
 
 <p>Recently, I needed to create a virtual machine to host an internet-facing web application. One of the
 requirements for this VM included setting up a firewall on the VM's host as well as on the guest itself
@@ -165,14 +173,7 @@ it's likely that newer versions of dependent packages, such as iptables, are req
 
 <p>Another potential gotcha is described in the libvirt documentation:</p>
 
-<p>{% blockquote %}
-Finally, in terms of problems we have in deployment. The biggest problem is that if the admin does
-service iptables restart all our work gets blown away. We’ve experimented with using lokkit to
-record our custom rules in a persistent config file, but that caused different problem. Admins who
-were not using lokkit for their config found that all their own rules got blown away. So we threw
-away our lokkit code. Instead we document that if you run service iptables restart, you need to
-send SIGHUP to libvirt to make it recreate its rules.
-{% endblockquote %}</p>
+<p><blockquote><p>Finally, in terms of problems we have in deployment. The biggest problem is that if the admin does<br/>service iptables restart all our work gets blown away. We’ve experimented with using lokkit to<br/>record our custom rules in a persistent config file, but that caused different problem. Admins who<br/>were not using lokkit for their config found that all their own rules got blown away. So we threw<br/>away our lokkit code. Instead we document that if you run service iptables restart, you need to<br/>send SIGHUP to libvirt to make it recreate its rules.</p></blockquote></p>
 
 <p>Unfortunately, there appears to be a <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=602428">bug</a> in the current version of libvirt-bin on Squeeze
 (0.8.3-3) that causes the libvirt daemon to crash when you try to reload. This has been fixed
@@ -199,18 +200,20 @@ does not have the same level of access to real hardware. As a result, the usual 
 expected by the operating system is not available. The measure of randomness currently available (entropy)
 can be viewed by running</p>
 
-<p>{% codeblock lang:bash entropy in linux %}
-$ cat /proc/sys/kernel/random/entropy_avail
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>entropy in linux </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>cat /proc/sys/kernel/random/entropy_avail
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>If the entropy pool drains, <strong>/dev/random</strong> will block until additional entropy is collected. One solution
 is to use <strong>/dev/urandom</strong> as a source. This will not block, but will produce lower quality randomness.
 You can use <strong>/dev/urandom</strong> by installing <a href="http://packages.debian.org/lenny/rng-tools">rng-tools</a> and adding the following to <strong>/etc/default/rng-tools</strong>.
 Save and then restart rng-tools.</p>
 
-<p>{% codeblock lang:bash /etc/default/rng-tools %}
-HRNGDEVICE=/dev/urandom
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/etc/default/rng-tools </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">HRNGDEVICE</span><span class="o">=</span>/dev/urandom
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Unfortunately, using <strong>/dev/urandom</strong> is not suitable for my security requirements. A better solution
 would be to use a hardware entropy generator as described in <a href="http://strugglers.net/~andy/blog/2010/06/06/adventures-in-entropy-part-1/">Andy Smith's excellent post</a> .</p>
@@ -228,10 +231,11 @@ randomness and then <a href="http://www.debuntu.org/how-to-import-export-gpg-key
     <content type="html"><![CDATA[<p>The other night, myself and Rory managed to recover his friend's thesis from a wonky USB thumb drive. We used <a href="http://www.cgsecurity.org/wiki/PhotoRec">PhotoRec</a> on Ubuntu Linux.
 PhotoRec comes with the TestDisk utility. You can install TestDisk via:</p>
 
-<p>{% codeblock lang:bash %}
-$apt-get update
-$apt-get install testdisk
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$apt</span>-get update
+</span><span class='line'><span class="nv">$apt</span>-get install testdisk
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>The first thing we did was run <strong>dmesg</strong> in a terminal to get a bit of info on what was going on. We ran dmesg before and after we plugged
 in the drive and noted the relevant output. The device eventually settled and was given the device location sdb by the kernel, but no
@@ -241,41 +245,41 @@ The partition was likely corrupted somehow.</p>
 <p>TestDisk could be used to try to repair the partition on the disk, but it could also damage the data further. We decided to make an image to work with using <strong>dd</strong>:</p>
 
 <p><strong>Use dd with care! Consult the man page for more info.</strong>
-{% codeblock lang:bash %}
-$sudo dd if=/dev/sdb ou=./disk_image
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$sudo</span> dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">ou</span><span class="o">=</span>./disk_image
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>This copied the contents of the usb key block-by-block to a file called "disk_image". The was a 2G image (the total capacity) of the wonky drive.</p>
 
 <p>We then used <strong>photorec</strong> to try to recover any files from the image.</p>
 
-<p>{% codeblock lang:bash %}
-$photorec ./disk_image
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$photorec</span> ./disk_image
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Select the image to use.</p>
 
-<p>{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png Select the image to use %}</p>
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png" title="Select the image to use" ></p>
 
 <p>Select the partition type.</p>
 
-<p>{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png Select the partition type %}</p>
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png" title="Select the partition type" ></p>
 
 <p>Select the partition.</p>
 
-<p>{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png Select the partition %}</p>
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png" title="Select the partition" ></p>
 
 <p>Select the filesystem type.</p>
 
-<p>{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png Select the filesystem type %}</p>
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png" title="Select the filesystem type" ></p>
 
 <p>Select where to save the recovered files.</p>
 
-<p>{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png Select where to save the recoverd files %}</p>
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png" title="Select where to save the recoverd files" ></p>
 
 <p>Watch the search in progress.</p>
 
-<p>{% img /images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png Search in progress %}</p>
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png" title="Search in progress" ></p>
 
 <p>Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.</p>
 ]]></content>
