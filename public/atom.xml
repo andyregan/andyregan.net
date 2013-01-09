@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T16:21:14+00:00</updated>
+  <updated>2013-01-09T16:26:33+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Firewalling Bridged VMs Using Libvirt&#8217;s Nwfilter Driver]]></title>
+    <link href="http://andyregan.net/firewalling-bridged-vms-using-libvirts-nwfilter-driver/"/>
+    <updated>2010-11-19T00:00:00+00:00</updated>
+    <id>http://andyregan.net/firewalling-bridged-vms-using-libvirts-nwfilter-driver</id>
+    <content type="html"><![CDATA[<p><a href="http://libvirt.org/"><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></a></p>
+
+<p>Recently, I needed to create a virtual machine to host an internet-facing web application. One of the
+requirements for this VM included setting up a firewall on the VM&#8217;s host as well as on the guest itself
+to provide an added layer of security.</p>
+
+<p>Versions of <a href="http://libvirt.org/">libvirt</a> since 8.0 include the nwfilter driver. This driver allows you to define simple
+network filtering rules in XML. Libvirt can then translate your rules to iptables/ebtables. More
+information and examples are available at the <a href="http://libvirt.org/firewall.html">Libvirt Firewall Documentation</a> page.</p>
+
+<p>It&#8217;s worth noting that while I found my nwfilter rules worked on Debian Squeeze (unstable), they did
+not work on Debian Lenny. Even though I had upgraded libvirt to a more recent version from backports,
+it&#8217;s likely that newer versions of dependent packages, such as iptables, are required also.</p>
+
+<p>Another potential gotcha is described in the libvirt documentation:</p>
+
+<blockquote><p>Finally, in terms of problems we have in deployment. The biggest problem is that if the admin does <br/>service iptables restart all our work gets blown away. We’ve experimented with using lokkit to <br/>record our custom rules in a persistent config file, but that caused different problem. Admins who <br/>were not using lokkit for their config found that all their own rules got blown away. So we threw <br/>away our lokkit code. Instead we document that if you run service iptables restart, you need to <br/>send SIGHUP to libvirt to make it recreate its rules.</p></blockquote>
+
+
+<p>Unfortunately, there appears to be a <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=602428">bug</a> in the current version of libvirt-bin on Squeeze
+(0.8.3-3) that causes the libvirt daemon to crash when you try to reload. This has been fixed
+upstream. While waiting for next Debian Squeeze release of libvirt-bin, you can use the following
+trick should iptables be restarted.</p>
+
+<p>Simply, run <code>$virsh nwfilter-edit your-custom-template.xml</code> . Add a newline to the end of your XML
+and save. Virsh will re-create your defined rules.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lack of Entropy on Virtual Machine]]></title>
