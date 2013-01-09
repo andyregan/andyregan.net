@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:43:16+00:00</updated>
+  <updated>2013-01-09T17:49:57+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing Git Group Write Errors]]></title>
+    <link href="http://andyregan.net/fixing-git-group-write-errors/"/>
+    <updated>2011-06-15T00:00:00+01:00</updated>
+    <id>http://andyregan.net/fixing-git-group-write-errors</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://andyregan.net/images/posts/fixing-git-group-write-errors/200px-Git-logo.svg_.png" width="200" title="&#34;200px Git logo&#34;" alt="&#34;200px Git logo&#34;"></p>
+
+<h2>The Problem</h2>
+
+<p>When many users are committing to the same git repository, the correct group permissions must be
+set. For example, when a user recently tried to commit to a shared git repository, it failed
+with the following error:</p>
+
+<blockquote><p>fatal: failed to write object</p></blockquote>
+
+
+<p>Looking at the repository&#8217;s config file on the server, the <strong>sharedRepository</strong> variable was not set.</p>
+
+<h2>The Fix</h2>
+
+<p>First, I fixed the group permissions for the repository (all the users belonged to the same group).</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>chmod -R g+swX /path/to/repository/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, I set the <strong>sharedRepository</strong> variable to <em>true</em>.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> /path/to/repository/
+</span><span class='line'><span class="nv">$ </span>git repo-config core.sharedRepository <span class="nb">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>More Info</h2>
+
+<p>More information on this variable can be found in the git-config man page.</p>
+
+<blockquote><p>core.sharedRepository  <br/>When group (or true), the repository is made shareable between several users in a group (making sure all the files and objects are group-writable). When all (or world or everybody), the  <br/>repository will be readable by all users, additionally to being group-shareable. When umask (or false), git will use permissions reported by umask(2). When 0xxx, where 0xxx is an octal  <br/>number, files in the repository will have this mode value. 0xxx will override user´s umask value, and thus, users with a safe umask (0077) can use this option. Examples: 0660 is equivalent  <br/>to group. 0640 is a repository that is group-readable but not group-writable. See git-init(1). False by default.</p></blockquote>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Extract a Tar Archive to Multiple Directories Matching A Pattern]]></title>
@@ -1040,30 +1085,6 @@ The partition was likely corrupted somehow.</p>
 <p><img src="http://andyregan.net/images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png" title="Search in progress" ></p>
 
 <p>Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Webcam Motion Detection in Ubuntu Linux]]></title>
-    <link href="http://andyregan.net/webcam-motion-detection-in-ubuntu-linux/"/>
-    <updated>2009-02-26T00:00:00+00:00</updated>
-    <id>http://andyregan.net/webcam-motion-detection-in-ubuntu-linux</id>
-    <content type="html"><![CDATA[<p>I bought a cheap usb webcam to add to the list of devices for my fyp. The idea is to push presence updates when motion is detected. I&#8217;ll be using <a href="http://www.lavrsen.dk/twiki/bin/view/Motion/WebHome">Motion</a> to handle motion detection.
-Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubuntu-based-home-security/">installation and configuration instructions</a> can be found at InfectedProject.</p>
-
-<p>You can set motion to run commands when certain events happen, such as an image is saved or a movie ends. For example, you could add the following to <strong>/etc/motion/motion.conf</strong> so that you get an email to you&#8217;re email account when a movie ends.</p>
-
-<figure class='code'><figcaption><span>montion config </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># Command to be executed when a movie file (.mpg|.avi) is closed. (default: none)</span>
-</span><span class='line'><span class="c"># To give the filename as an argument to a command append it with %f</span>
-</span><span class='line'>on_movie_end <span class="nb">echo</span> %f | mutt -s <span class="s2">&quot;[Motion]&quot;</span> -a %f joe@bloggs.com
-</span></code></pre></td></tr></table></div></figure>
-
-
-
 ]]></content>
   </entry>
   

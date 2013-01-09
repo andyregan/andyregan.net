@@ -7,7 +7,8 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="Sometimes you may need to extract the same tar archive into many directories at once. The below command extracts /path/to/archive.tgz into the &hellip;">
+	<meta name="description" content="The Problem When many users are committing to the same git repository, the correct group permissions must be
+set. For example, when a user recently &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +95,82 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/fixing-git-group-write-errors/">
+		
+			Fixing Git Group Write Errors</a>
+	</h2>
+	<div class="entry-content">
+		<p><img class="center" src="/images/posts/fixing-git-group-write-errors/200px-Git-logo.svg_.png" width="200" title="&#34;200px Git logo&#34;" alt="&#34;200px Git logo&#34;"></p>
+
+<h2>The Problem</h2>
+
+<p>When many users are committing to the same git repository, the correct group permissions must be
+set. For example, when a user recently tried to commit to a shared git repository, it failed
+with the following error:</p>
+
+<blockquote><p>fatal: failed to write object</p></blockquote>
+
+
+<p>Looking at the repository&#8217;s config file on the server, the <strong>sharedRepository</strong> variable was not set.</p>
+
+<h2>The Fix</h2>
+
+<p>First, I fixed the group permissions for the repository (all the users belonged to the same group).</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>chmod -R g+swX /path/to/repository/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, I set the <strong>sharedRepository</strong> variable to <em>true</em>.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> /path/to/repository/
+</span><span class='line'><span class="nv">$ </span>git repo-config core.sharedRepository <span class="nb">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>More Info</h2>
+
+<p>More information on this variable can be found in the git-config man page.</p>
+
+<blockquote><p>core.sharedRepository  <br/>When group (or true), the repository is made shareable between several users in a group (making sure all the files and objects are group-writable). When all (or world or everybody), the  <br/>repository will be readable by all users, additionally to being group-shareable. When umask (or false), git will use permissions reported by umask(2). When 0xxx, where 0xxx is an octal  <br/>number, files in the repository will have this mode value. 0xxx will override user´s umask value, and thus, users with a safe umask (0077) can use this option. Examples: 0660 is equivalent  <br/>to group. 0640 is a repository that is group-readable but not group-writable. See git-init(1). False by default.</p></blockquote>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-15T00:00:00+01:00" pubdate data-updated="true">2011-06-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -868,69 +945,6 @@ randomness and then <a href="http://www.debuntu.org/how-to-import-export-gpg-key
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/fix-mac-os-x-dns-failure-on-upc-router/">
-		
-			Fix Mac OS X DNS Failure on UPC Router</a>
-	</h2>
-	<div class="entry-content">
-		<p>About a week ago, I upgraded my MacBook Pro to OS X 10.6.4. Since then, I&#8217;ve had trouble with the internet
-connection <strong>only</strong> from my house and <strong>only</strong> on my MBP. Sometimes the connection would work fine, but
-most of the time Firefox/Safari would only load the first couple of pages and then new pages would start to
-time out.</p>
-
-<p>Since I could ping/view a site by going to the server&#8217;s IP address directly, the issue appeared to be with
-the MBP resolving <a href="http://en.wikipedia.org/wiki/Domain_Name_System">DNS</a>. DNS is how your computer translates a human readable URL such as
-<strong>andyregan.net</strong> to a machine readable IP address.</p>
-
-<p>Since the problem was <strong>only</strong> with my UPC connection (router is Cisco EPC2425), I thought changing DNS
-provider to <a href="http://code.google.com/speed/public-dns/">Google</a> or <a href="http://www.opendns.com/">OpenDNS</a> might do the trick. Alas, the new DNS servers would work for the
-first few pages and then pages started timing out again.</p>
-
-<p>After poking around the (extremely limited) options on the UPC router, I noticed that there were a ton of
-firewall blocks for the 192.168.1.0/24 network over the last week. Devices connecting to the router, such
-as my MBP, are assigned IP addresses within this range.</p>
-
-<p>On closer inspection, I discovered that the router&#8217;s firewall was blocking the MBP from the DNS servers
-for <strong>LAN-side UDP Flood</strong>. I turned off the router&#8217;s firewall and restarted it. Et voila! Bob&#8217;s your
-uncle.</p>
-
-<p>My guess is that the firewall blocks must be due to some change in DNS behavior since the last OS X
-update. Posting here to save some poor soul the heartache. It&#8217;s important to note that turning off your
-router&#8217;s firewall is at your own risk.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-17T00:00:00+01:00" pubdate data-updated="true">2010-07-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/random/'>Random</a>
 
 
 </div>
