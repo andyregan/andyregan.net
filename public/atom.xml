@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:57:39+00:00</updated>
+  <updated>2013-01-09T18:08:30+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Specifying GPU Compute Mode At Job Submission with Torque]]></title>
+    <link href="http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque/"/>
+    <updated>2011-07-10T00:00:00+01:00</updated>
+    <id>http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque</id>
+    <content type="html"><![CDATA[<p>In Torque 2.5.6, 3.0.2 and later, you can specify GPU compute mode and reset GPU ECC error counts at job submission
+(provided that you have configured Torque with the <strong>enable-nvidia-gpus</strong> option).</p>
+
+<p>For CUDA 4.0 (Nvidia 270.x drivers), there are four compute modes that can be set on the GPU.</p>
+
+<ol>
+<li><strong>Default</strong> : Multiple threads can run on this GPU</li>
+<li><strong>Exclusive Thread</strong> : Only one thread in one process can run on this GPU</li>
+<li><strong>Prohibited</strong> : No threads are allowed to run on this GPU</li>
+<li><strong>Exclusive Process</strong> : Many threads in one process will be able to run on this GPU</li>
+</ol>
+
+
+<p>With Torque, you can now request <strong>Default</strong>, <strong>Exclusive Thread</strong> or <strong>Exclusive Process</strong> compute modes at job
+submission time. The mode you specify applies to all the GPUs you request. If you do not specify a compute mode,
+then Torque will set the GPUs to <strong>Exclusive Thread</strong>.</p>
+
+<p>For example, to request 1 GPU and with compute mode set to <strong>Exclusive Process</strong> you could define the following resource:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>qsub -l <span class="nv">nodes</span><span class="o">=</span>1:gpus<span class="o">=</span>1:exclusive_process
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To request 1 GPU with compute mode set to <strong>Exclusive Thread</strong> and reset the ECC error counts on the GPU, you could define the following:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>qsub -l <span class="nv">nodes</span><span class="o">=</span>1:gpus<span class="o">=</span>1:reseterr:exclusive_thread
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The below table shows the various modes and their associated Torque keywords.</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> Compute Mode      </th>
+<th> Keyword           </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> Default           </td>
+<td> shared            </td>
+</tr>
+<tr>
+<td></td>
+<td> Exclusive Thread  </td>
+<td> exclusive_thread  </td>
+</tr>
+<tr>
+<td></td>
+<td> Exclusive Process </td>
+<td> exclusive_process </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>More information is available in <a href="http://www.adaptivecomputing.com/resources/docs/torque/3.7schedulinggpus.php">Section 3.7 of the Torque Documentation</a>.</p>
+
+<p>Al Taufer from Adaptive Computing helpfully explained the reasoning behind the <em>shared</em> keyword in <a href="http://www.supercluster.org/pipermail/torqueusers/2011-June/013079.html">reply to a question I submitted to the Torque Users mailing list</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Libvirt + KVM : Booting From An ISO Image]]></title>
@@ -1023,61 +1095,6 @@ included, but this should help narrow down the list of dirty scripts.</p>
 <p>Drupal is also well <a href="http://drupal.org/handbooks">documented</a> thanks to contributors like <a href="http://www.lullabot.com/about/addison-berry">Addison Berry</a>.</p>
 
 <p><strong>UPDATE:</strong> Fair play to all who created the <a href="http://www.zikomo.org/">Zikomo</a> and <a href="http://www.ruralsa.ie/">RSA</a> sites from scratch on Sunday! Wow.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Random Bits]]></title>
-    <link href="http://andyregan.net/random-bits/"/>
-    <updated>2009-03-08T00:00:00+00:00</updated>
-    <id>http://andyregan.net/random-bits</id>
-    <content type="html"><![CDATA[<p>I haven&#8217;t come across anything that deserves a full post this week, so here&#8217;s 5 interesting technologies I&#8217;ve come across recently:</p>
-
-<ul>
-<li><a href="http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html">umask</a>
-
-<ul>
-<li>How to set default permissions when creating files in linux</li>
-</ul>
-</li>
-<li><a href="http://www.dohop.com/">DoHop.com</a>
-
-<ul>
-<li>Find Cheap Flights</li>
-</ul>
-</li>
-<li><a href="http://crazybob.org/twubble/">Twubble</a>
-
-<ul>
-<li>Friends of Friends for Twitter</li>
-</ul>
-</li>
-<li><a href="http://www.winterwell.com/software/jtwitter.php">JTwitter</a>
-
-<ul>
-<li>Java Library for the Twitter API</li>
-</ul>
-</li>
-<li><a href="http://www.twitterlocal.net/">TwitterLocal</a>
-
-<ul>
-<li>Find tweets by location</li>
-</ul>
-</li>
-</ul>
-
-
-<p>And here&#8217;s some more randomness:</p>
-
-<p><em>Switching to VoIP</em> by Ted Wallingford is very related to that 4IF1 are currently studying in Real Time Systems. Chapter 6 in particular.</p>
-
-<p>When ordering books from Amazon, do not screw around during the ordering stage unless you want two of the same book. <em>/me hangs head in shame</em>.</p>
-
-<p>The 3 wireless dongle works perfectly in Ubuntu.</p>
-
-<p><a href="http://worldofgoo.com/dl2.php?lk=demo">World of Goo</a> is a very addictive game.</p>
-
-<p>Finally, congrats to Emma Conway for her win in the NUIG Student Union elections. Unfortunately, Pofla didn&#8217;t get in.  I hoarded as many whispa&#8217;s as I possibly could to prevent their dispersal to the general populace to no avail.</p>
 ]]></content>
   </entry>
   

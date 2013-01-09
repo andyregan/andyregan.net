@@ -4,7 +4,7 @@
   <title><![CDATA[Category: General Tips | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/general-tips/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:57:39+00:00</updated>
+  <updated>2013-01-09T18:08:30+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Specifying GPU Compute Mode At Job Submission with Torque]]></title>
+    <link href="http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque/"/>
+    <updated>2011-07-10T00:00:00+01:00</updated>
+    <id>http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque</id>
+    <content type="html"><![CDATA[<p>In Torque 2.5.6, 3.0.2 and later, you can specify GPU compute mode and reset GPU ECC error counts at job submission
+(provided that you have configured Torque with the <strong>enable-nvidia-gpus</strong> option).</p>
+
+<p>For CUDA 4.0 (Nvidia 270.x drivers), there are four compute modes that can be set on the GPU.</p>
+
+<ol>
+<li><strong>Default</strong> : Multiple threads can run on this GPU</li>
+<li><strong>Exclusive Thread</strong> : Only one thread in one process can run on this GPU</li>
+<li><strong>Prohibited</strong> : No threads are allowed to run on this GPU</li>
+<li><strong>Exclusive Process</strong> : Many threads in one process will be able to run on this GPU</li>
+</ol>
+
+
+<p>With Torque, you can now request <strong>Default</strong>, <strong>Exclusive Thread</strong> or <strong>Exclusive Process</strong> compute modes at job
+submission time. The mode you specify applies to all the GPUs you request. If you do not specify a compute mode,
+then Torque will set the GPUs to <strong>Exclusive Thread</strong>.</p>
+
+<p>For example, to request 1 GPU and with compute mode set to <strong>Exclusive Process</strong> you could define the following resource:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>qsub -l <span class="nv">nodes</span><span class="o">=</span>1:gpus<span class="o">=</span>1:exclusive_process
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>To request 1 GPU with compute mode set to <strong>Exclusive Thread</strong> and reset the ECC error counts on the GPU, you could define the following:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>qsub -l <span class="nv">nodes</span><span class="o">=</span>1:gpus<span class="o">=</span>1:reseterr:exclusive_thread
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The below table shows the various modes and their associated Torque keywords.</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> Compute Mode      </th>
+<th> Keyword           </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> Default           </td>
+<td> shared            </td>
+</tr>
+<tr>
+<td></td>
+<td> Exclusive Thread  </td>
+<td> exclusive_thread  </td>
+</tr>
+<tr>
+<td></td>
+<td> Exclusive Process </td>
+<td> exclusive_process </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>More information is available in <a href="http://www.adaptivecomputing.com/resources/docs/torque/3.7schedulinggpus.php">Section 3.7 of the Torque Documentation</a>.</p>
+
+<p>Al Taufer from Adaptive Computing helpfully explained the reasoning behind the <em>shared</em> keyword in <a href="http://www.supercluster.org/pipermail/torqueusers/2011-June/013079.html">reply to a question I submitted to the Torque Users mailing list</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Libvirt + KVM : Booting From An ISO Image]]></title>
@@ -227,35 +297,6 @@ second GPU) on node1 to execute on.</p>
 <p>As specified in Torque's documentation, <strong>"it is left up to the job's owner to make sure that the job executes properly on the GPU"</strong>.</p>
 
 <p>In my next post, I will describe how you can take advantage of the $CUDA_VISIBLE_DEVICES environment variable (available since CUDA 3.1) to restrict the GPUs available to CUDA to those allocated by Torque.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Creating Dovecot IMAP Folders In Mail.App]]></title>
-    <link href="http://andyregan.net/creating-dovecot-imap-folders-in-mail-app/"/>
-    <updated>2011-02-06T00:00:00+00:00</updated>
-    <id>http://andyregan.net/creating-dovecot-imap-folders-in-mail-app</id>
-    <content type="html"><![CDATA[<p>If you want to organise your Dovecot IMAP mailboxes into folders, it may seem intuitive to
-just drag the them into a new mailbox. However, you may get the error message <strong>Target
-mailbox doesn't allow inferior mailboxes</strong>.</p>
-
-<p>The solution is to explicitly create a folder, by adding a <code>/</code> to the end of the name you
-give a new mailbox. Folders can contain other folders and mailboxes, whereas mailboxes
-can only contain mail.</p>
-
-<p>For example, in Mail.app go to <strong>Mailbox</strong> -> <strong>New Mailbox</strong> . Select where you want to
-create the new folder and enter a name with a <code>/</code> at the end. If you don't include the
-<code>/</code>, a new mailbox will be created.</p>
-
-<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png" title="'Screenshot of Mail.app'" ></a></p>
-
-<p>In the image below, you can see a folder called <strong>TEST</strong> that contains a sub-folder
-called <strong>TEST2</strong> and a mailbox called <strong>test</strong>.</p>
-
-<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png" title="'Screen shot of Mail.app'" ></a></p>
-
-<p>While the above example uses Mail.app, you'll also need to add a <code>/</code> to the end of
-Dovecot IMAP folder names in other clients such as Mozilla Thunderbird.</p>
 ]]></content>
   </entry>
   

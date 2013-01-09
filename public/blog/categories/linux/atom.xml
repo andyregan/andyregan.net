@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:57:39+00:00</updated>
+  <updated>2013-01-09T18:08:30+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Specifying GPU Compute Mode At Job Submission with Torque]]></title>
+    <link href="http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque/"/>
+    <updated>2011-07-10T00:00:00+01:00</updated>
+    <id>http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque</id>
+    <content type="html"><![CDATA[<p>In Torque 2.5.6, 3.0.2 and later, you can specify GPU compute mode and reset GPU ECC error counts at job submission
+(provided that you have configured Torque with the <strong>enable-nvidia-gpus</strong> option).</p>
+
+<p>For CUDA 4.0 (Nvidia 270.x drivers), there are four compute modes that can be set on the GPU.</p>
+
+<ol>
+<li><strong>Default</strong> : Multiple threads can run on this GPU</li>
+<li><strong>Exclusive Thread</strong> : Only one thread in one process can run on this GPU</li>
+<li><strong>Prohibited</strong> : No threads are allowed to run on this GPU</li>
+<li><strong>Exclusive Process</strong> : Many threads in one process will be able to run on this GPU</li>
+</ol>
+
+
+<p>With Torque, you can now request <strong>Default</strong>, <strong>Exclusive Thread</strong> or <strong>Exclusive Process</strong> compute modes at job
+submission time. The mode you specify applies to all the GPUs you request. If you do not specify a compute mode,
+then Torque will set the GPUs to <strong>Exclusive Thread</strong>.</p>
+
+<p>For example, to request 1 GPU and with compute mode set to <strong>Exclusive Process</strong> you could define the following resource:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>qsub -l <span class="nv">nodes</span><span class="o">=</span>1:gpus<span class="o">=</span>1:exclusive_process
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>To request 1 GPU with compute mode set to <strong>Exclusive Thread</strong> and reset the ECC error counts on the GPU, you could define the following:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>qsub -l <span class="nv">nodes</span><span class="o">=</span>1:gpus<span class="o">=</span>1:reseterr:exclusive_thread
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The below table shows the various modes and their associated Torque keywords.</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> Compute Mode      </th>
+<th> Keyword           </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> Default           </td>
+<td> shared            </td>
+</tr>
+<tr>
+<td></td>
+<td> Exclusive Thread  </td>
+<td> exclusive_thread  </td>
+</tr>
+<tr>
+<td></td>
+<td> Exclusive Process </td>
+<td> exclusive_process </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>More information is available in <a href="http://www.adaptivecomputing.com/resources/docs/torque/3.7schedulinggpus.php">Section 3.7 of the Torque Documentation</a>.</p>
+
+<p>Al Taufer from Adaptive Computing helpfully explained the reasoning behind the <em>shared</em> keyword in <a href="http://www.supercluster.org/pipermail/torqueusers/2011-June/013079.html">reply to a question I submitted to the Torque Users mailing list</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Libvirt + KVM : Booting From An ISO Image]]></title>
@@ -257,39 +327,6 @@ normally would (as long as the ssh tunnel is still open from host-a).</p>
 <li>http://rhnotebook.wordpress.com/2010/02/13/reverse-ssh-port-forwarding-t-o-i-c-o-r-g/</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Firewalling Bridged VMs Using Libvirt&#8217;s Nwfilter Driver]]></title>
-    <link href="http://andyregan.net/firewalling-bridged-vms-using-libvirts-nwfilter-driver/"/>
-    <updated>2010-11-19T00:00:00+00:00</updated>
-    <id>http://andyregan.net/firewalling-bridged-vms-using-libvirts-nwfilter-driver</id>
-    <content type="html"><![CDATA[<p><a href="http://libvirt.org/"><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></a></p>
-
-<p>Recently, I needed to create a virtual machine to host an internet-facing web application. One of the
-requirements for this VM included setting up a firewall on the VM's host as well as on the guest itself
-to provide an added layer of security.</p>
-
-<p>Versions of <a href="http://libvirt.org/">libvirt</a> since 8.0 include the nwfilter driver. This driver allows you to define simple
-network filtering rules in XML. Libvirt can then translate your rules to iptables/ebtables. More
-information and examples are available at the <a href="http://libvirt.org/firewall.html">Libvirt Firewall Documentation</a> page.</p>
-
-<p>It's worth noting that while I found my nwfilter rules worked on Debian Squeeze (unstable), they did
-not work on Debian Lenny. Even though I had upgraded libvirt to a more recent version from backports,
-it's likely that newer versions of dependent packages, such as iptables, are required also.</p>
-
-<p>Another potential gotcha is described in the libvirt documentation:</p>
-
-<p><blockquote><p>Finally, in terms of problems we have in deployment. The biggest problem is that if the admin does<br/>service iptables restart all our work gets blown away. We’ve experimented with using lokkit to<br/>record our custom rules in a persistent config file, but that caused different problem. Admins who<br/>were not using lokkit for their config found that all their own rules got blown away. So we threw<br/>away our lokkit code. Instead we document that if you run service iptables restart, you need to<br/>send SIGHUP to libvirt to make it recreate its rules.</p></blockquote></p>
-
-<p>Unfortunately, there appears to be a <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=602428">bug</a> in the current version of libvirt-bin on Squeeze
-(0.8.3-3) that causes the libvirt daemon to crash when you try to reload. This has been fixed
-upstream. While waiting for next Debian Squeeze release of libvirt-bin, you can use the following
-trick should iptables be restarted.</p>
-
-<p>Simply, run <code>$virsh nwfilter-edit your-custom-template.xml</code> . Add a newline to the end of your XML
-and save. Virsh will re-create your defined rules.</p>
 ]]></content>
   </entry>
   
