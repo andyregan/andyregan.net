@@ -69,16 +69,22 @@
         <lastmod>2013-01-09T16:32:04+00:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://andyregan.net/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat/
+        </loc>
+        <lastmod>2013-01-09T16:51:58+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://andyregan.net/about/</loc>
         <lastmod>2013-01-09T12:23:16+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/archives/</loc>
-        <lastmod>2013-01-09T16:32:04+00:00</lastmod>
+        <lastmod>2013-01-09T16:51:58+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/</loc>
-        <lastmod>2013-01-09T16:32:04+00:00</lastmod>
+        <lastmod>2013-01-09T16:51:58+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/robots.txt</loc>

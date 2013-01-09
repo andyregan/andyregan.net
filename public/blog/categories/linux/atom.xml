@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T16:32:11+00:00</updated>
+  <updated>2013-01-09T16:52:28+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Use SSH Tunneling to Access A Subversion Server Behind NAT]]></title>
+    <link href="http://andyregan.net/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat/"/>
+    <updated>2011-02-04T00:00:00+00:00</updated>
+    <id>http://andyregan.net/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat</id>
+    <content type="html"><![CDATA[<h2>Now why would I want to do that?</h2>
+
+<p>Let's say that you have a subversion repository hosted on a PC in your office. It cannot be
+accessed directly from the outside world because it is behind NAT.</p>
+
+<p>If you can't connect to a VPN or forward ports, but you <strong>can</strong> SSH from the server hosting
+your repository to the client that will access the repository, then your could try using a
+reverse SSH tunnel.</p>
+
+<h2>Example</h2>
+
+<p>In the following example, I'm assuming that both the server hosting the subversion repository
+and the client trying to access the repository are running either a Linux distro or OS X. I'm
+also assuming that you are accessing the repository using svn+ssh and that openssh (or
+similar) is installed on both the client and server. (That's a lot of assumptions!)</p>
+
+<p>For the sake of simplicity, I'll call the subversion server <strong>host-a</strong> and the client <strong>host-b</strong>.</p>
+
+<h3>On Host-A</h3>
+
+<p>Since you can SSH from host-a to host-b, the first thing you'll need to do is create a reverse
+SHH tunnel. Run the following command in a terminal on host-a where <strong>username</strong> is a valid
+username on host-b.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ssh -fN -R 3022:localhost:22 username@host-b
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This will prompt you to enter your account password on host-b and will open a new reverse
+tunnel in the background. You can confirm that the tunnel is active using the ps command.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>host-a<span class="o">]</span><span class="nv">$ </span>ps aux | grep 3022:
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>On Host-B</h3>
+
+<p>Next, (from any host) log into your account on host-b . Using the following command, you
+should see that host-b is listening for incoming connections on port 3022.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>host-b<span class="o">]</span><span class="nv">$netstat</span> -aln | grep 3022
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Now edit the file at <code>~/.subversion/config</code> so that the following line is under the <code>[tunnels]</code>
+section:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>~/.subversion/config </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>tunnels<span class="o">]</span>
+</span><span class='line'><span class="nv">sshtunnel</span> <span class="o">=</span> ssh -p 3022
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>You can then check out your repository from host-a with the following command where <strong>username</strong> is
+your username on host-a.
+<strong>(Note that the tunnel you opened from the subversion server must be still open)</strong></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>svn co svn+sshtunnel://username@localhost/path/to/svn/repository /path/to/local/copy
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Once you've initially checked out the repository, you can add files, commit and update as you
+normally would (as long as the ssh tunnel is still open from host-a).</p>
+
+<h3>Horrible Attempt At A Helpful Diagram</h3>
+
+<p>Sorry folks!</p>
+
+<p><img class="center" src="/images/posts/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat/tunnel_example.png" title="ssh tunnel example" alt="ssh tunnel example"></p>
+
+<h3>What do I need to do if I'm using git and not subversion?</h3>
+
+<p>Glad you asked. You'll need to add the following to <code>~/.ssh/config</code> on host-b.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>~/.ssh/config </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Host host-a
+</span><span class='line'>HostName localhost
+</span><span class='line'>Port 3022
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Then you can just use use <code>[host-b]$ssh username@host-a</code> instead of <code>[host-b]$ssh -p 3022 localhost</code> .</p>
+
+<p>So to clone the repository om host-a:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>host-b<span class="o">]</span>git clone git+ssh://host-a/path/to/repo /path/to/local/clone
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Resources</h3>
+
+<p>The following links contain more reverse tunnel tricks.</p>
+
+<ul>
+<li>http://www.marksanborn.net/howto/bypass-firewall-and-nat-with-reverse-ssh-tunnel/</li>
+<li>http://rhnotebook.wordpress.com/2010/02/13/reverse-ssh-port-forwarding-t-o-i-c-o-r-g/</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Firewalling Bridged VMs Using Libvirt&#8217;s Nwfilter Driver]]></title>
@@ -172,21 +281,6 @@ Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubun
 </span><span class='line'>
 </span><span class='line'>&lt;p&gt;on_movie_end <span class="nb">echo</span> %f | mutt -s <span class="s2">&quot;[Motion]&quot;</span> -a %f joe@bloggs.com
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Installing Subclipse in Ubuntu Behind a Proxy]]></title>
-    <link href="http://andyregan.net/installing-subclipse-in-ubuntu-behind-a-proxy/"/>
-    <updated>2009-02-25T00:00:00+00:00</updated>
-    <id>http://andyregan.net/installing-subclipse-in-ubuntu-behind-a-proxy</id>
-    <content type="html"><![CDATA[<p>Took me ages to figure this out. I followed these <a href="https://help.ubuntu.com/community/EclipseSubversion">instructions on how to install Subclise</a>. After I added the remote site and hit "Finish" the installer just timed out. I was working behind a firewall (IT LABS!) so I figured proxy settings had something to do with my problems.</p>
-
-<p>Long story short, Eclipse doesn't use your global proxy settings. In Ubuntu, the location of the settings in Eclipse is <strong>Window->Preferences->Install &amp; Update</strong>.</p>
-
-<p>From there, you can specify your proxy host and port and successfully install <a href="http://subclipse.tigris.org/">Subclipse</a>.</p>
-
-<p>Subclipse is a Subversion plugin for eclipse. Thanks to Nathan for helping me find the settings!</p>
 ]]></content>
   </entry>
   
