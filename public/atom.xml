@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T16:14:08+00:00</updated>
+  <updated>2013-01-09T16:21:14+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Lack of Entropy on Virtual Machine]]></title>
+    <link href="http://andyregan.net/lack-of-entropy-on-virtual-machine/"/>
+    <updated>2010-07-27T00:00:00+01:00</updated>
+    <id>http://andyregan.net/lack-of-entropy-on-virtual-machine</id>
+    <content type="html"><![CDATA[<p>If you are generating <a href="http://www.gnupg.org/">GPG keys</a> on a virtual machine, you may encounter the following error.</p>
+
+<p><code>Not enough random bytes available. Please do some other work to give the OS a chance to collect more entropy!</code></p>
+
+<p>Operating systems generate randomness based on hardware input. This randomness is collected for
+use in applications which require random data (such as cryptographic applications). However, a virtual OS
+does not have the same level of access to real hardware. As a result, the usual source of randomness
+expected by the operating system is not available. The measure of randomness currently available (entropy)
+can be viewed by running</p>
+
+<figure class='code'><figcaption><span>entropy in linux </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>cat /proc/sys/kernel/random/entropy_avail
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If the entropy pool drains, <strong>/dev/random</strong> will block until additional entropy is collected. One solution
+is to use <strong>/dev/urandom</strong> as a source. This will not block, but will produce lower quality randomness.
+You can use <strong>/dev/urandom</strong> by installing <a href="http://packages.debian.org/lenny/rng-tools">rng-tools</a> and adding the following to <strong>/etc/default/rng-tools</strong>.
+Save and then restart rng-tools.</p>
+
+<figure class='code'><figcaption><span>/etc/default/rng-tools </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">HRNGDEVICE</span><span class="o">=</span>/dev/urandom
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Unfortunately, using <strong>/dev/urandom</strong> is not suitable for my security requirements. A better solution
+would be to use a hardware entropy generator as described in <a href="http://strugglers.net/~andy/blog/2010/06/06/adventures-in-entropy-part-1/">Andy Smith&#8217;s excellent post</a> .</p>
+
+<p>As a short-term work-around, I decided to generate keys on a physical host with a good quality source of
+randomness and then <a href="http://www.debuntu.org/how-to-import-export-gpg-key-pair">import</a> them on the remote host.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fix Mac OS X DNS Failure on UPC Router]]></title>

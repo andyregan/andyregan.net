@@ -7,7 +7,7 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="I bought a cheap usb webcam to add to the list of devices for my fyp. The idea is to push presence updates when motion is detected. I&#8217;ll be &hellip;">
+	<meta name="description" content="The other night, myself and Rory managed to recover his friend&#8217;s thesis from a wonky USB thumb drive. We used PhotoRec on Ubuntu Linux. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -52,6 +52,8 @@
 	<div class="social">
 		
 		
+		<a class="google" href="https://plus.google.com/113310779327489253368?rel=author" title="Google+">Google+</a>
+		
 		
 		<a class="twitter" href="http://twitter.com/andyregan" title="Twitter">Twitter</a>
 		
@@ -86,12 +88,109 @@
 <script src="/javascripts/twitter.js"></script>
 <script type="text/javascript">
 	(function($){
-		$('#banner').getTwitterFeed('andyregan', 4, false);
+		$('#banner').getTwitterFeed('andyregan', 1, false);
 	})(jQuery);
 </script>
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/recovering-files-from-an-unmountable-usb-key/">
+		
+			Recovering Files From an Unmountable USB Key</a>
+	</h2>
+	<div class="entry-content">
+		<p>The other night, myself and Rory managed to recover his friend&#8217;s thesis from a wonky USB thumb drive. We used <a href="http://www.cgsecurity.org/wiki/PhotoRec">PhotoRec</a> on Ubuntu Linux.
+PhotoRec comes with the TestDisk utility. You can install TestDisk via:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$apt</span>-get update
+</span><span class='line'><span class="nv">$apt</span>-get install testdisk
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The first thing we did was run <strong>dmesg</strong> in a terminal to get a bit of info on what was going on. We ran dmesg before and after we plugged
+in the drive and noted the relevant output. The device eventually settled and was given the device location sdb by the kernel, but no
+filesystem was found.
+The partition was likely corrupted somehow.</p>
+
+<p>TestDisk could be used to try to repair the partition on the disk, but it could also damage the data further. We decided to make an image to work with using <strong>dd</strong>:</p>
+
+<p><strong>Use dd with care! Consult the man page for more info.</strong></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$sudo</span> dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">ou</span><span class="o">=</span>./disk_image
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This copied the contents of the usb key block-by-block to a file called &#8220;disk_image&#8221;. The was a 2G image (the total capacity) of the wonky drive.</p>
+
+<p>We then used <strong>photorec</strong> to try to recover any files from the image.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$photorec</span> ./disk_image
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Select the image to use.</p>
+
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec1.png" title="Select the image to use" ></p>
+
+<p>Select the partition type.</p>
+
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec2.png" title="Select the partition type" ></p>
+
+<p>Select the partition.</p>
+
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec3.png" title="Select the partition" ></p>
+
+<p>Select the filesystem type.</p>
+
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec4.png" title="Select the filesystem type" ></p>
+
+<p>Select where to save the recovered files.</p>
+
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec5.png" title="Select where to save the recoverd files" ></p>
+
+<p>Watch the search in progress.</p>
+
+<p><img src="/images/posts/recovering-files-from-an-unmountable-usb-key/photorec6.png" title="Search in progress" ></p>
+
+<p>Et voila! PhotoRec worked its magic and we recovered the thesis, along with all the other files.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-28T00:00:00+00:00" pubdate data-updated="true">2009-02-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
