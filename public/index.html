@@ -7,8 +7,7 @@
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="If you want to organise your Dovecot IMAP mailboxes into folders, it may seem intuitive to
-just drag the them into a new mailbox. However, you may &hellip;">
+	<meta name="description" content="As David came across this morning, some Debian packages try to execute scripts in /tmp during upgrade. Often /tmp is mounted noexec for security and &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -53,8 +52,6 @@ just drag the them into a new mailbox. However, you may &hellip;">
 	<div class="social">
 		
 		
-		<a class="google" href="https://plus.google.com/113310779327489253368?rel=author" title="Google+">Google+</a>
-		
 		
 		<a class="twitter" href="http://twitter.com/andyregan" title="Twitter">Twitter</a>
 		
@@ -89,12 +86,69 @@ just drag the them into a new mailbox. However, you may &hellip;">
 <script src="/javascripts/twitter.js"></script>
 <script type="text/javascript">
 	(function($){
-		$('#banner').getTwitterFeed('andyregan', 1, false);
+		$('#banner').getTwitterFeed('andyregan', 4, false);
 	})(jQuery);
 </script>
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/allowing-debian-packages-to-execute-scripts-when-upgrading/">
+		
+			Allowing Debian Packages to Execute Scripts When Upgrading</a>
+	</h2>
+	<div class="entry-content">
+		<p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <em>/tmp</em> during upgrade. Often <em>/tmp</em> is mounted <strong>noexec</strong> for security and this can cause upgrades to fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p>
+
+<p>To complete the upgrades you can temporarily mount <em>/tmp</em> with <strong>exec</strong>, upgrade your packages and then remount as per the <strong>noexec</strong> flag in your <em>/etc/fstab</em>.</p>
+
+<pre class="brush: bash; gutter: true; title: ; notranslate" title="">$mount -o remount,exec /tmp
+$aptitude safe-upgrade
+$mount -o remount /tmp
+</pre>
+
+
+<p>You can also <a href="http://wiki.mediatemple.net/w/%28ve%29:Configure_apt">change the default tmp directory that apt uses</a>.</p>
+
+<pre class="brush: bash; gutter: true; title: ; notranslate" title="">$echo "APT::ExtractTemplates::TempDir \"/var/local/tmp\";" &gt;&gt; /etc/apt/apt.conf.d/50extracttemplates
+$mkdir /var/local/tmp/
+</pre>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-07T00:00:00+00:00" pubdate data-updated="true">2011-02-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -945,86 +999,6 @@ You should also check out this article on <a href="http://www.tiplite.com/cakeph
 
 
 <time datetime="2010-02-16T00:00:00+00:00" pubdate data-updated="true">2010-02-16</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/web-development/'>Web Development</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/nasty-site-hack-leads-to-phony-google-links/">
-		
-			Nasty Site Hack Leads to Phony Google Links</a>
-	</h2>
-	<div class="entry-content">
-		<h2>Thar be nasty scripts here!</h2>
-
-<p><img class="center" src="http://andyregan.net/blog/wp-content/uploads/2009/07/tornado_warning.gif" width="300" title="Warning Sign" alt="Thar be nasty scripts here!"></p>
-
-<p>Came across a dirty (but interesting) website hack today. Essentially when a person googled their domain name they discovered hundreds
-and hundreds of phony links pointing to a sub-directory of their site. (With various explicitly charming descriptions).
-Clicking on these links displayed a page full of advertisements.</p>
-
-<p>Had a nose around the sub-directory in question and couldn&#8217;t find any files corresponding to the links.</p>
-
-<p>Eventually, I found a rogue PHP script (called <strong>report.php</strong>). Turns out that the <a href="http://httpd.apache.org/docs/1.3/howto/htaccess.html">.htaccess</a> file in the directory had been modified
-to redirect any <strong><a href="http://en.wikipedia.org/wiki/HTTP_404">404 Not Found</a></strong> errors to the PHP script. Even dirtier still was that when you accessed the script directly in a
-browser it showed a typical default 404 error, a tactic I guess is there to add confusion when you are trying to find the cause of the
-hack. <strong>Bastards</strong>.</p>
-
-<p>Script was <a href="http://www.wewatchyourwebsite.com/wordpress/?p=136">base64</a>&#8216;d and full of typical randomness meant to slow down those trying to figure out exactly what it&#8217;s trying to do.
-As far as I can tell, it just serves up ad pages when it&#8217;s redirected to and the 404 error page when accessed directly.</p>
-
-<p>The ultimate bastardly thing about this hack is that even after you clean up your site, it&#8217;ll be ages before the explicit phony links
-dissappear from Google. Another good reason to avoid 777 permissions of directories and keep your web software updated.</p>
-
-<p>Just wanted to make people aware of it. If you come across something similar have a look in the <strong>.htaccess</strong> file first. :)</p>
-
-<h2>UPDATE</h2>
-
-<p>The following bash one-liner can help find any files that contain a call to the base64_encode() method. Some legitimate files may be
-included, but this should help narrow down the list of dirty scripts.</p>
-
-<figure class='code'><figcaption><span>snippet </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$find</span> . -type f | xargs grep -l base64_encode
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Also worth checking out the following links for htaccess tips and tricks:</p>
-
-<ul>
-<li><a href="http://www.askapache.com/htaccess/apache-htaccess.html">http://www.askapache.com/htaccess/apache-htaccess.html</a></li>
-<li><a href="http://perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/#sec1">http://perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/#sec1</a></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-07-29T00:00:00+01:00" pubdate data-updated="true">2009-07-29</time></div>
 	<div class="tags">
 
 

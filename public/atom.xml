@@ -4,7 +4,7 @@
   <title><![CDATA[$whois andyregan]]></title>
   <link href="http://andyregan.net/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:16:18+00:00</updated>
+  <updated>2013-01-09T17:17:19+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Allowing Debian Packages To Execute Scripts When Upgrading]]></title>
+    <link href="http://andyregan.net/allowing-debian-packages-to-execute-scripts-when-upgrading/"/>
+    <updated>2011-02-07T00:00:00+00:00</updated>
+    <id>http://andyregan.net/allowing-debian-packages-to-execute-scripts-when-upgrading</id>
+    <content type="html"><![CDATA[<p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <em>/tmp</em> during upgrade. Often <em>/tmp</em> is mounted <strong>noexec</strong> for security and this can cause upgrades to fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p>
+
+<p>To complete the upgrades you can temporarily mount <em>/tmp</em> with <strong>exec</strong>, upgrade your packages and then remount as per the <strong>noexec</strong> flag in your <em>/etc/fstab</em>.</p>
+
+<pre class="brush: bash; gutter: true; title: ; notranslate" title="">$mount -o remount,exec /tmp
+$aptitude safe-upgrade
+$mount -o remount /tmp
+</pre>
+
+
+<p>You can also <a href="http://wiki.mediatemple.net/w/%28ve%29:Configure_apt">change the default tmp directory that apt uses</a>.</p>
+
+<pre class="brush: bash; gutter: true; title: ; notranslate" title="">$echo "APT::ExtractTemplates::TempDir \"/var/local/tmp\";" &gt;&gt; /etc/apt/apt.conf.d/50extracttemplates
+$mkdir /var/local/tmp/
+</pre>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating Dovecot IMAP Folders In Mail.App]]></title>
@@ -984,23 +1010,6 @@ Detailed <a href="http://infectedproject.com/2008/04/11/how-to-part-1-cheap-ubun
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First Post and SMS Ping Script]]></title>
-    <link href="http://andyregan.net/first-post-and-first-script-foo/"/>
-    <updated>2009-02-22T00:00:00+00:00</updated>
-    <id>http://andyregan.net/first-post-and-first-script-foo</id>
-    <content type="html"><![CDATA[<p>Thanks for visiting! The main purpose of this blog (right now) is as an archive for useful technical bits and pieces I&#8217;ve come across and don&#8217;t want to forget. Hopefully, you might find some of these useful, too. This is my first post and I&#8217;d like to start by sharing a handy little script-foo I learned.</p>
-
-<p>Over Christmas, the Compsoc admin team reinstalled our backup server. We created a fairly large (~3.6T RAID5) /home partition which took forever to build when the server booted for the first time. Rather than keep checking into the server room I figured &#8220;Wouldn&#8217;t it be handy if I could just get a text when the server comes up?&#8221;.</p>
-
-<p>I decided to use a great tool called <a title="o2sms" href="http://o2sms.sourceforge.net/" target="_self">o2sms</a> by <a title="mackers" href="http://www.mackers.com/" target="_self">Mackers</a> that&#8217;s installed on Compsoc&#8217;s webserver. It allows you to send text messages via the command line. The following script intermittently pings the backup and sends an SMS to the specified number when a ping returns successfully:</p>
-
-<p><code>$while ! ping -W 1 -c 1 &lt;IPAddress&gt; 2&gt;&amp;1 &gt;/dev/null; do true; done &amp;&amp; echo "Scorpio is UP" | meteorsms &lt;mynumber&gt;</code></p>
-
-<p>Its a simple little diddy ain&#8217;t it? Run it in a screen and you can detach, logout and go about your day. Drop the <strong>!</strong> and it will send an SMS if a ping fails (maybe the servers down). You could also replace ping with another event, such as a certain user logging in (users | grep andrewjregan) or if you recieve a new mail.</p>
 ]]></content>
   </entry>
   

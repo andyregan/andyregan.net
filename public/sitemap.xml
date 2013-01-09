@@ -82,7 +82,13 @@
     </url>
     <url>
         <loc>http://andyregan.net/creating-dovecot-imap-folders-in-mail-app/</loc>
-        <lastmod>2013-01-09T17:16:10+00:00</lastmod>
+        <lastmod>2013-01-09T17:20:09+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://andyregan.net/allowing-debian-packages-to-execute-scripts-when-upgrading/
+        </loc>
+        <lastmod>2013-01-09T17:19:44+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/about/</loc>
@@ -90,11 +96,11 @@
     </url>
     <url>
         <loc>http://andyregan.net/blog/archives/</loc>
-        <lastmod>2013-01-09T17:16:10+00:00</lastmod>
+        <lastmod>2013-01-09T17:20:09+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/</loc>
-        <lastmod>2013-01-09T17:16:10+00:00</lastmod>
+        <lastmod>2013-01-09T17:20:09+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/robots.txt</loc>

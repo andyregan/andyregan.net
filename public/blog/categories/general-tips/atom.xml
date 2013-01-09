@@ -4,7 +4,7 @@
   <title><![CDATA[Category: General Tips | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/general-tips/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T17:16:18+00:00</updated>
+  <updated>2013-01-09T17:20:10+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -30,12 +30,12 @@ can only contain mail.</p>
 create the new folder and enter a name with a <code>/</code> at the end. If you don't include the
 <code>/</code>, a new mailbox will be created.</p>
 
-<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png" title="'Screenshot of Mail.app'" ></a></p>
+<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png">{% img center /images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png 'Screenshot of Mail.app' %}</a></p>
 
 <p>In the image below, you can see a folder called <strong>TEST</strong> that contains a sub-folder
 called <strong>TEST2</strong> and a mailbox called <strong>test</strong>.</p>
 
-<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png" title="'Screen shot of Mail.app'" ></a></p>
+<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png">{% img center /images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png 'Screen shot of Mail.app' %}</a></p>
 
 <p>While the above example uses Mail.app, you'll also need to add a <code>/</code> to the end of
 Dovecot IMAP folder names in other clients such as Mozilla Thunderbird.</p>
@@ -56,66 +56,50 @@ the changes you will make simply by omitting the final pipe to <code>/bin/bash</
 following example, you might need to remove the string <strong>PatternOne.</strong> and <strong>PatternTwo.</strong>
 from each file's name.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls -1 /path/to/files/
-</span><span class='line'>PatternOne.001.PatternTwo.avi
-</span><span class='line'>PatternOne.002.PatternTwo.avi
-</span><span class='line'>PatternOne.003.PatternTwo.avi
-</span><span class='line'>PatternOne.004.PatternTwo.avi
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}
+$ ls -1 /path/to/files/
+PatternOne.001.PatternTwo.avi
+PatternOne.002.PatternTwo.avi
+PatternOne.003.PatternTwo.avi
+PatternOne.004.PatternTwo.avi
+{% endcodeblock %}</p>
 
 <p>The first step is to use <code>awk</code> to create a serious of <code>mv</code> statements.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span>
-</span><span class='line'>mv PatternOne.001.PatternTwo.avi PatternOne.001.PatternTwo.avi
-</span><span class='line'>mv PatternOne.002.PatternTwo.avi PatternOne.002.PatternTwo.avi
-</span><span class='line'>mv PatternOne.003.PatternTwo.avi PatternOne.003.PatternTwo.avi
-</span><span class='line'>mv PatternOne.004.PatternTwo.avi PatternOne.004.PatternTwo.avi
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}
+$ ls *.avi | awk '{print("mv "$1" "$1)}'
+mv PatternOne.001.PatternTwo.avi PatternOne.001.PatternTwo.avi
+mv PatternOne.002.PatternTwo.avi PatternOne.002.PatternTwo.avi
+mv PatternOne.003.PatternTwo.avi PatternOne.003.PatternTwo.avi
+mv PatternOne.004.PatternTwo.avi PatternOne.004.PatternTwo.avi
+{% endcodeblock %}</p>
 
 <p>Next, we pipe the <code>mv</code> statements to a <code>sed</code> command which removes <strong>PatternOne.</strong> from
 the <code>mv</code> statement's destination file.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>
-</span><span class='line'>mv PatternOne.001.PatternTwo.avi 001.PatternTwo.avi
-</span><span class='line'>mv PatternOne.002.PatternTwo.avi 002.PatternTwo.avi
-</span><span class='line'>mv PatternOne.003.PatternTwo.avi 003.PatternTwo.avi
-</span><span class='line'>mv PatternOne.004.PatternTwo.avi 004.PatternTwo.avi
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}
+$ ls *.avi | awk '{print("mv "$1" "$1)}' | sed 's/PatternOne.//2'
+mv PatternOne.001.PatternTwo.avi 001.PatternTwo.avi
+mv PatternOne.002.PatternTwo.avi 002.PatternTwo.avi
+mv PatternOne.003.PatternTwo.avi 003.PatternTwo.avi
+mv PatternOne.004.PatternTwo.avi 004.PatternTwo.avi
+{% endcodeblock %}</p>
 
 <p>Add another <code>sed</code> statement to remove <strong>PatternTwo.</strong></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>| sed <span class="s1">&#39;s/PatternTwo.//2&#39;</span>
-</span><span class='line'>mv PatternOne.001.PatternTwo.avi 001.avi
-</span><span class='line'>mv PatternOne.002.PatternTwo.avi 002.avi
-</span><span class='line'>mv PatternOne.003.PatternTwo.avi 003.avi
-</span><span class='line'>mv PatternOne.004.PatternTwo.avi 004.avi
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}
+$ ls *.avi | awk '{print("mv "$1" "$1)}' | sed 's/PatternOne.//2'| sed 's/PatternTwo.//2'
+mv PatternOne.001.PatternTwo.avi 001.avi
+mv PatternOne.002.PatternTwo.avi 002.avi
+mv PatternOne.003.PatternTwo.avi 003.avi
+mv PatternOne.004.PatternTwo.avi 004.avi
+{% endcodeblock %}</p>
 
 <p>Finally, pipe the result to <code>/bin/sh</code> so that the <code>mv</code> statements are run.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls *.avi | awk <span class="s1">&#39;{print(&quot;mv &quot;$1&quot; &quot;$1)}&#39;</span> | sed <span class="s1">&#39;s/PatternOne.//2&#39;</span>| sed <span class="s1">&#39;s/PatternTwo.//2&#39;</span> | /bin/sh
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}
+$ ls *.avi | awk '{print("mv "$1" "$1)}' | sed 's/PatternOne.//2'| sed 's/PatternTwo.//2' | /bin/sh
+{% endcodeblock %}</p>
 ]]></content>
   </entry>
   
@@ -129,24 +113,21 @@ the <code>mv</code> statement's destination file.</p>
 <p>Just a quick post so I can keep these commands handy (since I keep forgetting them). These will allow you to quickly set
 different <a href="http://www.linuxquestions.org/linux/answers/Security/Quick_and_Dirty_Guide_to_Linux_File_Permissions">permissions</a> for all files (or all folders) within a specific directory in Linux.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>reset files </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -type f -exec chmod 644 <span class="o">{}</span> <span class="se">\;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash reset files %}
+$ find /path/to/directory/ -type f -exec chmod 644 {} \;
+{% endcodeblock %}</p>
 
 <h2>Reset Directory Permissions</h2>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>reset directories </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -type d -exec chmod 755 <span class="o">{}</span> <span class="se">\;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash reset directories %}
+$ find /path/to/directory/ -type d -exec chmod 755 {} \;
+{% endcodeblock %}</p>
 
 <h2>Reset Permissions on 777 PHP Files Only</h2>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>reset 777 php files </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find /path/to/directory/ -name *.php -perm 777 -type f -exec chmod 644 <span class="o">{}</span> <span class="se">\;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash reset 777 php files %}
+$ find /path/to/directory/ -name *.php -perm 777 -type f -exec chmod 644 {} \;
+{% endcodeblock %}</p>
 ]]></content>
   </entry>
   
