@@ -1,8 +1,6 @@
 ---
 title: Random Bits
-author: Andy
 layout: post
-permalink: /random-bits/
 categories:
   - Random
 ---

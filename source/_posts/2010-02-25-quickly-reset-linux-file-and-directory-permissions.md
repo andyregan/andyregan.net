@@ -1,9 +1,7 @@
 ---
 title: Quickly Reset Linux File and Directory Permissions
-author: Andy
-excerpt: Short Linux CLI commands to reset file and/or directory permissions.
+description: Short Linux CLI commands to reset file and/or directory permissions.
 layout: post
-permalink: /quickly-reset-linux-file-and-directory-permissions/
 categories:
   - General Tips
 tags:

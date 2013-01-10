@@ -1,8 +1,6 @@
 ---
 title: I Can Haz Job?
-author: Andy
 layout: post
-permalink: /i-can-haz-job/
 categories:
   - Random
 tags:

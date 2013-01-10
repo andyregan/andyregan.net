@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T19:30:42+00:00</updated>
+  <updated>2013-01-10T10:25:31+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Specifying GPU Compute Mode At Job Submission with Torque]]></title>
-    <link href="http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque/"/>
+    <link href="http://andyregan.net/blog/specifying-gpu-compute-mode-at-job-submission-with-torque/"/>
     <updated>2011-07-10T00:00:00+01:00</updated>
-    <id>http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque</id>
+    <id>http://andyregan.net/blog/specifying-gpu-compute-mode-at-job-submission-with-torque</id>
     <content type="html"><![CDATA[<p>In Torque 2.5.6, 3.0.2 and later, you can specify GPU compute mode and reset GPU ECC error counts at job submission
 (provided that you have configured Torque with the <strong>enable-nvidia-gpus</strong> option).</p>
 
@@ -85,9 +85,9 @@ then Torque will set the GPUs to <strong>Exclusive Thread</strong>.</p>
   
   <entry>
     <title type="html"><![CDATA[Libvirt + KVM : Booting From An ISO Image]]></title>
-    <link href="http://andyregan.net/libvirt-kvm-booting-from-an-iso-image/"/>
+    <link href="http://andyregan.net/blog/libvirt-kvm-booting-from-an-iso-image/"/>
     <updated>2011-06-16T00:00:00+01:00</updated>
-    <id>http://andyregan.net/libvirt-kvm-booting-from-an-iso-image</id>
+    <id>http://andyregan.net/blog/libvirt-kvm-booting-from-an-iso-image</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></p>
 
 <p>If you want to boot your domain from a CDROM (for example, if you wish to re-install the OS on the VM),
@@ -152,9 +152,9 @@ into the ISO and not your shiny new OS.</p>
   
   <entry>
     <title type="html"><![CDATA[Fixing Git Group Write Errors]]></title>
-    <link href="http://andyregan.net/fixing-git-group-write-errors/"/>
+    <link href="http://andyregan.net/blog/fixing-git-group-write-errors/"/>
     <updated>2011-06-15T00:00:00+01:00</updated>
-    <id>http://andyregan.net/fixing-git-group-write-errors</id>
+    <id>http://andyregan.net/blog/fixing-git-group-write-errors</id>
     <content type="html"><![CDATA[<p><img class="center" src="/images/posts/fixing-git-group-write-errors/200px-Git-logo.svg_.png" width="200" title="&#34;200px Git logo&#34;" alt="&#34;200px Git logo&#34;"></p>
 
 <h2>The Problem</h2>
@@ -193,9 +193,9 @@ with the following error:</p>
   
   <entry>
     <title type="html"><![CDATA[Allowing Debian Packages To Execute Scripts When Upgrading]]></title>
-    <link href="http://andyregan.net/allowing-debian-packages-to-execute-scripts-when-upgrading/"/>
+    <link href="http://andyregan.net/blog/allowing-debian-packages-to-execute-scripts-when-upgrading/"/>
     <updated>2011-02-07T00:00:00+00:00</updated>
-    <id>http://andyregan.net/allowing-debian-packages-to-execute-scripts-when-upgrading</id>
+    <id>http://andyregan.net/blog/allowing-debian-packages-to-execute-scripts-when-upgrading</id>
     <content type="html"><![CDATA[<p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <strong>/tmp</strong>
 during upgrade. Often <strong>/tmp</strong> is mounted <strong>noexec</strong> for security and this can cause upgrades to
 fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p>
@@ -223,9 +223,9 @@ and then remount as per the <strong>noexec</strong> flag in your <strong>/etc/fs
   
   <entry>
     <title type="html"><![CDATA[How to Use SSH Tunneling to Access A Subversion Server Behind NAT]]></title>
-    <link href="http://andyregan.net/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat/"/>
+    <link href="http://andyregan.net/blog/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat/"/>
     <updated>2011-02-04T00:00:00+00:00</updated>
-    <id>http://andyregan.net/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat</id>
+    <id>http://andyregan.net/blog/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat</id>
     <content type="html"><![CDATA[<h2>Now why would I want to do that?</h2>
 
 <p>Let's say that you have a subversion repository hosted on a PC in your office. It cannot be

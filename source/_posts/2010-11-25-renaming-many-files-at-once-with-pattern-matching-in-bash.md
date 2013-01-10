@@ -1,8 +1,6 @@
 ---
 title: Renaming Many Files At Once with Pattern Matching in Bash
-author: Andy
 layout: post
-permalink: /renaming-many-files-at-once-with-pattern-matching-in-bash/
 categories:
   - General Tips
 tags:

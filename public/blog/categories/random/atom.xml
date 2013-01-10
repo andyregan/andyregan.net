@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Random | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/random/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T19:30:42+00:00</updated>
+  <updated>2013-01-10T10:25:31+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Fix Mac OS X DNS Failure on UPC Router]]></title>
-    <link href="http://andyregan.net/fix-mac-os-x-dns-failure-on-upc-router/"/>
+    <link href="http://andyregan.net/blog/fix-mac-os-x-dns-failure-on-upc-router/"/>
     <updated>2010-07-17T00:00:00+01:00</updated>
-    <id>http://andyregan.net/fix-mac-os-x-dns-failure-on-upc-router</id>
+    <id>http://andyregan.net/blog/fix-mac-os-x-dns-failure-on-upc-router</id>
     <content type="html"><![CDATA[<p>About a week ago, I upgraded my MacBook Pro to OS X 10.6.4. Since then, I've had trouble with the internet
 connection <strong>only</strong> from my house and <strong>only</strong> on my MBP. Sometimes the connection would work fine, but
 most of the time Firefox/Safari would only load the first couple of pages and then new pages would start to
@@ -47,9 +47,9 @@ router's firewall is at your own risk.</p>
   
   <entry>
     <title type="html"><![CDATA[Shoot First Questions Later]]></title>
-    <link href="http://andyregan.net/shoot-first-questions-later/"/>
+    <link href="http://andyregan.net/blog/shoot-first-questions-later/"/>
     <updated>2009-04-29T00:00:00+01:00</updated>
-    <id>http://andyregan.net/shoot-first-questions-later</id>
+    <id>http://andyregan.net/blog/shoot-first-questions-later</id>
     <content type="html"><![CDATA[<p><a href="http://www.digitalmediaforum.net/event_profile.php?id=292"><img class="center" src="/images/posts/shoot-first-questions-later/sfql_graphic.png"" title="SFQL Graphic" alt="SFQL Graphic"> </a></p>
 
 <p><a href="http://www.digitalmediaforum.net/event_profile.php?id=292">SFQL</a> is a different approach to business networking. Break the ice by playing a few LAN games and having a laugh. Afterwards, head to a nearby pub for some refreshments and have a chance to chat with like-minded people in the tech industry from Galway.</p>
@@ -64,9 +64,9 @@ router's firewall is at your own risk.</p>
   
   <entry>
     <title type="html"><![CDATA[I Can Haz Job?]]></title>
-    <link href="http://andyregan.net/i-can-haz-job/"/>
+    <link href="http://andyregan.net/blog/i-can-haz-job/"/>
     <updated>2009-04-26T00:00:00+01:00</updated>
-    <id>http://andyregan.net/i-can-haz-job</id>
+    <id>http://andyregan.net/blog/i-can-haz-job</id>
     <content type="html"><![CDATA[<div class="video-container">
 <iframe width="640" height="360" src="http://www.youtube.com/embed/qTjAu03V9pY?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
 </div>
@@ -110,9 +110,9 @@ router's firewall is at your own risk.</p>
   
   <entry>
     <title type="html"><![CDATA[Random Bits]]></title>
-    <link href="http://andyregan.net/random-bits/"/>
+    <link href="http://andyregan.net/blog/random-bits/"/>
     <updated>2009-03-08T00:00:00+00:00</updated>
-    <id>http://andyregan.net/random-bits</id>
+    <id>http://andyregan.net/blog/random-bits</id>
     <content type="html"><![CDATA[<p>I haven't come across anything that deserves a full post this week, so here's 5 interesting technologies I've come across recently:</p>
 
 <ul>

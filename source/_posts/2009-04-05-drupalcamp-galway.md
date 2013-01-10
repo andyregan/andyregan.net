@@ -1,9 +1,7 @@
 ---
 title: DrupalCamp Galway
-author: Andy
 excerpt: DrupalCamp Galway a huge success.
 layout: post
-permalink: /drupalcamp-galway/
 categories:
   - Web Development
 tags:

@@ -1,9 +1,7 @@
 ---
 title: Fix Mac OS X DNS Failure on UPC Router
-author: Andy
-excerpt: "Using UPC and finding DNS won't resolve since upgrading to OS X 10.6.4? This post may fix issue."
+Description: "Using UPC and finding DNS won't resolve since upgrading to OS X 10.6.4? This post may fix issue."
 layout: post
-permalink: /fix-mac-os-x-dns-failure-on-upc-router/
 categories:
   - Random
 tags:

@@ -1,11 +1,9 @@
 ---
 title: Extract a Tar Archive to Multiple Directories Matching A Pattern
-author: Andy
-excerpt: >
+description: >
   A bash command chain to simultaneously extract a compressed tar archive to
   multiple directories matching a pattern.
 layout: post
-permalink: /extract-a-tar-archive-to-multiple-directories-matching-a-pattern/
 categories:
   - General Tips
 tags:

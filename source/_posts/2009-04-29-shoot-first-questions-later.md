@@ -1,8 +1,6 @@
 ---
 title: Shoot First Questions Later
-author: Andy
 layout: post
-permalink: /shoot-first-questions-later/
 categories:
   - Random
 tags:

@@ -1,11 +1,9 @@
 ---
 title: Setting Up A New CakePHP Environment in Ubuntu
-author: Andy
-excerpt: >
+description: 
   How to get around some common stumbling blocks when creating a new CakePHP
   development environment.
 layout: post
-permalink: /setting-up-a-new-cakephp-environment-in-ubuntu/
 categories:
   - Web Development
 tags:

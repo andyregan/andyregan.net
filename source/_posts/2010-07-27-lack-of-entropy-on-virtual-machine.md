@@ -1,9 +1,7 @@
 ---
 title: Lack of Entropy on Virtual Machine
-author: Andy
-excerpt: The problem with entropy on virtual machines and possible solutions.
+description: The problem with entropy on virtual machines and possible solutions.
 layout: post
-permalink: /lack-of-entropy-on-virtual-machine/
 categories:
   - Linux
 ---

@@ -1,9 +1,7 @@
 ---
 title: 'Mac Mini Resolution Problems &#8211; EDIDs And HDMI Matrix Switchers'
-author: Andy
-excerpt: "If you're sending video from a Mac Mini to multiple displays, you might need to get an adapter that can manage EDID data for you."
+description: "If you're sending video from a Mac Mini to multiple displays, you might need to get an adapter that can manage EDID data for you."
 layout: post
-permalink: /mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/
 categories:
   - Apple
 tags:

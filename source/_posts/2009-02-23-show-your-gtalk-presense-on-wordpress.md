@@ -1,8 +1,6 @@
 ---
 title: Show Your Gtalk Presence on WordPress
-author: Andy
 layout: post
-permalink: /show-your-gtalk-presence-on-wordpress/
 categories:
   - Web Development
 tags:

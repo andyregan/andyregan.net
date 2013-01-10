@@ -1,8 +1,6 @@
 ---
 title: Recovering Files From an Unmountable USB Key
-author: Andy
 layout: post
-permalink: /recovering-files-from-an-unmountable-usb-key/
 categories:
   - Linux
 tags:

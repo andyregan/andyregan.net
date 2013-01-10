@@ -1,11 +1,9 @@
 ---
 title: Specifying GPU Compute Mode At Job Submission with Torque
-author: Andy
-excerpt: >
+description: >
   This post explains how to specify compute modes for nvidia GPUs at Torque job
   submission.
 layout: post
-permalink: /specifying-gpu-compute-mode-at-job-submission-with-torque/
 categories:
   - General Tips
   - Linux

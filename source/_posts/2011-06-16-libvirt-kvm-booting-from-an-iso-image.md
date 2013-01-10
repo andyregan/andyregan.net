@@ -1,9 +1,7 @@
 ---
 title: 'Libvirt + KVM : Booting From An ISO Image'
-author: Andy
-excerpt: Booting a virtual machine from an ISO image.
+description: Booting a virtual machine from an ISO image.
 layout: post
-permalink: /libvirt-kvm-booting-from-an-iso-image/
 categories:
   - General Tips
   - Linux

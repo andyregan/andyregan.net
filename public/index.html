@@ -3,11 +3,14 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>$whois andyregan</title>
+	<title>About Me - $whois andyregan</title>
 	<meta name="author" content="Andrew Regan">
 
 	
-	<meta name="description" content="Background: I&#8217;m installing DevStack on an Ubuntu 12.04 VirtualBox image I provisioned with Vagrant. I&#8217;m following a gist on how to &hellip;">
+        
+          
+        
+	<meta name="description" content=" The blog of Andy (A.K.A Andrew) Regan. An Irish sysadmin and developer living Ireland. ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -20,11 +23,11 @@
 	
 </head>
 
+
 <body>
 	<header id="header" class="inner"><h1><a href="/">$whois andyregan</a></h1>
 <nav id="main-nav"><ul class="main">
-	<li><a href="/about">About Me</a></li>
-	<li><a href="/">Blog</a></li>
+	<li><a href="/blog">Blog</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </nav>
@@ -32,8 +35,7 @@
 	<div class="alignleft menu">
 		<a class="button">Menu</a>
 		<div class="container"><ul class="main">
-	<li><a href="/about">About Me</a></li>
-	<li><a href="/">Blog</a></li>
+	<li><a href="/blog">Blog</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </div>
@@ -93,833 +95,66 @@
 </script>
 
 	
-	<div id="content" class="inner">
+	<div id="content" class="inner"><article class="page">
+    
+    <h1 class="title">About Me</h1>
+    
+    <div class="entry-content"><p><img class="center" src="http://www.gravatar.com/avatar/01d78bfd1832a1e25aba1fcccd9f091c?s=200" title="Gravatar of Andrew Regan" /></p>
 
+<h4>Is mise raibl&iacute;n!</h4>
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/installing-devstack-on-a-vagrant-vm-with-bridged-networking/">
-		
-			Installing DevStack on a Vagrant VM With Bridged Networking</a>
-	</h2>
-	<div class="entry-content">
-		<p>Background: I&#8217;m installing <a href="http://devstack.org/">DevStack</a> on an Ubuntu 12.04 VirtualBox image I provisioned with <a href="http://vagrantup.com">Vagrant</a>.</p>
+<p>I&#8217;m interested in techonology. I work in the area of <a href="http://en.wikipedia.org/wiki/Cloud_computing">Cloud Computiung</a> and <a href="http://www.somic.org/2012/09/28/concise-introduction-to-infrastructure-as-code/">Infrastructure as Code</a>. In the past, I&#8217;ve worked in web application development and HPC systems andministration.</p>
 
-<p>I&#8217;m following <a href="https://gist.github.com/2144344">a gist on how to install DevStack</a>, but I hit the following error when I ran stack.sh for the first time.</p>
-
-<blockquote><p>Error: either &#8220;dev&#8221; is duplicate, or &#8220;eth0&#8221; is a garbage.</p></blockquote>
-
-
-<p>I specified bridged mode in my Vagrantfile, so my <strong>HOST_IP_IFACE</strong> is eth1 not eth0. The work-around was to export the correct
-value and re-run the script.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">HOST_IP_IFACE</span><span class="o">=</span>eth1
-</span><span class='line'><span class="nv">$ </span>./stack.sh
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-20T00:00:00+01:00" pubdate data-updated="true">2012-10-20</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/">
-		
-			Flashing Cyanogenmod 7.1 to a Samsung Galaxy S II (GT-I9100)</a>
-	</h2>
-	<div class="entry-content">
-		<p><strong>WARNING: These notes are for reference. Doing this will void your warranty and doing this wrong could brick your phone.</strong></p>
-
-<p><img class="center" src="/images/posts/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/cyanogen-logo.png"" width="200" title="cyanogenmod logo" alt="cyanogenmod logo"></p>
-
-<h2>Background</h2>
-
-<p>Taken straight from Wikipedia, <a href="http://en.wikipedia.org/wiki/CyanogenMod">Cyanogenmod</a> is <strong>&#8220;an after-market replacement for the firmware of over sixty cell
-phones and Internet tablets. Based on the Android mobile computer operating system, it offers features and options not
-found in the official firmware distributed by vendors of these devices&#8221;</strong>.</p>
-
-<p>The Cyanogenmod wiki and forums are the best references for flashing your phone. I followed the instructions on the
-<a href="http://wiki.cyanogenmod.com/wiki/Samsung_Galaxy_S_II:_Full_Update_Guide">Samsung Galaxy S II: Full Update Guide</a>. I won&#8217;t repeat those instructions here, but I&#8217;ll point out some extra steps
-I needed to take.</p>
-
-<p>It&#8217;s not emphasized on the wiki, but (I think) you need an external SD card installed in the phone. You can use this to
-store the Cyanogenmod and Google Apps Zip files for installation, rather than using the phones internal storage.</p>
-
-<p>Google Apps (Gmail, the App Market, etc) are packaged separately due to licensing restrictions. They&#8217;re an optional install,
-but I followed the instructions on the wiki to install them when I installed Cyanogenmod.</p>
-
-<h2>Installing the ClockworkMod Recovery</h2>
-
-<h3>Download Mode</h3>
-
-<p>To put the phone into download mode, I turned it off and then held down the following buttons:</p>
+<h3>How to Contact Me</h3>
 
 <ul>
-<li>volume-down</li>
-<li>home</li>
-<li>power</li>
+<li>Drop me an email at <script type="text/javascript"> document.write('<a style="unicode-bidi: bidi-override; direction: rtl;" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;andrew&#64;andyregan&#46;net">ten&#46;nagerydna&#64;werdna</a>');</script></li>
+<li>I&#8217;m <a href="http://www.twitter.com/andyregan">@andyregan</a> on Twitter</li>
 </ul>
 
 
-<h3>Samsung Firmware</h3>
+<h3>Background</h3>
 
-<p>I initially followed the instructions for Mac OS X (my OS version was OS X 10.6.8). When I connected the phone in Download
-Mode via USB to my MacBook Pro and ran the heimdall flash command, I got the following error:</p>
-
-<blockquote><p>Failed to detect compatible download-mode device.</p></blockquote>
-
-
-<p>There&#8217;s a <a href="https://github.com/Benjamin-Dobell/Heimdall/issues/22">closed issue</a> on the Heimdall GitHub project that explains this is caused by <strong>&#8220;faulty secondary bootloaders
-distributed by Samsung. These bad bootloaders don&#8217;t adhere to the USB specification and hence OS X is unable to communicate
-with them. In order to solve this issue you need to upgrade your bootloaders to newer bootloaders that Samsung have fixed
-using Windows or Linux&#8221;</strong>.</p>
-
-<p>The solution for me was to install <a href="http://en.wikipedia.org/wiki/Samsung_Kies">Samsung Kies</a> on a Windows host and update to the phone&#8217;s firmware to the latest
-official release from Samsung (I went from Android 2.3.3 to 2.3.5).</p>
-
-<p>The phone was then detected by Heimdall in OS X and I was able to complete the installation of the ClockworkMod Recovery
-as per the instructions on the Cyanogenmod wiki.</p>
-
-<h2>Flashing CyanogenMod</h2>
-
-<h3>Boot into the ClockworkMod Recovery</h3>
-
-<p>I turned off the phone and then held down the following buttons:</p>
+<h4>&lt; 2008</h4>
 
 <ul>
-<li>volume-up</li>
-<li>home</li>
-<li>power</li>
+<li>I had my first real introduction to Linux and (quality German beer) as an admin for <a href="http://compsoc.ie/">NUIG Compsoc</a>. It&#8217;s a university club made up of folks interested in technology. We ran tutorials, played games and helped raise some money for worthy causes such as the <a href="http://www.abaltaabaschool.galway.edu.ie/">&Aacute;balta School</a> in Galway.</li>
 </ul>
 
 
-<h3>Backup</h3>
+<h4>2008</h4>
 
-<p>It&#8217;s not a mandatory step, but I performed a back up as per the instructions in the wiki.</p>
-
-<h2>End Result</h2>
-
-<p>After I finished installing the CyanogenMod and Google Apps Zip files, I rebooted the phone. Everything went better than expected!</p>
-
-		
-		
-	</div>
+<ul>
+<li>I worked as a research intern at <a href="http://www.deri.ie/about/team/member/andrew_regan/">DERI Ireland</a>, in the Semantic Web Services cluster.</li>
+</ul>
 
 
-<div class="meta">
-	<div class="date">
+<h4>2009</h4>
+
+<ul>
+<li><p>I graduated with honours from NUI, Galway in 2009, after completing the <a href="http://www.it.nuigalway.ie/programmes_bsc_it.html">B.Sc Information Technology</a> degree program.</p></li>
+<li><p>After finishing my course, I worked in suport and operations for <a href="http://www.letshost.ie">Letshost.ie</a>, a large Irish web hosting company.</p></li>
+</ul>
 
 
+<h4>2010</h4>
+
+<ul>
+<li>I joined the Operations Team at <a href="http://www.ichec.ie/">The Irish Centre for High End Computing</a> where I had responsibility for all aspects of infrastructure and technical operations for ICHEC&#8217;s Dublin office.</li>
+</ul>
 
 
+<h4>2012</h4>
 
+<ul>
+<li>Most, recently I&#8217;m working as a Software Engineer for Fidlity Investments.</li>
+</ul>
 
-
-
-  
-
-
-<time datetime="2011-11-28T00:00:00+00:00" pubdate data-updated="true">2011-11-28</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
+</div>
+</article>
 
 
 </div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/specifying-gpu-compute-mode-at-job-submission-with-torque/">
-		
-			Specifying GPU Compute Mode at Job Submission With Torque</a>
-	</h2>
-	<div class="entry-content">
-		<p>In Torque 2.5.6, 3.0.2 and later, you can specify GPU compute mode and reset GPU ECC error counts at job submission
-(provided that you have configured Torque with the <strong>enable-nvidia-gpus</strong> option).</p>
-
-<p>For CUDA 4.0 (Nvidia 270.x drivers), there are four compute modes that can be set on the GPU.</p>
-
-<ol>
-<li><strong>Default</strong> : Multiple threads can run on this GPU</li>
-<li><strong>Exclusive Thread</strong> : Only one thread in one process can run on this GPU</li>
-<li><strong>Prohibited</strong> : No threads are allowed to run on this GPU</li>
-<li><strong>Exclusive Process</strong> : Many threads in one process will be able to run on this GPU</li>
-</ol>
-
-
-<p>With Torque, you can now request <strong>Default</strong>, <strong>Exclusive Thread</strong> or <strong>Exclusive Process</strong> compute modes at job
-submission time. The mode you specify applies to all the GPUs you request. If you do not specify a compute mode,
-then Torque will set the GPUs to <strong>Exclusive Thread</strong>.</p>
-
-<p>For example, to request 1 GPU and with compute mode set to <strong>Exclusive Process</strong> you could define the following resource:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>qsub -l <span class="nv">nodes</span><span class="o">=</span>1:gpus<span class="o">=</span>1:exclusive_process
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>To request 1 GPU with compute mode set to <strong>Exclusive Thread</strong> and reset the ECC error counts on the GPU, you could define the following:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>qsub -l <span class="nv">nodes</span><span class="o">=</span>1:gpus<span class="o">=</span>1:reseterr:exclusive_thread
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The below table shows the various modes and their associated Torque keywords.</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th> Compute Mode      </th>
-<th> Keyword           </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td> Default           </td>
-<td> shared            </td>
-</tr>
-<tr>
-<td></td>
-<td> Exclusive Thread  </td>
-<td> exclusive_thread  </td>
-</tr>
-<tr>
-<td></td>
-<td> Exclusive Process </td>
-<td> exclusive_process </td>
-</tr>
-</tbody>
-</table>
-
-
-<p>More information is available in <a href="http://www.adaptivecomputing.com/resources/docs/torque/3.7schedulinggpus.php">Section 3.7 of the Torque Documentation</a>.</p>
-
-<p>Al Taufer from Adaptive Computing helpfully explained the reasoning behind the <em>shared</em> keyword in <a href="http://www.supercluster.org/pipermail/torqueusers/2011-June/013079.html">reply to a question I submitted to the Torque Users mailing list</a>.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-10T00:00:00+01:00" pubdate data-updated="true">2011-07-10</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/libvirt-kvm-booting-from-an-iso-image/">
-		
-			Libvirt + KVM : Booting From an ISO Image</a>
-	</h2>
-	<div class="entry-content">
-		<p><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></p>
-
-<p>If you want to boot your domain from a CDROM (for example, if you wish to re-install the OS on the VM),
-you can edit its configuration so that it boots from an ISO image on the host.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>host:~# virsh edit name_of_domain
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Within the <strong>os</strong> section, add a <strong>cdrom</strong> device. Make sure that it is placed before other boot devices, such as disks.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;os&gt;
-</span><span class='line'>    ...
-</span><span class='line'>    &lt;boot <span class="nv">dev</span><span class="o">=</span><span class="s1">&#39;cdrom&#39;</span>/&gt;
-</span><span class='line'>    &lt;boot <span class="nv">dev</span><span class="o">=</span><span class="s1">&#39;hd&#39;</span>/&gt;
-</span><span class='line'>&lt;/os&gt;
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Add an entry for a cdrom device (or edit an existing cdrom device) such that the <strong>type</strong> is <em>file</em> and the <strong>source</strong>
-is the path to the ISO image on the host.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;disk <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span> <span class="nv">device</span><span class="o">=</span><span class="s1">&#39;cdrom&#39;</span>&gt;
-</span><span class='line'>      &lt;<span class="nb">source </span><span class="nv">file</span><span class="o">=</span><span class="s1">&#39;/path/to/install_media.iso&#39;</span>/&gt;
-</span><span class='line'>       ...
-</span><span class='line'>&lt;/disk&gt;
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Save your changes and then reboot the domain. It should have booted into the ISO image. You can then attach a console
-and continue the installation.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>host:~# virt-viewer name_of_domain
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Edit</h2>
-
-<p>I forgot (of course!) that you must undo the above changes after installation. Otherwise, it will continue to boot
-into the ISO and not your shiny new OS.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-16T00:00:00+01:00" pubdate data-updated="true">2011-06-16</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/fixing-git-group-write-errors/">
-		
-			Fixing Git Group Write Errors</a>
-	</h2>
-	<div class="entry-content">
-		<p><img class="center" src="/images/posts/fixing-git-group-write-errors/200px-Git-logo.svg_.png" width="200" title="&#34;200px Git logo&#34;" alt="&#34;200px Git logo&#34;"></p>
-
-<h2>The Problem</h2>
-
-<p>When many users are committing to the same git repository, the correct group permissions must be
-set. For example, when a user recently tried to commit to a shared git repository, it failed
-with the following error:</p>
-
-<blockquote><p>fatal: failed to write object</p></blockquote>
-
-
-<p>Looking at the repository&#8217;s config file on the server, the <strong>sharedRepository</strong> variable was not set.</p>
-
-<h2>The Fix</h2>
-
-<p>First, I fixed the group permissions for the repository (all the users belonged to the same group).</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>chmod -R g+swX /path/to/repository/
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Then, I set the <strong>sharedRepository</strong> variable to <em>true</em>.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> /path/to/repository/
-</span><span class='line'><span class="nv">$ </span>git repo-config core.sharedRepository <span class="nb">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>More Info</h2>
-
-<p>More information on this variable can be found in the git-config man page.</p>
-
-<blockquote><p>core.sharedRepository  <br/>When group (or true), the repository is made shareable between several users in a group (making sure all the files and objects are group-writable). When all (or world or everybody), the  <br/>repository will be readable by all users, additionally to being group-shareable. When umask (or false), git will use permissions reported by umask(2). When 0xxx, where 0xxx is an octal  <br/>number, files in the repository will have this mode value. 0xxx will override user´s umask value, and thus, users with a safe umask (0077) can use this option. Examples: 0660 is equivalent  <br/>to group. 0640 is a repository that is group-readable but not group-writable. See git-init(1). False by default.</p></blockquote>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-15T00:00:00+01:00" pubdate data-updated="true">2011-06-15</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/extract-a-tar-archive-to-multiple-directories-matching-a-pattern/">
-		
-			Extract a Tar Archive to Multiple Directories Matching a Pattern</a>
-	</h2>
-	<div class="entry-content">
-		<p>Sometimes you may need to extract the same tar archive into many directories at once.</p>
-
-<p>The below command extracts <strong>/path/to/archive.tgz</strong> into the directories from
-<strong>/path/to/destination/00</strong> to <strong>/path/to/destination/29</strong> .</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>me@host ~<span class="o">]</span><span class="nv">$ </span>ls -d /path/to/destination/<span class="o">[</span>0-2<span class="o">][</span>0-9<span class="o">]</span>/ | xargs -I <span class="o">{}</span> tar -xvzf /path/to/archive.tgz -C <span class="o">{}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-01T00:00:00+01:00" pubdate data-updated="true">2011-06-01</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/requesting-gpus-at-job-submission-with-torque/">
-		
-			Requesting GPUs at Job Submission With Torque</a>
-	</h2>
-	<div class="entry-content">
-		<p><img class="center" src="http://andyregan.net/blog/wp-content/uploads/2011/05/gpu_torque.jpg" title="A picture of a GPU card" alt="A picture of a GPU card"></p>
-
-<p>According to the <a href="http://www.adaptivecomputing.com/resources/docs/torque/3.7schedulinggpus.php">Torque Documentation</a>, <strong>&#8220;in TORQUE 2.5.4 and later, users can request GPUs on a node at job submission&#8221;</strong>. This
-post describes how to configure Torque for this functionality, allowing GPU resources to be scheduled among multiple users.</p>
-
-<p>In a future post, I will also describe one approach that could be used to manage mutually exclusive CUDA access to NVIDIA GPUs on a
-multi-GPU compute node.</p>
-
-<p>The examples that follow involve a single workstation with 2 NVIDIA GPU devices.</p>
-
-<h2>Informing Torque Where the GPUs Are</h2>
-
-<p>In order for Torque to know which nodes have GPUs, you must update the <a href="http://www.adaptivecomputing.com/resources/docs/torque/1.5nodeconfig.php">nodes</a> file. In the following example, I have specified
-that <strong>node1</strong> has 12 CPU cores and 2 GPU devices.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@service-node:~# cat /var/spool/torque/server_priv/nodes
-</span><span class='line'>node1 <span class="nv">np</span><span class="o">=</span>12 <span class="nv">gpus</span><span class="o">=</span>2
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>After saving the changes, you must restart <strong>pbs_server</strong> for the change to take affect.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@service-node:~# /etc/init.d/pbs_server restart
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Looking at the <strong>pbsnodes</strong> output, we can see that Torque is now aware that there should be 2 GPU devices on <strong>node1</strong>.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~# pbsnodes -a
-</span><span class='line'>node1
-</span><span class='line'>     <span class="nv">np</span> <span class="o">=</span> 12
-</span><span class='line'>     <span class="nv">gpus</span> <span class="o">=</span> 2
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Requesting GPUs at job submission</h2>
-
-<p>When submitting a job, a user can request GPU devices similar to how they request CPU cores. In the following example,
-I&#8217;m requesting an <a href="http://www.clusterresources.com/torquedocs21/users/2.2files.shtml#interactive">interactive job</a> with 1 node , 1 processor per node and 2 GPUs per node.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~<span class="nv">$ </span>qsub -I -l <span class="nv">nodes</span><span class="o">=</span>1:ppn<span class="o">=</span>1:gpus<span class="o">=</span>2
-</span><span class='line'>qsub: waiting <span class="k">for </span>job &lt;job id&gt; to start
-</span><span class='line'>qsub: job &lt;job id&gt; ready
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>When the job starts, Torque populates a file whose path is specified by the environment variable <code>$PBS_GPUFILE</code>. Each
-allocated GPU appears on a separate line within this file.</p>
-
-<p>As you can see, the contents of <code>$PBS_GPUFILE</code> show that the job has been allocated GPU index 0 and 1 (the first and
-second GPU) on node1 to execute on.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~<span class="nv">$ </span>env | grep PBS_GPUFILE
-</span><span class='line'><span class="nv">PBS_GPUFILE</span><span class="o">=</span>/var/spool/torque/aux/JOB_IDgpu
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>user@login-node:~<span class="nv">$ </span>cat /var/spool/torque/aux/JOB_IDgpu
-</span><span class='line'>node1-gpu0
-</span><span class='line'>node1-gpu1
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Restricting the GPUs available to CUDA to Those Allocated</h2>
-
-<p>As specified in Torque&#8217;s documentation, <strong>&#8220;it is left up to the job&#8217;s owner to make sure that the job executes properly on the GPU&#8221;</strong>.</p>
-
-<p>In my next post, I will describe how you can take advantage of the $CUDA_VISIBLE_DEVICES environment variable (available since CUDA 3.1) to restrict the GPUs available to CUDA to those allocated by Torque.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-09T00:00:00+01:00" pubdate data-updated="true">2011-05-09</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/allowing-debian-packages-to-execute-scripts-when-upgrading/">
-		
-			Allowing Debian Packages to Execute Scripts When Upgrading</a>
-	</h2>
-	<div class="entry-content">
-		<p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <strong>/tmp</strong>
-during upgrade. Often <strong>/tmp</strong> is mounted <strong>noexec</strong> for security and this can cause upgrades to
-fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p>
-
-<p>To complete the upgrades you can temporarily mount <strong>/tmp</strong> with <strong>exec</strong>, upgrade your packages
-and then remount as per the <strong>noexec</strong> flag in your <strong>/etc/fstab</strong>.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mount -o remount,exec /tmp
-</span><span class='line'><span class="nv">$ </span>aptitude safe-upgrade
-</span><span class='line'><span class="nv">$ </span>mount -o remount /tmp
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You can also <a href="http://wiki.mediatemple.net/w/%28ve%29:Configure_apt">change the default tmp directory that apt uses</a>.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;APT::ExtractTemplates::TempDir \&quot;/var/local/tmp\&quot;;&quot;</span> &gt;&gt; /etc/apt/apt.conf.d/50extracttemplates
-</span><span class='line'><span class="nv">$ </span>mkdir /var/local/tmp/
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-07T00:00:00+00:00" pubdate data-updated="true">2011-02-07</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>Linux</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/creating-dovecot-imap-folders-in-mail-app/">
-		
-			Creating Dovecot IMAP Folders in Mail.App</a>
-	</h2>
-	<div class="entry-content">
-		<p>If you want to organise your Dovecot IMAP mailboxes into folders, it may seem intuitive to
-just drag the them into a new mailbox. However, you may get the error message <strong>Target
-mailbox doesn&#8217;t allow inferior mailboxes</strong>.</p>
-
-<p>The solution is to explicitly create a folder, by adding a <code>/</code> to the end of the name you
-give a new mailbox. Folders can contain other folders and mailboxes, whereas mailboxes
-can only contain mail.</p>
-
-<p>For example, in Mail.app go to <strong>Mailbox</strong> -> <strong>New Mailbox</strong> . Select where you want to
-create the new folder and enter a name with a <code>/</code> at the end. If you don&#8217;t include the
-<code>/</code>, a new mailbox will be created.</p>
-
-<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.07.53.png" title="'Screenshot of Mail.app'" ></a></p>
-
-<p>In the image below, you can see a folder called <strong>TEST</strong> that contains a sub-folder
-called <strong>TEST2</strong> and a mailbox called <strong>test</strong>.</p>
-
-<p><a href="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png"><img class="center" src="/images/posts/creating-dovecot-imap-folders-in-mail-app/Screen-shot-2011-02-06-at-17.08.24.png" title="'Screen shot of Mail.app'" ></a></p>
-
-<p>While the above example uses Mail.app, you&#8217;ll also need to add a <code>/</code> to the end of
-Dovecot IMAP folder names in other clients such as Mozilla Thunderbird.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-06T00:00:00+00:00" pubdate data-updated="true">2011-02-06</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/general-tips/'>General Tips</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/">
-		
-			Mac Mini Resolution Problems &#8211; EDIDs and HDMI Matrix Switchers</a>
-	</h2>
-	<div class="entry-content">
-		<p><a href="http://ichec.ie">ICHEC</a>&#8217;s offices are located on opposite sides of the country. Thanks to video conferencing,
-our Dublin and Galway-based staff are able to hold frequent virtual meetings to cut down on
-travel. When staff (or visitors) need to share content, such as a presentation, they can connect
-their laptop to the video conferencing unit (a <a href="http://www.polycom.com/products/telepresence_video/telepresence_solutions/room_telepresence/hdx7000.html">Polycom HDX 7000</a>). They can then select the
-content to display to the local and remote members of the conference call.</p>
-
-<p>To cater for different types of video output, we use a HDMI Matrix Switcher that can take input
-from a VGA, a DVI, or a HMDI cable and output to either the TV directly, the video conference
-unit or both.</p>
-
-<p><a href="/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/matrix_switcher.jpg"><img class="center" src="/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/matrix_switcher.jpg" width="300" title="matrix switcher" alt="matrix switcher"></a></p>
-
-<p>We recently purchased a <a href="http://www.apple.com/macmini/">Mac Mini</a> for use as a permanent conference room PC connected
-through the Matrix Switcher. Unfortunately, we found that the highest resolution on TV was only
-full 1080p when the Polycom was left powered off. If the Polycom was powered on, the maximum
-resolution to the TV was much lower. Worse, the Polycom intermittently failed to receive a
-signal from the Mac Mini.</p>
-
-<p><a href="http://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2010_Mac_Mini_Ports.jpg/800px-2010_Mac_Mini_Ports.jpg"><img class="center" src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2010_Mac_Mini_Ports.jpg/800px-2010_Mac_Mini_Ports.jpg" width="300" title="Mac Mini" alt="Mac Mini"></a></p>
-
-<p>Googling around for information, it seemed that the Mac Mini was confusing the EDID information
-from the TV and Polycom unit as the data was coming through the Matrix Switcher. An <a href="http://en.wikipedia.org/wiki/Extended_display_identification_data">EDID
-(Extended display identification data)</a> is how a digital display, like a monitor or TV,
-tells your computer about itself. Your computer, through it&#8217;s graphics card, determines supported
-display settings based on the EDID data is has received from your monitor. We tried a few
-different suggested solutions without success.</p>
-
-<p>In a stroke of sheer luck and brilliance, <a href="http://www.ichec.ie/about_us/david_delaharpegolden.php">David</a> found a <a href="http://www.kanexlive.com/products/iAdapt51.html">Kanex USB powered mini-DVI to HDMI
-adapter</a> in a box of spare cables. One of the features of the adapter is <strong>&#8220;an auto EDID feature
-built-in that adapts to maximum resolution depending on users display&#8221;</strong>. He plugged it in between
-the Mac Mini and the Matrix Switcher and, lo and behold, we had consistent 1080p resolution to
-both the TV and the Polycom!</p>
-
-<p><a href="http://www.kanexlive.com/products/iAdapt51.html"><img class="center" src="/images/posts/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/adapter-300x133.jpg" width="300" title="Kanex Adapter" alt="Kanex Adapter"></a></p>
-
-<p>Another thing to watch out for is signal distortion when using a long-ish HDMI cable from the Mac
-Mini to the TV. The shorter the cable, the better.</p>
-
-<p>You might notice that the image does not quite fit the TV at first. Try setting the TV to <strong>PC</strong>
-or <strong>Dot by Dot</strong> mode. Finally, you may also need to adjust the TV&#8217;s sharpness settings. We
-found that if the sharpness was set too high, the OS X fonts would look pixelated.</p>
-
-<p>Hopefully, someone might find this info useful.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-05T00:00:00+00:00" pubdate data-updated="true">2011-02-05</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/apple/'>Apple</a>
-
-
-</div>
-	
-</div></article>
-
-<nav id="pagenavi">
-    
-    
-        <a href="/blog/page/2/" class="next">Next</a>
-    
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav></div>
 	<footer id="footer" class="inner">Copyright &copy; 2013
 
     Andrew Regan

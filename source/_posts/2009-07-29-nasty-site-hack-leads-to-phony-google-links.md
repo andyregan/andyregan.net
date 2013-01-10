@@ -1,8 +1,6 @@
 ---
 title: Nasty Site Hack Leads to Phony Google Links
-author: Andy
 layout: post
-permalink: /nasty-site-hack-leads-to-phony-google-links/
 categories:
   - Web Development
 tags:

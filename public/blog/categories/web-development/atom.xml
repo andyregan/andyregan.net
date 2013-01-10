@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Development | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/web-development/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T19:30:42+00:00</updated>
+  <updated>2013-01-10T10:25:31+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Setting Up A New CakePHP Environment in Ubuntu]]></title>
-    <link href="http://andyregan.net/setting-up-a-new-cakephp-environment-in-ubuntu/"/>
+    <link href="http://andyregan.net/blog/setting-up-a-new-cakephp-environment-in-ubuntu/"/>
     <updated>2010-02-16T00:00:00+00:00</updated>
-    <id>http://andyregan.net/setting-up-a-new-cakephp-environment-in-ubuntu</id>
+    <id>http://andyregan.net/blog/setting-up-a-new-cakephp-environment-in-ubuntu</id>
     <content type="html"><![CDATA[<p><a href="http://cakephp.org"><img class="center" src="/images/posts/setting-up-a-new-cakephp-environment-in-ubuntu/cakephp_logo_250_trans-150x150.png" width="150" title="CakePHP Logo" alt="CakePHP Logo"></a></p>
 
 <p><a href="http://cakephp.org">CakePHP</a> is a useful <a href="http://hubpages.com/hub/MVC">MVC</a> framework for PHP applications. However, there are a few common gotchas when setting up a new development
@@ -165,9 +165,9 @@ You should also check out this article on <a href="http://www.tiplite.com/cakeph
   
   <entry>
     <title type="html"><![CDATA[Nasty Site Hack Leads to Phony Google Links]]></title>
-    <link href="http://andyregan.net/nasty-site-hack-leads-to-phony-google-links/"/>
+    <link href="http://andyregan.net/blog/nasty-site-hack-leads-to-phony-google-links/"/>
     <updated>2009-07-29T00:00:00+01:00</updated>
-    <id>http://andyregan.net/nasty-site-hack-leads-to-phony-google-links</id>
+    <id>http://andyregan.net/blog/nasty-site-hack-leads-to-phony-google-links</id>
     <content type="html"><![CDATA[<h2>Thar be nasty scripts here!</h2>
 
 <p><img class="center" src="http://andyregan.net/blog/wp-content/uploads/2009/07/tornado_warning.gif" width="300" title="Warning Sign" alt="Thar be nasty scripts here!"></p>
@@ -213,9 +213,9 @@ included, but this should help narrow down the list of dirty scripts.</p>
   
   <entry>
     <title type="html"><![CDATA[New Theme]]></title>
-    <link href="http://andyregan.net/new-theme/"/>
+    <link href="http://andyregan.net/blog/new-theme/"/>
     <updated>2009-04-29T00:00:00+01:00</updated>
-    <id>http://andyregan.net/new-theme</id>
+    <id>http://andyregan.net/blog/new-theme</id>
     <content type="html"><![CDATA[<p>I got a bit sick of the old fusion theme. The new theme is based on the <a href="http://themes.jestro.com/vigilance/">Vigilance Theme</a> by <a href="http://www.jestro.com/">Jestro</a> with some tweaks suggested in an excellent <a href="http://healyourchurchwebsite.com/2008/12/01/working-with-the-wordpress-theme-vigilance-116/">article by Dean Peters</a> along with a couple of tweaks of my own.</p>
 
 <p>Header image is a photo I took atop the <a href="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=silver+strand+galway&amp;sll=53.273797,-9.05178&amp;sspn=0.091155,0.30899&amp;ie=UTF8&amp;ll=53.251299,-9.124403&amp;spn=0.0114,0.038624&amp;t=h&amp;z=15&amp;iwloc=I">cliff at Silver Strand overlooking Galway Bay</a>.</p>
@@ -226,9 +226,9 @@ included, but this should help narrow down the list of dirty scripts.</p>
   
   <entry>
     <title type="html"><![CDATA[DrupalCamp Galway]]></title>
-    <link href="http://andyregan.net/drupalcamp-galway/"/>
+    <link href="http://andyregan.net/blog/drupalcamp-galway/"/>
     <updated>2009-04-05T00:00:00+01:00</updated>
-    <id>http://andyregan.net/drupalcamp-galway</id>
+    <id>http://andyregan.net/blog/drupalcamp-galway</id>
     <content type="html"><![CDATA[<p style="text-align: center;">
   <img class="aligncenter" src="http://groups.drupal.org/files/drupal_n_go.gif" alt="DrupalCamp Galway Logo" />
 </p>
@@ -284,9 +284,9 @@ included, but this should help narrow down the list of dirty scripts.</p>
   
   <entry>
     <title type="html"><![CDATA[Show Your Gtalk Presence on WordPress]]></title>
-    <link href="http://andyregan.net/show-your-gtalk-presence-on-wordpress/"/>
+    <link href="http://andyregan.net/blog/show-your-gtalk-presense-on-wordpress/"/>
     <updated>2009-02-23T00:00:00+00:00</updated>
-    <id>http://andyregan.net/show-your-gtalk-presense-on-wordpress</id>
+    <id>http://andyregan.net/blog/show-your-gtalk-presense-on-wordpress</id>
     <content type="html"><![CDATA[<p>I couldn't find a plugin that showed my presence in a way that I liked so I threw together the following php script. It's influenced by the <a href="http://www.awflasher.com/blog/" title="Visit plugin homepage">Gtalk (Status) to WordPress (G2W)</a> plugin by Aw Guo. It includes <a href="http://simplehtmldom.sourceforge.net/" title="simplehtmldom">simplehtmldom</a>, a very easy to use HTML DOM parser.</p>
 
 <p>The first step is to get a <a href="http://www.google.com/talk/service/badge/New">Gtalk Chatback Badge</a>. Edit the badge, making sure "Show your status message" is ticked. Copy the hashcode in the url of your badge. It's the string after after <code>?tk</code>. Replace <code>HASHCODE</code> in the following code with your hashcode.</p>

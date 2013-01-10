@@ -1,8 +1,6 @@
 ---
 title: First Post and SMS Ping Script
-author: Andy
 layout: post
-permalink: /first-post-and-first-script-foo/
 categories:
   - General Tips
 tags:

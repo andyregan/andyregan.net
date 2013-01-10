@@ -1,9 +1,7 @@
 ---
 title: 'Firewalling Bridged VMs Using Libvirt&#8217;s Nwfilter Driver'
-author: Andy
-excerpt: "Using libvirt's nwfilter driver, you can create simple network filtering rules in XML to firewall your virtual machines."
+description: "Using libvirt's nwfilter driver, you can create simple network filtering rules in XML to firewall your virtual machines."
 layout: post
-permalink: /firewalling-bridged-vms-using-libvirts-nwfilter-driver/
 categories:
   - Linux
 tags:

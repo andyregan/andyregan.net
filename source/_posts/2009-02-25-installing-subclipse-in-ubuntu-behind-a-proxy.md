@@ -1,8 +1,6 @@
 ---
 title: Installing Subclipse in Ubuntu Behind a Proxy
-author: Andy
 layout: post
-permalink: /installing-subclipse-in-ubuntu-behind-a-proxy/
 categories:
   - Linux
 tags:

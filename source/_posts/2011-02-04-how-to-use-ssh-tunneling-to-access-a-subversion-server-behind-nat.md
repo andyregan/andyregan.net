@@ -1,12 +1,7 @@
 ---
 title: How to Use SSH Tunneling to Access A Subversion Server Behind NAT
-author: Andy
-excerpt: |
-  >
-    How to use reverse ssh tunnels to access a subversion or git repository behind
-    NAT.
+description: How to use reverse ssh tunnels to access a subversion or git repository behind NAT. 
 layout: post
-permalink: /how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat/
 categories:
   - Linux
 tags:

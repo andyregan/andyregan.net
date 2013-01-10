@@ -1,8 +1,6 @@
 ---
 title: Requesting GPUs At Job Submission With Torque
-author: Andy
 layout: post
-permalink: /requesting-gpus-at-job-submission-with-torque/
 categories:
   - General Tips
 tags:

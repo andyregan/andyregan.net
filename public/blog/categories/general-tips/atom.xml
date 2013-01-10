@@ -4,7 +4,7 @@
   <title><![CDATA[Category: General Tips | $whois andyregan]]></title>
   <link href="http://andyregan.net/blog/categories/general-tips/atom.xml" rel="self"/>
   <link href="http://andyregan.net/"/>
-  <updated>2013-01-09T19:30:42+00:00</updated>
+  <updated>2013-01-10T10:25:31+00:00</updated>
   <id>http://andyregan.net/</id>
   <author>
     <name><![CDATA[Andrew Regan]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installing DevStack on A Vagrant VM With Bridged Networking]]></title>
-    <link href="http://andyregan.net/installing-devstack-on-a-vagrant-vm-with-bridged-networking/"/>
+    <link href="http://andyregan.net/blog/installing-devstack-on-a-vagrant-vm-with-bridged-networking/"/>
     <updated>2012-10-20T00:00:00+01:00</updated>
-    <id>http://andyregan.net/installing-devstack-on-a-vagrant-vm-with-bridged-networking</id>
+    <id>http://andyregan.net/blog/installing-devstack-on-a-vagrant-vm-with-bridged-networking</id>
     <content type="html"><![CDATA[<p>Background: I'm installing <a href="http://devstack.org/">DevStack</a> on an Ubuntu 12.04 VirtualBox image I provisioned with <a href="http://vagrantup.com">Vagrant</a>.</p>
 
 <p>I'm following <a href="https://gist.github.com/2144344">a gist on how to install DevStack</a>, but I hit the following error when I ran stack.sh for the first time.</p>
@@ -37,9 +37,9 @@ value and re-run the script.</p>
   
   <entry>
     <title type="html"><![CDATA[Flashing Cyanogenmod 7.1 to a Samsung Galaxy S II (GT-I9100)]]></title>
-    <link href="http://andyregan.net/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/"/>
+    <link href="http://andyregan.net/blog/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/"/>
     <updated>2011-11-28T00:00:00+00:00</updated>
-    <id>http://andyregan.net/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100</id>
+    <id>http://andyregan.net/blog/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100</id>
     <content type="html"><![CDATA[<p><strong>WARNING: These notes are for reference. Doing this will void your warranty and doing this wrong could brick your phone.</strong></p>
 
 <p><img class="center" src="/images/posts/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/cyanogen-logo.png"" width="200" title="cyanogenmod logo" alt="cyanogenmod logo"></p>
@@ -116,9 +116,9 @@ as per the instructions on the Cyanogenmod wiki.</p>
   
   <entry>
     <title type="html"><![CDATA[Specifying GPU Compute Mode At Job Submission with Torque]]></title>
-    <link href="http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque/"/>
+    <link href="http://andyregan.net/blog/specifying-gpu-compute-mode-at-job-submission-with-torque/"/>
     <updated>2011-07-10T00:00:00+01:00</updated>
-    <id>http://andyregan.net/specifying-gpu-compute-mode-at-job-submission-with-torque</id>
+    <id>http://andyregan.net/blog/specifying-gpu-compute-mode-at-job-submission-with-torque</id>
     <content type="html"><![CDATA[<p>In Torque 2.5.6, 3.0.2 and later, you can specify GPU compute mode and reset GPU ECC error counts at job submission
 (provided that you have configured Torque with the <strong>enable-nvidia-gpus</strong> option).</p>
 
@@ -186,9 +186,9 @@ then Torque will set the GPUs to <strong>Exclusive Thread</strong>.</p>
   
   <entry>
     <title type="html"><![CDATA[Libvirt + KVM : Booting From An ISO Image]]></title>
-    <link href="http://andyregan.net/libvirt-kvm-booting-from-an-iso-image/"/>
+    <link href="http://andyregan.net/blog/libvirt-kvm-booting-from-an-iso-image/"/>
     <updated>2011-06-16T00:00:00+01:00</updated>
-    <id>http://andyregan.net/libvirt-kvm-booting-from-an-iso-image</id>
+    <id>http://andyregan.net/blog/libvirt-kvm-booting-from-an-iso-image</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></p>
 
 <p>If you want to boot your domain from a CDROM (for example, if you wish to re-install the OS on the VM),
@@ -253,9 +253,9 @@ into the ISO and not your shiny new OS.</p>
   
   <entry>
     <title type="html"><![CDATA[Fixing Git Group Write Errors]]></title>
-    <link href="http://andyregan.net/fixing-git-group-write-errors/"/>
+    <link href="http://andyregan.net/blog/fixing-git-group-write-errors/"/>
     <updated>2011-06-15T00:00:00+01:00</updated>
-    <id>http://andyregan.net/fixing-git-group-write-errors</id>
+    <id>http://andyregan.net/blog/fixing-git-group-write-errors</id>
     <content type="html"><![CDATA[<p><img class="center" src="/images/posts/fixing-git-group-write-errors/200px-Git-logo.svg_.png" width="200" title="&#34;200px Git logo&#34;" alt="&#34;200px Git logo&#34;"></p>
 
 <h2>The Problem</h2>

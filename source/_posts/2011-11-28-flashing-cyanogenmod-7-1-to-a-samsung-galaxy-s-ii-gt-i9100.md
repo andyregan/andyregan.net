@@ -1,11 +1,9 @@
 ---
 title: Flashing Cyanogenmod 7.1 to a Samsung Galaxy S II (GT-I9100)
-author: Andy
-excerpt: >
+description: >
   This post contains some notes from my experience of installing Cyanogenmod 7.1
   to a Samsung Galaxy S II (GT-I9100).
 layout: post
-permalink: /flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/
 categories:
   - General Tips
 tags:

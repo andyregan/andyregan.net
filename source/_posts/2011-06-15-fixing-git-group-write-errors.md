@@ -1,11 +1,9 @@
 ---
 title: Fixing Git Group Write Errors
-author: Andy
-excerpt: >
+description: >
   When many users are committing to the same git repository, the correct group
   permissions must be set.
 layout: post
-permalink: /fixing-git-group-write-errors/
 categories:
   - General Tips
   - Linux
