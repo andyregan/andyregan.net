@@ -10,7 +10,7 @@ footer: true
 
 ####Is mise raibl&iacute;n!
 
-I'm interested in techonology. I work in the area of [Cloud Computiung][2] and [Infrastructure as Code][3]. In the past, I've worked in web application development and HPC systems andministration. 
+I'm interested in techonology. I work in the area of [Cloud Computing][2] and [Infrastructure as Code][3]. In the past, I've worked in web application development and HPC systems andministration. 
 
 ### How to Contact Me
 
@@ -34,7 +34,7 @@ I'm interested in techonology. I work in the area of [Cloud Computiung][2] and [
  - I joined the Operations Team at [The Irish Centre for High End Computing][10] where I had responsibility for all aspects of infrastructure and technical operations for ICHEC's Dublin office.
 
 ####2012
- - Most, recently I'm working as a Software Engineer for Fidlity Investments.
+ - I'm now working as a Software Engineer for Fidlity Investments.
 
 
  [1]: http://en.wikipedia.org/wiki/Irish_language
