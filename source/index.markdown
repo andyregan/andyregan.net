@@ -10,12 +10,20 @@ footer: true
 
 ####Is mise raibl&iacute;n!
 
+Hi! I'm <span itemprop="name">Andrew Regan</span>, but I also go by <span itemprop="nickname">Andy</span>.
+
+I live in <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address"><span itemprop="locality">Galway</span>,<span itemprop="region">Ireland</span></span>
+
 I'm interested in techonology. I work in the area of [Cloud Computing][2] and [Infrastructure as Code][3]. In the past, I've worked in web application development and HPC systems andministration. 
 
 ### How to Contact Me
 
  - Drop me an email at {% email andrew@andyregan.net %}
  - I'm [@andyregan][4] on Twitter
+ - My homepage is <a href="http://andyregan.net" itemprop="url">this very website</a>!
+
+###Some friends of mine:
+* <a href="http://www.synacron.com/" rel="friend">Nathan Shaughnessy</a>
 
 ###Background
 
@@ -34,7 +42,7 @@ I'm interested in techonology. I work in the area of [Cloud Computing][2] and [I
  - I joined the Operations Team at [The Irish Centre for High End Computing][10] where I had responsibility for all aspects of infrastructure and technical operations for ICHEC's Dublin office.
 
 ####2012
- - I'm now working as a Software Engineer for Fidlity Investments.
+ - I'm now working as a <span itemprop="title">Software Engineer</span> for <span itemprop="affiliation">Fidelity Investments</span>.
 
 
  [1]: http://en.wikipedia.org/wiki/Irish_language
