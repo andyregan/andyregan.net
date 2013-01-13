@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Nasty Site Hack Leads to Phony Google Links
 layout: post
 categories:

@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Requesting GPUs At Job Submission With Torque
 layout: post
 categories:

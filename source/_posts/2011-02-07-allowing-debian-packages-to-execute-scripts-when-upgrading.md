@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Allowing Debian Packages To Execute Scripts When Upgrading
 description: "If you have mounted /tmp noexec, aptitude updates may fail. Here's some possible solutions."
 layout: post

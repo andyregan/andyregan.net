@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Creating Dovecot IMAP Folders In Mail.App
 description: >
   This post explains how to create Dovecot IMAP folders and sub-folders in

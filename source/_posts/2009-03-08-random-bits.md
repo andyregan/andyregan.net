@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Random Bits
 layout: post
 categories:

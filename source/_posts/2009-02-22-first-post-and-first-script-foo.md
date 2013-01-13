@@ -1,15 +1,12 @@
 ---
 title: First Post and SMS Ping Script
 layout: post
+description: How to Get An SMS Message When A Server Comes Online
+date: 2009-02-22
 categories:
   - General Tips
-tags:
-  - Compsoc
-  - Linux
-  - meteorsms
-  - o2sms
-  - Ping
-  - SMS
+keywords: compsoc, linux, meteorsms, o2sms, ping, sms
+comments: true
 ---
 Thanks for visiting! The main purpose of this blog (right now) is as an archive for useful technical bits and pieces I've come across and don't want to forget. Hopefully, you might find some of these useful, too. This is my first post and I'd like to start by sharing a handy little script-foo I learned.
 

@@ -1,4 +1,5 @@
 ---
+comments: true
 title: I Can Haz Job?
 layout: post
 categories:

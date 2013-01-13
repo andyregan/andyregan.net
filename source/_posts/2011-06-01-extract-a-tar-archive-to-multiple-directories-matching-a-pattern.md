@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Extract a Tar Archive to Multiple Directories Matching A Pattern
 description: >
   A bash command chain to simultaneously extract a compressed tar archive to

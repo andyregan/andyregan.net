@@ -1,5 +1,6 @@
 ---
 title: Recovering Files From an Unmountable USB Key
+comments: true
 layout: post
 categories:
   - Linux

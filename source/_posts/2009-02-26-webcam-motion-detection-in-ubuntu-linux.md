@@ -1,5 +1,6 @@
 ---
 title: Webcam Motion Detection in Ubuntu Linux
+comments: true
 layout: post
 categories:
   - Linux

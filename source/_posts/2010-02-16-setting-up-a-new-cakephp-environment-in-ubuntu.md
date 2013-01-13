@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Setting Up A New CakePHP Environment in Ubuntu
 description: 
   How to get around some common stumbling blocks when creating a new CakePHP

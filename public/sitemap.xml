@@ -2,141 +2,141 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://andyregan.net/blog/first-post-and-first-script-foo/</loc>
-        <lastmod>2013-01-10T10:12:28+00:00</lastmod>
+        <lastmod>2013-01-13T11:32:25+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/show-your-gtalk-presense-on-wordpress/</loc>
-        <lastmod>2013-01-10T10:12:24+00:00</lastmod>
+        <lastmod>2013-01-13T11:33:16+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/installing-subclipse-in-ubuntu-behind-a-proxy/</loc>
-        <lastmod>2013-01-10T10:12:20+00:00</lastmod>
+        <lastmod>2013-01-13T11:33:27+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/webcam-motion-detection-in-ubuntu-linux/</loc>
-        <lastmod>2013-01-10T10:12:15+00:00</lastmod>
+        <lastmod>2013-01-13T11:33:35+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/recovering-files-from-an-unmountable-usb-key/</loc>
-        <lastmod>2013-01-10T10:12:34+00:00</lastmod>
+        <lastmod>2013-01-13T11:33:44+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/random-bits/</loc>
-        <lastmod>2013-01-10T10:12:39+00:00</lastmod>
+        <lastmod>2013-01-13T11:33:52+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/drupalcamp-galway/</loc>
-        <lastmod>2013-01-10T10:12:44+00:00</lastmod>
+        <lastmod>2013-01-13T11:34:05+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/i-can-haz-job/</loc>
-        <lastmod>2013-01-10T10:12:50+00:00</lastmod>
+        <lastmod>2013-01-13T11:34:14+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/new-theme/</loc>
-        <lastmod>2013-01-10T10:12:55+00:00</lastmod>
+        <lastmod>2013-01-13T11:34:23+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/shoot-first-questions-later/</loc>
-        <lastmod>2013-01-10T10:13:02+00:00</lastmod>
+        <lastmod>2013-01-13T11:34:30+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/nasty-site-hack-leads-to-phony-google-links/</loc>
-        <lastmod>2013-01-10T10:13:07+00:00</lastmod>
+        <lastmod>2013-01-13T11:34:37+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/setting-up-a-new-cakephp-environment-in-ubuntu/</loc>
-        <lastmod>2013-01-10T10:13:26+00:00</lastmod>
+        <lastmod>2013-01-13T11:34:43+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/quickly-reset-linux-file-and-directory-permissions/</loc>
-        <lastmod>2013-01-10T10:13:42+00:00</lastmod>
+        <lastmod>2013-01-13T11:34:51+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/fix-mac-os-x-dns-failure-on-upc-router/</loc>
-        <lastmod>2013-01-10T10:13:58+00:00</lastmod>
+        <lastmod>2013-01-13T11:34:58+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/lack-of-entropy-on-virtual-machine/</loc>
-        <lastmod>2013-01-10T10:14:13+00:00</lastmod>
+        <lastmod>2013-01-13T11:35:05+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyregan.net/blog/firewalling-bridged-vms-using-libvirts-nwfilter-driver/
         </loc>
-        <lastmod>2013-01-10T10:14:27+00:00</lastmod>
+        <lastmod>2013-01-13T11:35:12+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyregan.net/blog/renaming-many-files-at-once-with-pattern-matching-in-bash/
         </loc>
-        <lastmod>2013-01-10T10:14:34+00:00</lastmod>
+        <lastmod>2013-01-13T11:35:27+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyregan.net/blog/how-to-use-ssh-tunneling-to-access-a-subversion-server-behind-nat/
         </loc>
-        <lastmod>2013-01-10T10:15:30+00:00</lastmod>
+        <lastmod>2013-01-13T11:35:34+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyregan.net/blog/mac-mini-resolution-problems-edids-and-hdmi-matrix-switchers/
         </loc>
-        <lastmod>2013-01-10T10:15:13+00:00</lastmod>
+        <lastmod>2013-01-13T11:35:40+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/creating-dovecot-imap-folders-in-mail-app/</loc>
-        <lastmod>2013-01-10T10:15:42+00:00</lastmod>
+        <lastmod>2013-01-13T11:35:46+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyregan.net/blog/allowing-debian-packages-to-execute-scripts-when-upgrading/
         </loc>
-        <lastmod>2013-01-10T10:15:53+00:00</lastmod>
+        <lastmod>2013-01-13T11:35:54+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/requesting-gpus-at-job-submission-with-torque/</loc>
-        <lastmod>2013-01-10T10:16:37+00:00</lastmod>
+        <lastmod>2013-01-13T11:36:01+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyregan.net/blog/extract-a-tar-archive-to-multiple-directories-matching-a-pattern/
         </loc>
-        <lastmod>2013-01-10T10:16:50+00:00</lastmod>
+        <lastmod>2013-01-13T11:36:07+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/fixing-git-group-write-errors/</loc>
-        <lastmod>2013-01-10T10:17:01+00:00</lastmod>
+        <lastmod>2013-01-13T11:36:13+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/libvirt-kvm-booting-from-an-iso-image/</loc>
-        <lastmod>2013-01-10T10:17:12+00:00</lastmod>
+        <lastmod>2013-01-13T11:36:19+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyregan.net/blog/specifying-gpu-compute-mode-at-job-submission-with-torque/
         </loc>
-        <lastmod>2013-01-10T10:17:22+00:00</lastmod>
+        <lastmod>2013-01-13T11:36:25+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyregan.net/blog/flashing-cyanogenmod-7-1-to-a-samsung-galaxy-s-ii-gt-i9100/
         </loc>
-        <lastmod>2013-01-10T10:17:33+00:00</lastmod>
+        <lastmod>2013-01-13T11:36:31+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://andyregan.net/blog/installing-devstack-on-a-vagrant-vm-with-bridged-networking/
         </loc>
-        <lastmod>2013-01-09T20:27:59+00:00</lastmod>
+        <lastmod>2013-01-13T11:36:37+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/archives/</loc>
-        <lastmod>2013-01-10T10:17:33+00:00</lastmod>
+        <lastmod>2013-01-13T11:36:37+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/blog/</loc>
-        <lastmod>2013-01-10T10:17:33+00:00</lastmod>
+        <lastmod>2013-01-13T11:36:37+00:00</lastmod>
     </url>
     <url>
         <loc>http://andyregan.net/</loc>

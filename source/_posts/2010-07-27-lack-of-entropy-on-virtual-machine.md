@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Lack of Entropy on Virtual Machine
 description: The problem with entropy on virtual machines and possible solutions.
 layout: post

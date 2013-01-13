@@ -1,4 +1,5 @@
 ---
+comments: true
 title: 'Firewalling Bridged VMs Using Libvirt&#8217;s Nwfilter Driver'
 description: "Using libvirt's nwfilter driver, you can create simple network filtering rules in XML to firewall your virtual machines."
 layout: post

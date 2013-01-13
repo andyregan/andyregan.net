@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Fixing Git Group Write Errors
 description: >
   When many users are committing to the same git repository, the correct group

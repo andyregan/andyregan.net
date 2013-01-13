@@ -1,4 +1,5 @@
 ---
+comments: true
 title: DrupalCamp Galway
 excerpt: DrupalCamp Galway a huge success.
 layout: post

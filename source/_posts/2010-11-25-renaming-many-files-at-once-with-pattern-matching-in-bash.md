@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Renaming Many Files At Once with Pattern Matching in Bash
 layout: post
 categories:

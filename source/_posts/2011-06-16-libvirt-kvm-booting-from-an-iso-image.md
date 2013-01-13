@@ -1,4 +1,5 @@
 ---
+comments: true
 title: 'Libvirt + KVM : Booting From An ISO Image'
 description: Booting a virtual machine from an ISO image.
 layout: post

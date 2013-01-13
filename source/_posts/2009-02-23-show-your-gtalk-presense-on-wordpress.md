@@ -1,5 +1,6 @@
 ---
 title: Show Your Gtalk Presence on WordPress
+comments: true
 layout: post
 categories:
   - Web Development

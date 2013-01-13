@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Shoot First Questions Later
 layout: post
 categories:
