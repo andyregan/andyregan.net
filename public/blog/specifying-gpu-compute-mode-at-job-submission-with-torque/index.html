@@ -96,7 +96,14 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Specifying GPU Compute Mode at Job Submission With Torque</h2>
-	<div class="entry-content"><p>In Torque 2.5.6, 3.0.2 and later, you can specify GPU compute mode and reset GPU ECC error counts at job submission
+	<div class="entry-content">
+          <div>
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+<span class="byline author vcard">Posted by <span class="fn"><span itemprop="name">Andrew Regan</span></span></span></div>
+</div>
+          <p>In Torque 2.5.6, 3.0.2 and later, you can specify GPU compute mode and reset GPU ECC error counts at job submission
 (provided that you have configured Torque with the <strong>enable-nvidia-gpus</strong> option).</p>
 
 <p>For CUDA 4.0 (Nvidia 270.x drivers), there are four compute modes that can be set on the GPU.</p>
@@ -160,7 +167,8 @@ then Torque will set the GPUs to <strong>Exclusive Thread</strong>.</p>
 <p>More information is available in <a href="http://www.adaptivecomputing.com/resources/docs/torque/3.7schedulinggpus.php">Section 3.7 of the Torque Documentation</a>.</p>
 
 <p>Al Taufer from Adaptive Computing helpfully explained the reasoning behind the <em>shared</em> keyword in <a href="http://www.supercluster.org/pipermail/torqueusers/2011-June/013079.html">reply to a question I submitted to the Torque Users mailing list</a>.</p>
-</div>
+
+        </div>
 
 
 <div class="meta">

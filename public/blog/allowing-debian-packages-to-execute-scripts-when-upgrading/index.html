@@ -95,7 +95,14 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Allowing Debian Packages to Execute Scripts When Upgrading</h2>
-	<div class="entry-content"><p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <strong>/tmp</strong>
+	<div class="entry-content">
+          <div>
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+<span class="byline author vcard">Posted by <span class="fn"><span itemprop="name">Andrew Regan</span></span></span></div>
+</div>
+          <p>As <a href="http://www.ichec.ie/about_us/david_delaharpegolden">David</a> came across this morning, some <a href="http://www.debian.org/">Debian</a> packages try to execute scripts in <strong>/tmp</strong>
 during upgrade. Often <strong>/tmp</strong> is mounted <strong>noexec</strong> for security and this can cause upgrades to
 fail. Files in partitions mounted <strong>noexec</strong> cannot be executed.</p>
 
@@ -121,7 +128,8 @@ and then remount as per the <strong>noexec</strong> flag in your <strong>/etc/fs
 
 
 
-</div>
+
+        </div>
 
 
 <div class="meta">

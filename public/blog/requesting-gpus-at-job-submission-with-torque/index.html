@@ -8,8 +8,7 @@
 
 	
         
-	<meta name="description" content="According to the Torque Documentation, &#8220;in TORQUE 2.5.4 and later, users can request GPUs on a node at job submission&#8221;. This
-post &hellip;">
+	<meta name="description" content="Posted by Andrew Regan According to the Torque Documentation, &#8220;in TORQUE 2.5.4 and later, users can request GPUs on a node at job submission&# &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,7 +95,14 @@ post &hellip;">
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Requesting GPUs at Job Submission With Torque</h2>
-	<div class="entry-content"><p><img class="center" src="http://andyregan.net/blog/wp-content/uploads/2011/05/gpu_torque.jpg" title="A picture of a GPU card" alt="A picture of a GPU card"></p>
+	<div class="entry-content">
+          <div>
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+<span class="byline author vcard">Posted by <span class="fn"><span itemprop="name">Andrew Regan</span></span></span></div>
+</div>
+          <p><img class="center" src="http://andyregan.net/blog/wp-content/uploads/2011/05/gpu_torque.jpg" title="A picture of a GPU card" alt="A picture of a GPU card"></p>
 
 <p>According to the <a href="http://www.adaptivecomputing.com/resources/docs/torque/3.7schedulinggpus.php">Torque Documentation</a>, <strong>&#8220;in TORQUE 2.5.4 and later, users can request GPUs on a node at job submission&#8221;</strong>. This
 post describes how to configure Torque for this functionality, allowing GPU resources to be scheduled among multiple users.</p>
@@ -181,7 +187,8 @@ second GPU) on node1 to execute on.</p>
 <p>As specified in Torque&#8217;s documentation, <strong>&#8220;it is left up to the job&#8217;s owner to make sure that the job executes properly on the GPU&#8221;</strong>.</p>
 
 <p>In my next post, I will describe how you can take advantage of the $CUDA_VISIBLE_DEVICES environment variable (available since CUDA 3.1) to restrict the GPUs available to CUDA to those allocated by Torque.</p>
-</div>
+
+        </div>
 
 
 <div class="meta">

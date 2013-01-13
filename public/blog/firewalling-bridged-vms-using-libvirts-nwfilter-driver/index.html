@@ -95,7 +95,14 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Firewalling Bridged VMs Using Libvirt&#8217;s Nwfilter Driver</h2>
-	<div class="entry-content"><p><a href="http://libvirt.org/"><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></a></p>
+	<div class="entry-content">
+          <div>
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+<span class="byline author vcard">Posted by <span class="fn"><span itemprop="name">Andrew Regan</span></span></span></div>
+</div>
+          <p><a href="http://libvirt.org/"><img class="center" src="http://libvirt.org/libvirtLogo.png" width="200" title="libvirt logo" ></a></p>
 
 <p>Recently, I needed to create a virtual machine to host an internet-facing web application. One of the
 requirements for this VM included setting up a firewall on the VM&#8217;s host as well as on the guest itself
@@ -121,7 +128,8 @@ trick should iptables be restarted.</p>
 
 <p>Simply, run <code>$virsh nwfilter-edit your-custom-template.xml</code> . Add a newline to the end of your XML
 and save. Virsh will re-create your defined rules.</p>
-</div>
+
+        </div>
 
 
 <div class="meta">

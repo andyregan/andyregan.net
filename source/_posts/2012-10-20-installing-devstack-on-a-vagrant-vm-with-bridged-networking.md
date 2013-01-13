@@ -1,7 +1,6 @@
 ---
 comments: true
 title: Installing DevStack on A Vagrant VM With Bridged Networking
-author: Andy
 description: 'How to get past  a networking error when installing devstack on a vagrant box configured to use bridged networking.'
 layout: post
 categories:
