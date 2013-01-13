@@ -8,7 +8,7 @@ footer: true
 {% if site.gravatar_email %}<img class="center" src="{% gravatar_image 200 %}" height="200" title="The Unix Beard of {{ site.author }}" alt="The Unix Beard of {{ site.author }}" />{% endif %}
 
 ####Is mise raibl&iacute;n!
-Hi! Thanks for visiting my blog: <a href="http://andyregan.net" itemprop="url">andyregan.net</a>. I'm <span itemprop="givenName">Andrew</span> <span itemprop="familyName">Regan</span>, but I also go by <span itemprop="additionalName">Andy</span>.
+Hi! Thanks for visiting my blog: <a href="http://andyregan.net" itemprop="url">andyregan.net</a>. I'm <span itemprop="name"><span itemprop="givenName">Andrew</span> <span itemprop="familyName">Regan</span></span>, but I also go by <span itemprop="additionalName">Andy</span>.
 I live in <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressRegion">Galway</span>, <span itemprop="addressCountry">Ireland</span></span>.
 
 
