@@ -1,18 +1,16 @@
 ---
 layout: page
 title: "About Me"
-date: 2013-01-07 18:24
 sharing: false
 footer: true
 ---
 
-{% if site.gravatar_email %}<img class="center" src="{% gravatar_image 200 %}" title="Gravatar of {{ site.author }}" />{% endif %}
+{% if site.gravatar_email %}<img class="center" src="{% gravatar_image 200 %}" height="200" title="The Unix Beard of {{ site.author }}" alt="The Unix Beard of {{ site.author }}" />{% endif %}
 
 ####Is mise raibl&iacute;n!
+Hi! Thanks for visiting my blog: <a href="http://andyregan.net" itemprop="url">andyregan.net</a>. I'm <span itemprop="givenName">Andrew</span> <span itemprop="familyName">Regan</span>, but I also go by <span itemprop="additionalName">Andy</span>.
+I live in <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressRegion">Galway</span>, <span itemprop="addressCountry">Ireland</span></span>.
 
-Hi! I'm <span itemprop="name">Andrew Regan</span>, but I also go by <span itemprop="nickname">Andy</span>.
-
-I live in <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address"><span itemprop="locality">Galway</span>,<span itemprop="region">Ireland</span></span>
 
 I'm interested in techonology. I work in the area of [Cloud Computing][2] and [Infrastructure as Code][3]. In the past, I've worked in web application development and HPC systems andministration. 
 
@@ -20,30 +18,28 @@ I'm interested in techonology. I work in the area of [Cloud Computing][2] and [I
 
  - Drop me an email at {% email andrew@andyregan.net %}
  - I'm [@andyregan][4] on Twitter
- - My homepage is <a href="http://andyregan.net" itemprop="url">this very website</a>!
 
 ###Some friends of mine:
-* <a href="http://www.synacron.com/" rel="friend">Nathan Shaughnessy</a>
+* <a href="http://www.synacron.com/" itemprop="knows">Nathan Shaughnessy</a>
 
 ###Background
 
 ####< 2008
- - I had my first real introduction to Linux and (quality German beer) as an admin for [NUIG Compsoc][5]. It's a university club made up of folks interested in technology. We ran tutorials, played games and helped raise some money for worthy causes such as the [&Aacute;balta School][6] in Galway. 
+ - I had my first real introduction to Linux and (quality German beer) as an admin for <span itemprop="alumniOf">[NUIG Compsoc][5]</span>. It's a university club made up of folks interested in technology. We ran tutorials, played games and helped raise some money for worthy causes such as the [&Aacute;balta School][6] in Galway. 
 
 ####2008
- - I worked as a research intern at [DERI Ireland][7], in the Semantic Web Services cluster.
+ - I worked as a research intern at <span itemprop="alumniOf">[DERI Ireland][7]</span>, in the Semantic Web Services cluster.
 
 ####2009
- - I graduated with honours from NUI, Galway in 2009, after completing the [B.Sc Information Technology][8] degree program.
+ - I graduated with honours from <span itemprop="alumniOf">NUI, Galway</span> in 2009, after completing the [B.Sc Information Technology][8] degree program.
 
- - After finishing my course, I worked in suport and operations for [Letshost.ie][9], a large Irish web hosting company. 
+ - After finishing my course, I worked in suport and operations for <span itemprop="alumniOf">[Letshost.ie][9]</span>, a large Irish web hosting company. 
 
 ####2010
- - I joined the Operations Team at [The Irish Centre for High End Computing][10] where I had responsibility for all aspects of infrastructure and technical operations for ICHEC's Dublin office.
+ - I joined the Operations Team at <span itemprop="alumniOf">[The Irish Centre for High End Computing][10]</span> where I had responsibility for all aspects of infrastructure and technical operations for ICHEC's Dublin office.
 
 ####2012
- - I'm now working as a <span itemprop="title">Software Engineer</span> for <span itemprop="affiliation">Fidelity Investments</span>.
-
+ - I'm now working as a <span itemprop="jobTitle">Software Engineer</span> for <span itemprop="affiliation">Fidelity Investments</span>.
 
  [1]: http://en.wikipedia.org/wiki/Irish_language
  [2]: http://en.wikipedia.org/wiki/Cloud_computing
