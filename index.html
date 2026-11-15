@@ -30,6 +30,10 @@
   main { max-width: 40rem; margin: 0 auto; padding: 4.5rem 1.5rem 3rem; }
   h1 { font-size: 2.6rem; line-height: 1.15; margin: 0 0 .4rem; letter-spacing: -.02em; }
   .tagline { color: var(--muted); font-size: 1.15rem; margin: 0 0 2.5rem; }
+  .intro { display: flex; align-items: center; gap: 1.75rem; margin-bottom: 2.5rem; }
+  .intro .tagline { margin: 0; }
+  .avatar { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; flex: none; }
+  @media (max-width: 30rem) { .intro { flex-direction: column; align-items: flex-start; gap: 1.25rem; } }
   h2 {
     font: 600 .8rem/1 system-ui, sans-serif; text-transform: uppercase;
     letter-spacing: .12em; color: var(--muted); margin: 2.5rem 0 1rem;
@@ -60,8 +64,13 @@
 </head>
 <body>
 <main>
-  <h1>Andy Regan</h1>
-  <p class="tagline">Senior software engineering manager, Ireland. Backend engineer turned people leader.</p>
+  <header class="intro">
+    <img class="avatar" src="avatar.jpg" width="128" height="128" alt="Andy Regan, smiling in glasses, a black beanie and a knitted brown beard">
+    <div>
+      <h1>Andy Regan</h1>
+      <p class="tagline">Senior software engineering manager, Ireland. Backend engineer turned people leader.</p>
+    </div>
+  </header>
 
   <h2>About</h2>
   <p>I'm a senior software engineering manager at <a href="https://expel.com">Expel</a>, a managed detection and response company, where I built and lead a team in the Workbench Platform organization. We run an internal platform that lets developers build event-driven, serverless solutions on AWS. My job is delivery, platform reliability and helping the people on my team grow.</p>
