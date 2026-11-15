@@ -6,105 +6,172 @@
 <title>Andy Regan</title>
 <meta name="description" content="Andy Regan is a senior software engineering manager based in Ireland, leading a team that builds a serverless, event-driven developer platform on AWS.">
 <link rel="canonical" href="https://andyregan.net/">
-<meta name="theme-color" content="#faf8f5">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f6f5e'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' text-anchor='middle' fill='white'%3EAR%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0E141B">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E141B'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' text-anchor='middle' fill='%235EEAD4'%3EAR%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Andy Regan">
 <meta property="og:description" content="Senior software engineering manager in Ireland, leading a team that builds a serverless, event-driven developer platform on AWS.">
 <meta property="og:url" content="https://andyregan.net/">
 <meta property="og:image" content="https://andyregan.net/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #faf8f5; --fg: #1f1d1a; --muted: #6b665f; --accent: #2f6f5e; --line: #e6e1d9;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #151816; --fg: #ecebe6; --muted: #9a9a92; --accent: #7cc4ad; --line: #2a2f2c; }
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0; background: var(--bg); color: var(--fg);
-    font: 18px/1.65 Georgia, "Iowan Old Style", "Palatino Linotype", serif;
-  }
-  main { max-width: 40rem; margin: 0 auto; padding: 4.5rem 1.5rem 3rem; }
-  h1 { font-size: 2.6rem; line-height: 1.15; margin: 0 0 .4rem; letter-spacing: -.02em; }
-  .tagline { color: var(--muted); font-size: 1.15rem; margin: 0 0 2.5rem; }
-  .intro { display: flex; align-items: center; gap: 1.75rem; margin-bottom: 2.5rem; }
-  .intro .tagline { margin: 0; }
-  .avatar { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; flex: none; }
-  @media (max-width: 30rem) { .intro { flex-direction: column; align-items: flex-start; gap: 1.25rem; } }
-  h2 {
-    font: 600 .8rem/1 system-ui, sans-serif; text-transform: uppercase;
-    letter-spacing: .12em; color: var(--muted); margin: 2.5rem 0 1rem;
-    padding-top: 1.5rem; border-top: 1px solid var(--line);
-  }
-  p { margin: 0 0 1rem; }
-  a { color: var(--accent); text-underline-offset: .2em; }
+  html { -webkit-text-size-adjust: 100%; background: #0E141B; }
+  body { margin: 0; }
+  a { color: #5EEAD4; text-underline-offset: .2em; }
   a:hover { text-decoration-thickness: 2px; }
-  ul.links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
-  .proud { padding-left: 1.2rem; margin: 0; }
-  .proud li { margin-bottom: .7rem; }
-  .jobs { list-style: none; padding: 0; margin: 0; }
-  .jobs li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0 1.25rem; margin-bottom: 1.1rem; }
-  .jobs .when { color: var(--muted); font: .85rem/1.9 system-ui, sans-serif; }
-  .jobs .what strong { font-weight: 600; }
-  .jobs .what span { color: var(--muted); display: block; font-size: .95rem; line-height: 1.5; }
-  @media (max-width: 30rem) { .jobs li { grid-template-columns: 1fr; } .jobs .when { line-height: 1.4; } }
-  footer { margin-top: 3.5rem; color: var(--muted); font: .85rem system-ui, sans-serif; }
+  a:focus-visible { outline: 2px solid #5EEAD4; outline-offset: 3px; border-radius: 2px; }
+  @media (max-width: 700px) {
+    .wrap { padding: 24px 20px 64px !important; }
+    .name { font-size: 56px !important; }
+    .lead { font-size: 20px !important; }
+    .big { font-size: 22px !important; }
+    .photo-wrap { width: 100%; box-sizing: border-box; }
+    .photo { width: 100% !important; max-width: 300px; height: auto !important; aspect-ratio: 1 / 1; }
+    header.hero { padding: 48px 0 56px !important; gap: 40px !important; }
+  }
   @media print {
-    :root { --bg: #fff; --fg: #000; --muted: #444; --accent: #000; --line: #bbb; }
-    body { font-size: 11.5pt; line-height: 1.5; }
-    main { padding: 0; max-width: none; }
-    h2 { margin-top: 1.4rem; padding-top: 1rem; break-after: avoid; }
-    li { break-inside: avoid; }
-    footer { display: none; }
+    html { filter: invert(1) hue-rotate(180deg); background: #fff; }
+    img { filter: invert(1) hue-rotate(180deg); }
+    nav a { text-decoration: none; }
   }
 </style>
 </head>
 <body>
-<main>
-  <header class="intro">
-    <img class="avatar" src="avatar.jpg" width="128" height="128" alt="Andy Regan, smiling in glasses, a black beanie and a knitted brown beard">
-    <div>
-      <h1>Andy Regan</h1>
-      <p class="tagline">Senior software engineering manager, Ireland. Backend engineer turned people leader.</p>
-    </div>
-  </header>
+<div style="min-height: 100vh; box-sizing: border-box; background: #0E141B; color: #E6EDF3; font-family: 'IBM Plex Sans', system-ui, sans-serif">
+  <div class="wrap" style="max-width: 1120px; margin: 0 auto; padding: 36px 48px 96px; box-sizing: border-box">
 
-  <h2>About</h2>
-  <p>I'm a senior software engineering manager at <a href="https://expel.com">Expel</a>, a managed detection and response company, where I built and lead a team in the Workbench Platform organization. We run an internal platform that lets developers build event-driven, serverless solutions on AWS. My job is delivery, platform reliability and helping the people on my team grow.</p>
-  <p>We build the integrations that sync status from <a href="https://docs.expel.io/resources/video-library/video-introduction-to-workbench">Expel Workbench</a> to customers' security devices, including CrowdStrike Falcon, SentinelOne and Microsoft Defender for Endpoint, and I'm accountable for Workbench's notification system, which delivers alerts through email, Slack and Microsoft Teams.</p>
-  <p>I started out in high-performance computing and systems work, then spent my early career as a hands-on backend engineer at Fidelity Investments and Workday, writing Python and Ruby on AWS, GCP and Kubernetes: cloud provisioning APIs, developer tooling, and REST and GraphQL services. Over time I moved from writing the code to leading the teams that write it, with a focus on technical leadership, Agile coaching and career development. I studied at the University of Galway.</p>
+    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #243040; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #9FB0C0">
+      <span>andyregan.net</span>
+      <a href="https://www.linkedin.com/in/andyregan/" style="color: #5EEAD4">LinkedIn</a>
+    </nav>
 
-  <h2>Things I'm proud of</h2>
-  <ul class="proud">
-    <li><strong>Delivering Expel's AWS serverless platform</strong> and migrating legacy systems onto it.</li>
-    <li><strong>Building an AI-driven operations solution with Anthropic's Claude</strong> that automatically tracks, enriches and triages operational alerts. It cuts operational toil so the team can focus on project-led work, and it surfaces patterns of issues that help us improve reliability and resilience.</li>
-    <li><strong>Hiring the team.</strong> I wrote the job descriptions and ads, designed the interview plan, and created the onboarding plans for the people who joined.</li>
-    <li><strong>Establishing the first engineering on-call rotation in Ireland.</strong></li>
-    <li><strong>Running an organisation-wide career development programme at Workday,</strong> giving individual contributors short-term &ldquo;gigs&rdquo; to build new skills and experience.</li>
-  </ul>
+    <header class="hero" style="display: flex; flex-wrap: wrap; align-items: center; gap: 56px; padding: 80px 0 88px">
+      <div style="flex: 999 1 560px; min-width: 0">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #5EEAD4">Expel &middot; Workbench Platform</div>
+        <h1 class="name" style="margin: 20px 0 0; font-weight: 600; font-size: 96px; line-height: 1; letter-spacing: -0.035em">Andy Regan</h1>
+        <p style="margin: 24px 0 0; font-size: 24px; line-height: 1.45; color: #B8C7D6; max-width: 620px">Senior software engineering manager, Ireland. Backend engineer turned people leader.</p>
+        <ul style="display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 0; padding: 0; list-style: none; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #C9D6E2">
+          <li style="padding: 6px 12px; background: #151D27; border: 1px solid #2A3A4D; border-radius: 6px">Python</li>
+          <li style="padding: 6px 12px; background: #151D27; border: 1px solid #2A3A4D; border-radius: 6px">Ruby</li>
+          <li style="padding: 6px 12px; background: #151D27; border: 1px solid #2A3A4D; border-radius: 6px">AWS</li>
+          <li style="padding: 6px 12px; background: #151D27; border: 1px solid #2A3A4D; border-radius: 6px">GCP</li>
+          <li style="padding: 6px 12px; background: #151D27; border: 1px solid #2A3A4D; border-radius: 6px">Kubernetes</li>
+        </ul>
+      </div>
+      <div class="photo-wrap" style="flex: 0 0 auto; padding: 0 14px 14px 0">
+        <img class="photo" src="avatar.jpg" width="300" height="300" alt="Andy Regan, smiling in glasses, a black beanie and a knitted brown beard" style="display: block; width: 300px; height: 300px; object-fit: cover; border-radius: 12px; box-shadow: 14px 14px 0 0 #5EEAD4">
+      </div>
+    </header>
 
-  <h2>What I enjoy</h2>
-  <p>I enjoy understanding systems and problems, pulling threads and asking questions until I have the whole picture, and then owning the solution. I also like finding the right experiences to help people develop their careers, and working with Product Management to turn customer needs into better products.</p>
+    <section style="padding: 0 0 88px">
+      <h2 style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #9FB0C0; margin: 0 0 24px; font-weight: 400">01 / What the team runs</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 20px">
+        <article style="flex: 1 1 300px; min-width: 0; box-sizing: border-box; padding: 28px; background: #151D27; border: 1px solid #243040; border-radius: 12px">
+          <h3 style="margin: 0 0 10px; font-size: 21px; font-weight: 600">Serverless platform</h3>
+          <p style="margin: 0 0 20px; font-size: 15px; line-height: 1.6; color: #B8C7D6">An internal platform that lets developers build event-driven, serverless solutions on AWS.</p>
+          <ul style="display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #5EEAD4">
+            <li style="padding: 4px 10px; border: 1px solid #2A3A4D; border-radius: 6px">Event-driven</li>
+            <li style="padding: 4px 10px; border: 1px solid #2A3A4D; border-radius: 6px">Serverless</li>
+            <li style="padding: 4px 10px; border: 1px solid #2A3A4D; border-radius: 6px">AWS</li>
+          </ul>
+        </article>
+        <article style="flex: 1 1 300px; min-width: 0; box-sizing: border-box; padding: 28px; background: #151D27; border: 1px solid #243040; border-radius: 12px">
+          <h3 style="margin: 0 0 10px; font-size: 21px; font-weight: 600">Device status sync</h3>
+          <p style="margin: 0 0 20px; font-size: 15px; line-height: 1.6; color: #B8C7D6">Integrations that sync status from Expel Workbench to customers' security devices.</p>
+          <ul style="display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #5EEAD4">
+            <li style="padding: 4px 10px; border: 1px solid #2A3A4D; border-radius: 6px">CrowdStrike Falcon</li>
+            <li style="padding: 4px 10px; border: 1px solid #2A3A4D; border-radius: 6px">SentinelOne</li>
+            <li style="padding: 4px 10px; border: 1px solid #2A3A4D; border-radius: 6px">Microsoft Defender for Endpoint</li>
+          </ul>
+        </article>
+        <article style="flex: 1 1 300px; min-width: 0; box-sizing: border-box; padding: 28px; background: #151D27; border: 1px solid #243040; border-radius: 12px">
+          <h3 style="margin: 0 0 10px; font-size: 21px; font-weight: 600">Notifications</h3>
+          <p style="margin: 0 0 20px; font-size: 15px; line-height: 1.6; color: #B8C7D6">Workbench's notification system, which delivers alerts. I'm accountable for it.</p>
+          <ul style="display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #5EEAD4">
+            <li style="padding: 4px 10px; border: 1px solid #2A3A4D; border-radius: 6px">Email</li>
+            <li style="padding: 4px 10px; border: 1px solid #2A3A4D; border-radius: 6px">Slack</li>
+            <li style="padding: 4px 10px; border: 1px solid #2A3A4D; border-radius: 6px">Microsoft Teams</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-  <h2>Experience</h2>
-  <ul class="jobs">
-    <li><div class="when">2024 &ndash; now</div><div class="what"><strong>Expel</strong><span>Engineering Manager, Workbench Platform; Senior Software Engineering Manager since Nov 2025</span></div></li>
-    <li><div class="when">2023 &ndash; 2024</div><div class="what"><strong>Career break</strong><span>Full-time parenting</span></div></li>
-    <li><div class="when">2017 &ndash; 2023</div><div class="what"><strong>Workday</strong><span>Software Engineer to Software Engineering Manager, Dublin. Grew tracked services by 200%, unblocking a critical observability transformation.</span></div></li>
-    <li><div class="when">2012 &ndash; 2017</div><div class="what"><strong>Fidelity Investments</strong><span>Software Engineer to Senior Software Engineer, Galway and Dallas&ndash;Fort Worth. Built its first internal cloud provisioning service, cutting lead times from weeks to minutes.</span></div></li>
-    <li><div class="when">2010 &ndash; 2012</div><div class="what"><strong>Irish Centre for High-End Computing</strong><span>Systems Programmer, running Ireland's national HPC service</span></div></li>
-  </ul>
+    <section style="padding: 0 0 88px">
+      <h2 style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #9FB0C0; margin: 0 0 24px; font-weight: 400">02 / About</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 32px 56px">
+        <p class="lead" style="flex: 1 1 440px; min-width: 0; margin: 0; font-size: 24px; line-height: 1.5">I'm a senior software engineering manager at <a href="https://expel.com" style="color: #5EEAD4">Expel</a>, a managed detection and response company, where I built and lead a team of six engineers in the Workbench Platform organization. We run an internal platform that lets developers build event-driven, serverless solutions on AWS. My job is delivery, platform reliability and helping the people on my team grow.</p>
+        <p style="flex: 1 1 440px; min-width: 0; margin: 0; font-size: 17px; line-height: 1.7; color: #B8C7D6">I started out in high-performance computing and systems work, then spent my early career as a hands-on backend engineer at Fidelity Investments and Workday, writing Python and Ruby on AWS, GCP and Kubernetes: cloud provisioning APIs, developer tooling, and REST and GraphQL services. Over time I moved from writing the code to leading the teams that write it, with a focus on technical leadership, Agile coaching and career development. I took my first management role at Workday in 2021, leading a four-person team on a reliability initiative before a six-person cross-functional team, and I spent a period as acting Product Owner, building roadmaps and leading prioritisation. I studied at the University of Galway.</p>
+      </div>
+    </section>
 
-  <h2>Elsewhere</h2>
-  <ul class="links">
-    <li><a href="https://www.linkedin.com/in/andyregan/">LinkedIn</a></li>
-  </ul>
+    <section style="padding: 0 0 88px">
+      <h2 style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #9FB0C0; margin: 0 0 24px; font-weight: 400">03 / Things I'm proud of</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 20px">
+        <article style="flex: 1 1 340px; min-width: 0; box-sizing: border-box; padding: 28px; background: #151D27; border: 1px solid #243040; border-radius: 12px">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5EEAD4; margin-bottom: 12px">01</div>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6"><strong style="font-weight: 600">Delivering Expel's AWS serverless platform</strong> and migrating legacy systems onto it.</p>
+        </article>
+        <article style="flex: 2 1 540px; min-width: 0; box-sizing: border-box; padding: 28px; background: #151D27; border: 1px solid #243040; border-radius: 12px">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5EEAD4; margin-bottom: 12px">02</div>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6"><strong style="font-weight: 600">Building an AI-driven operations solution with Anthropic's Claude</strong> that automatically tracks, enriches and triages operational alerts. It cuts operational toil so the team can focus on project-led work, and it surfaces patterns of issues that help us improve reliability and resilience.</p>
+        </article>
+        <article style="flex: 1 1 340px; min-width: 0; box-sizing: border-box; padding: 28px; background: #151D27; border: 1px solid #243040; border-radius: 12px">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5EEAD4; margin-bottom: 12px">03</div>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6"><strong style="font-weight: 600">Hiring the team.</strong> I wrote the job descriptions and ads, designed the interview plan, and created the onboarding plans for the people who joined.</p>
+        </article>
+        <article style="flex: 1 1 340px; min-width: 0; box-sizing: border-box; padding: 28px; background: #151D27; border: 1px solid #243040; border-radius: 12px">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5EEAD4; margin-bottom: 12px">04</div>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6"><strong style="font-weight: 600">Establishing the first engineering on-call rotation in Ireland.</strong></p>
+        </article>
+        <article style="flex: 1 1 340px; min-width: 0; box-sizing: border-box; padding: 28px; background: #151D27; border: 1px solid #243040; border-radius: 12px">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5EEAD4; margin-bottom: 12px">05</div>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6"><strong style="font-weight: 600">Running an organisation-wide career development programme at Workday,</strong> giving individual contributors short-term &ldquo;gigs&rdquo; to build new skills and experience.</p>
+        </article>
+      </div>
+    </section>
 
-  <footer>&copy; <span id="y">2026</span> Andy Regan</footer>
-</main>
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    <section style="padding: 0 0 88px">
+      <h2 style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #9FB0C0; margin: 0 0 24px; font-weight: 400">04 / What I enjoy</h2>
+      <p class="big" style="margin: 0; max-width: 900px; font-size: 30px; line-height: 1.45; font-weight: 400">I enjoy understanding systems and problems, pulling threads and asking questions until I have the whole picture, and then owning the solution. I also like finding the right experiences to help people develop their careers, and working with Product Management to turn customer needs into better products.</p>
+    </section>
+
+    <section style="padding: 0">
+      <h2 style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #9FB0C0; margin: 0 0 24px; font-weight: 400">05 / Experience</h2>
+      <div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 32px; padding: 22px 0; border-top: 1px dashed #2A3A4D">
+          <div style="flex: 0 0 140px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #5EEAD4">2024 &ndash; now</div>
+          <div style="flex: 0 0 240px; font-weight: 600; font-size: 17px">Expel</div>
+          <div style="flex: 1 1 340px; min-width: 0; font-size: 15px; line-height: 1.6; color: #B8C7D6">Engineering Manager, Workbench Platform; Senior Software Engineering Manager since Nov 2025</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 32px; padding: 22px 0; border-top: 1px dashed #2A3A4D">
+          <div style="flex: 0 0 140px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #5EEAD4">2023 &ndash; 2024</div>
+          <div style="flex: 0 0 240px; font-weight: 600; font-size: 17px">Career break</div>
+          <div style="flex: 1 1 340px; min-width: 0; font-size: 15px; line-height: 1.6; color: #B8C7D6">Full-time parenting</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 32px; padding: 22px 0; border-top: 1px dashed #2A3A4D">
+          <div style="flex: 0 0 140px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #5EEAD4">2017 &ndash; 2023</div>
+          <div style="flex: 0 0 240px; font-weight: 600; font-size: 17px">Workday</div>
+          <div style="flex: 1 1 340px; min-width: 0; font-size: 15px; line-height: 1.6; color: #B8C7D6">Software Engineer to Software Engineering Manager, Dublin. Led a four-person reliability team, then a six-person cross-functional team, and acted as Product Owner during a colleague's leave. Grew tracked services by 200%, unblocking a critical observability transformation.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 32px; padding: 22px 0; border-top: 1px dashed #2A3A4D">
+          <div style="flex: 0 0 140px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #5EEAD4">2012 &ndash; 2017</div>
+          <div style="flex: 0 0 240px; font-weight: 600; font-size: 17px">Fidelity Investments</div>
+          <div style="flex: 1 1 340px; min-width: 0; font-size: 15px; line-height: 1.6; color: #B8C7D6">Software Engineer to Senior Software Engineer, Galway and Dallas&ndash;Fort Worth. Built its first internal cloud provisioning service, cutting lead times from weeks to minutes.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 32px; padding: 22px 0; border-top: 1px dashed #2A3A4D; border-bottom: 1px dashed #2A3A4D">
+          <div style="flex: 0 0 140px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; color: #5EEAD4">2010 &ndash; 2012</div>
+          <div style="flex: 0 0 240px; font-weight: 600; font-size: 17px">Irish Centre for High-End Computing</div>
+          <div style="flex: 1 1 340px; min-width: 0; font-size: 15px; line-height: 1.6; color: #B8C7D6">Systems Programmer, running Ireland's national HPC service</div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top: 56px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #9FB0C0">&copy; 2026 Andy Regan</footer>
+  </div>
+</div>
 </body>
 </html>
